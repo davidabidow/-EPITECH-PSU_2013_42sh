@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 **
 ** Started on  Tue Mar  4 13:49:06 2014 david tran
-** Last update Fri Mar  7 23:54:59 2014 david tran
+** Last update Fri May  2 16:49:20 2014 david tran
 */
 
 #include "minishell2.h"
@@ -32,7 +32,7 @@ char	*pipefeedaccess(char *dest, t_pipe *pipe, char **eve)
     return (NULL);
   else
     {
-      if ((eve[pipe->l] = malloc(sizeof(**eve) *
+      if ((eve[pipe->l] = malloc(sizeof(*eve) *
 			   (my_strlen(pipe->str) + 1))) == NULL)
 	return (NULL);
       eve[pipe->l] = my_strcpy(eve[pipe->l], pipe->str);
@@ -43,7 +43,7 @@ char	*pipefeedaccess(char *dest, t_pipe *pipe, char **eve)
 
 char	*pipefeedequal(char **eve, t_pipe *pipe)
 {
-  if ((eve[pipe->l] = malloc(sizeof(**eve) *
+  if ((eve[pipe->l] = malloc(sizeof(*eve) *
 		       (my_strlen(pipe->str) + 1))) == NULL)
     return (NULL);
   eve[pipe->l] = my_strcpy(eve[pipe->l], pipe->str);

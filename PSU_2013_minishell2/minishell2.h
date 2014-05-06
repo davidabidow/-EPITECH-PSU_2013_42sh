@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu Jan 23 13:32:34 2014 david tran
-** Last update Sun Mar  9 20:04:00 2014 david tran
+** Last update Mon May  5 21:55:01 2014 david tran
 */
 
 #ifndef _MINISHELL_H_
@@ -111,5 +111,6 @@ void		freelist(t_data *);
 void		feedchild(t_redi , char **, char **, int *);
 void		feeddad(t_redi *, int *);
 void		initinfiniteloop(int *, int *);
+void		sigsevcatch();
 
 #endif /* !_MINISHELL_H_ */

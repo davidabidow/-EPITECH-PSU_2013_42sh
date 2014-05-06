@@ -1,0 +1,29 @@
+/*
+** my_strcmp.c for lib in /home/tran_0/rendu/rendugit/PSU_2013_42sh/src
+** 
+** Made by david tran
+** Login   <tran_0@epitech.net>
+** 
+** Started on  Tue May  6 15:41:39 2014 david tran
+** Last update Tue May  6 15:44:06 2014 david tran
+*/
+
+int	my_strncmp(char *dest, char *src, int len)
+{
+  int	i;
+
+  i = 0;
+  while (src[i] && dest[i] && src[i] == dest[i] && i < len)
+    i++;
+  return (src[i] - dest[i]);
+}
+
+int	my_strcmp(char *dest, char *src)
+{
+  int	i;
+
+  i = 0;
+  while (src[i] && dest[i] && src[i] == dest[i])
+    i++;
+  return (src[i] - dest[i]);
+}

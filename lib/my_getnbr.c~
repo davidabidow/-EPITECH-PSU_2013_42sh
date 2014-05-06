@@ -1,0 +1,14 @@
+/*
+** my_getnbr.c<2> for lib in /home/tran_0/rendu/rendugit/PSU_2013_42sh/src
+** 
+** Made by david tran
+** Login   <tran_0@epitech.net>
+** 
+** Started on  Tue May  6 14:55:07 2014 david tran
+** Last update Tue May  6 14:55:58 2014 david tran
+*/
+
+int	my_getnbr(char *str)
+{
+
+}

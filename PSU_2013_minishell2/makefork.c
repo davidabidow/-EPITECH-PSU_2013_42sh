@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu Jan 23 17:23:37 2014 david tran
-** Last update Tue Apr 15 13:46:41 2014 david tran
+** Last update Thu Apr 24 08:27:29 2014 david tran
 */
 
 #include "minishell2.h"
@@ -66,6 +66,7 @@ void	testexec(char *buffer, char **dest, t_data *list)
   char	**env;
   char	*str;
 
+  buffer = buffer;
   if ((str = my_searchinchain(list, "PATH")) == NULL)
     {
       my_putstr("Command not found: No PATH in Env\n");

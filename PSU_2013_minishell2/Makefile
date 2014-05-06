@@ -5,7 +5,7 @@
 ## Login   <tran_0@epitech.net>
 ## 
 ## Started on  Thu Jan 23 15:58:03 2014 david tran
-## Last update Wed Mar  5 19:29:28 2014 david tran
+## Last update Tue May  6 01:55:36 2014 david tran
 ##
 
 RM	= rm -f
@@ -30,7 +30,8 @@ SRCS	= minishell.c \
 	  invertchev.c \
 	  returnline_to_tab.c \
 	  tradepipe.c \
-	  forkpipe.c
+	  forkpipe.c \
+	  catchsignal.c
 
 OBJ	= $(SRCS:.c=.o)
 

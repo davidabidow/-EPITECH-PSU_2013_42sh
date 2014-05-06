@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu Jan 23 13:29:46 2014 david tran
-** Last update Sun Mar  9 22:05:22 2014 david tran
+** Last update Tue May  6 05:40:08 2014 david tran
 */
 
 #include "minishell2.h"
@@ -101,6 +101,7 @@ int		main(int ac, char **av, char **environ)
 
   (void)ac;
   (void)av;
+  signal(SIGSEGV, sigsevcatch);
   if ((list = malloc(sizeof(*list))) == NULL)
     return (1);
   list->head = NULL;
