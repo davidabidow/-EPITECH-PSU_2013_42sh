@@ -5,8 +5,10 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 14:55:07 2014 david tran
-** Last update Tue May  6 15:17:19 2014 david tran
+** Last update Wed May  7 02:43:45 2014 david tran
 */
+
+#include "my.h"
 
 int	check_neg(char *str, int *i)
 {

@@ -5,8 +5,10 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 15:20:38 2014 david tran
-** Last update Tue May  6 15:28:00 2014 david tran
+** Last update Wed May  7 02:43:55 2014 david tran
 */
+
+#include "my.h"
 
 char	*my_strncat(char *dest, char *src, int len)
 {

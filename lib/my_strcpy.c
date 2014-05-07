@@ -5,8 +5,10 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 15:36:35 2014 david tran
-** Last update Tue May  6 15:39:28 2014 david tran
+** Last update Wed May  7 02:44:22 2014 david tran
 */
+
+#include "my.h"
 
 char	*my_strncpy(char *dest, char *src, int len)
 {

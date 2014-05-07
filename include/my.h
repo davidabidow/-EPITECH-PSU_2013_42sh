@@ -5,15 +5,21 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 14:49:41 2014 david tran
-** Last update Tue May  6 23:05:17 2014 david tran
+** Last update Wed May  7 02:52:17 2014 david tran
 */
 
 #ifndef __MY_H__
 # define __MY_H__
 
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
 void	my_putchar(char );
 void	my_putstr(char *);
 char	*my_strdup(char *);
+char	*my_strndup(char *, int);
 int	my_strlen(char *);
 int	my_get_nbr(char *);
 char	*my_strcat(char *, char *);
@@ -23,7 +29,9 @@ char	*my_strncpy(char *, char *, int);
 int	my_strcmp(char *, char *);
 int	my_strncmp(char *, char *, int);
 char	*epur_space(char *);
-int	count_separ(char *, char);
+int	count_separ(char *, char *);
 char	*separate_char(char *, char *);
+char	**wortab(char *, char *);
+void	my_put_nbr(int);
 
 #endif /* !__MY_H__ */

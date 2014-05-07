@@ -5,8 +5,10 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 15:41:39 2014 david tran
-** Last update Tue May  6 15:44:06 2014 david tran
+** Last update Wed May  7 02:44:05 2014 david tran
 */
+
+#include "my.h"
 
 int	my_strncmp(char *dest, char *src, int len)
 {

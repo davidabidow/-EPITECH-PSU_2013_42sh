@@ -5,8 +5,27 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 06:12:27 2014 david tran
-** Last update Tue May  6 06:14:37 2014 david tran
+** Last update Wed May  7 02:46:30 2014 david tran
 */
+
+#include "my.h"
+
+char	*my_strndup(char *str, int len)
+{
+  char	*dest;
+  int	j;
+
+  if ((dest = malloc(len + 1)) == NULL)
+    return (NULL);
+  j = 0;
+  while (str[j] && j < len)
+    {
+      dest[j] = str[j];
+      j++;
+    }
+  dest[len] = 0;
+  return (dest);
+}
 
 char	*my_strdup(char *str)
 {
@@ -14,14 +33,14 @@ char	*my_strdup(char *str)
   char	*dest;
   int	j;
 
-  i = my_strlen (str);
+  i = my_strlen(str);
   if ((dest = malloc(i + 1)) == NULL)
     return (NULL);
   dest[i] = 0;
   j = 0;
-  while (j < i)
+  while (str[j] < i)
     {
-      dest[j] = src[j];
+      dest[j] = str[j];
       j++;
     }
   return (dest);

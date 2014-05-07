@@ -5,8 +5,10 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 15:53:46 2014 david tran
-** Last update Tue May  6 16:05:03 2014 david tran
+** Last update Wed May  7 02:56:29 2014 david tran
 */
+
+#include "my.h"
 
 char	*epur_space(char *str)
 {
@@ -16,7 +18,7 @@ char	*epur_space(char *str)
   i = 0;
   if ((dest = malloc(sizeof(char) * (my_strlen(str) + 1))) == NULL)
     return (NULL);
-  while (str)
+  while (str[i])
     {
       if (str[i] && (str[i] == ' ' || str[i] == '\t'))
 	i++;
@@ -24,7 +26,10 @@ char	*epur_space(char *str)
 	       && str[i] != ' ' && str[i] != '\t')
 	dest[i++] = ' ';
       else
-	dest[i++] = str[i];
+	{
+	  dest[i] = str[i];
+	  i++;
+	}
     }
   dest[i] = 0;
   return (dest);

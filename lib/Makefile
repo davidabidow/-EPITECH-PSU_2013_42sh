@@ -5,7 +5,7 @@
 ## Login   <tran_0@epitech.net>
 ## 
 ## Started on  Tue May  6 06:01:43 2014 david tran
-## Last update Tue May  6 15:54:11 2014 david tran
+## Last update Wed May  7 02:48:57 2014 david tran
 ##
 
 NAME		= 	libmy.a
@@ -21,8 +21,11 @@ SRC		=	my_getnbr.c			\
 			my_strlen.c			\
 			my_getnbr.c			\
 			epur_str.c			\
+			wordtab.c
 
-OBJ		=	$(SRC:.c=.o) -I./
+OBJ		=	$(SRC:.c=.o)
+
+CFLAGS		=	-I../include -W -Wextra -Wall
 
 RM		=	rm -f
 

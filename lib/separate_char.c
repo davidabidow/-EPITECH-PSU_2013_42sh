@@ -5,8 +5,10 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 16:18:44 2014 david tran
-** Last update Tue May  6 23:05:04 2014 david tran
+** Last update Wed May  7 02:33:41 2014 david tran
 */
+
+#include "my.h"
 
 int	count_separ(char *str, char *src)
 {
