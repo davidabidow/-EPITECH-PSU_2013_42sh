@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 16:18:44 2014 david tran
-** Last update Wed May  7 02:33:41 2014 david tran
+** Last update Wed May  7 15:36:39 2014 david tran
 */
 
 #include "my.h"
@@ -13,17 +13,23 @@
 int	count_separ(char *str, char *src)
 {
   int	i;
+  int	j;
   int	count;
 
-  i = 0;
+  i = my_strlen(src);
+  j = 0;
   count = 0;
-  while (str[i])
+  while (str[j])
     {
-      if (my_strncmp(&str[i], src, my_strlen(src)) == 0)
-	count += 1;
-      i++;
+      if (my_strncmp(&str[j], src, i) == 0)
+	{
+	  while (str[j] && j < i)
+	    j++;
+	  count += 1;
+	}
+      j++;
     }
-  return (i);
+  return (count + 1);
 }
 
 char	*separate_char(char *src, char *str)
@@ -39,7 +45,7 @@ char	*separate_char(char *src, char *str)
   j = 0;
   while (src[i])
     {
-      if (my_strncmp(&src[i], str) == 0)
+      if (my_strncmp(&src[i], str, my_strlen(str)) == 0)
 	{
 	  k = -1;
 	  if (src[i - 1] && src[i - 1] != ' ')

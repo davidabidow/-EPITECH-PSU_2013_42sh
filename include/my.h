@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 14:49:41 2014 david tran
-** Last update Wed May  7 02:52:17 2014 david tran
+** Last update Wed May  7 15:23:29 2014 david tran
 */
 
 #ifndef __MY_H__
@@ -31,7 +31,7 @@ int	my_strncmp(char *, char *, int);
 char	*epur_space(char *);
 int	count_separ(char *, char *);
 char	*separate_char(char *, char *);
-char	**wortab(char *, char *);
+char	**wordtab(char *, char *);
 void	my_put_nbr(int);
 
 #endif /* !__MY_H__ */
