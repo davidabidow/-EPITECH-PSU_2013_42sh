@@ -5,7 +5,7 @@
 ## Login   <tran_0@epitech.net>
 ## 
 ## Started on  Tue May  6 00:42:35 2014 david tran
-## Last update Wed May  7 17:53:11 2014 david tran
+## Last update Fri May  9 01:20:59 2014 david tran
 ##
 
 RM	=	rm -f
@@ -17,6 +17,8 @@ SOUR	=	src/
 SRCS	=	$(SOUR)main.c		\
 		$(SOUR)signal.c		\
 		$(SOUR)my_put_in_list.c	\
+		$(SOUR)infinite_loop.c	\
+		$(SOUR)read_buffer.c	\
 
 OBJ	=	$(SRCS:.c=.o)
 

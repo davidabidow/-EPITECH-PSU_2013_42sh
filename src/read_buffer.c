@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:36:45 2014 david tran
-** Last update Thu May  8 18:50:27 2014 david tran
+** Last update Fri May  9 01:16:22 2014 david tran
 */
 
 #include "42sh.h"
@@ -28,6 +28,5 @@ char	*makeread(t_env *list)
 	  i++;
 	}
     }
-  if (readed == 0 || readed == -1)
-    return (NULL);
+  return (NULL);
 }

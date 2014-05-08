@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 03:28:08 2014 david tran
-** Last update Wed May  7 18:01:28 2014 david tran
+** Last update Fri May  9 01:23:41 2014 david tran
 */
 
 #ifndef __PRINCIPAL_H__
@@ -28,6 +28,8 @@ void			dontquit();
 ** Chained lists
 */
 int			init_list(t_env *, char **);
-void			put_in_chainlist(t_env *, char *);
+int			put_in_chainlist(t_env *, char *);
+char			*makeread(t_env *);
+void			infiniteloop(t_env *);
 
 #endif /* !__PRINCIPAL_H__ */

@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:34:21 2014 david tran
-** Last update Fri May  9 00:50:48 2014 david tran
+** Last update Fri May  9 01:25:11 2014 david tran
 */
 
 #include "42sh.h"
@@ -15,7 +15,8 @@ char		*transform_chain(char *str)
 {
   if (!(str = epur_space(str)))
     return (NULL);
-  else if (!(str = separate_char(str, ";")) || !(str = separate_char(str, "<"))
+  else if (!(str = separate_char(str, ";")) ||
+	   !(str = separate_char(str, "<")) ||
 	   !(str = separate_char(str, ">")) ||
 	   !(str = separate_char(str, "&")) ||
 	   !(str = separate_char(str, "|")))
@@ -30,6 +31,18 @@ void		initloop(int *min, int *max)
   write(2, "$42sh> ", 7);
 }
 
+int		countpvir(char **src, int max)
+{
+  max++;
+  while (src[max])
+    {
+      if (src[max][0] == ';')
+	return (max);
+      max += 1;
+    }
+  return (max);
+}
+
 void		infiniteloop(t_env *list)
 {
   char		*buffer;
@@ -40,11 +53,20 @@ void		infiniteloop(t_env *list)
 
   while (42)
     {
-      initinfiniteloop(*min, *max);
+      initloop(&min, &max);
       if ((buffer = makeread(list)) == NULL)
 	return ;
       if (!(buffer = transform_chain(buffer)))
 	return ;
-      
+      if (!(dest = wordtab(buffer, " ")))
+	return ;
+      while (max != my_strstrlen(dest))
+	{
+	  max = countpvir(dest, max);
+	  if (!(new = tab_wordtab(dest, min, max)))
+	    return ;
+	  min = max + 1;
+	}
+      free_wordtab(dest);
     }
 }

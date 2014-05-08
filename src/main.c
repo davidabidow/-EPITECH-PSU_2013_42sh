@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May  5 18:48:27 2014 david tran
-** Last update Thu May  8 18:34:31 2014 david tran
+** Last update Fri May  9 01:26:43 2014 david tran
 */
 
 #include "42sh.h"
@@ -16,6 +16,7 @@ int		main(int ac __attribute__((unused)), char **av
 {
   t_env		*list;
 
+  list = NULL;
   signal(SIGINT, dontquit);
   if (!(init_list(list, env)))
     return (EXIT_FAILURE);

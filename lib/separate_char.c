@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 16:18:44 2014 david tran
-** Last update Fri May  9 00:43:34 2014 david tran
+** Last update Fri May  9 01:26:07 2014 david tran
 */
 
 #include "my.h"
@@ -40,8 +40,7 @@ void	check_after(char *dest, char *src, int *i, int *j)
       *i += 1;
     }
   if (src[*i] && src[*i] != ' ')
-      dest[(*j)++] = ' ';
-    }
+    dest[(*j)++] = ' ';
 }
 
 char	*separate_char(char *src, char *str)
