@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 03:28:08 2014 david tran
-** Last update Tue May  6 05:54:02 2014 david tran
+** Last update Wed May  7 18:01:28 2014 david tran
 */
 
 #ifndef __PRINCIPAL_H__
@@ -14,10 +14,10 @@
 typedef struct		s_env
 {
   char			*data;
-  struct s_data		*next;
-  struct s_data		*prev;
-  struct s_data		*head;
-  struct s_data		*end;
+  struct s_env		*next;
+  struct s_env		*prev;
+  struct s_env		*head;
+  struct s_env		*end;
 }			t_env;
 
 /*

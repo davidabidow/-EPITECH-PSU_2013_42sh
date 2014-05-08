@@ -5,7 +5,7 @@
 ## Login   <tran_0@epitech.net>
 ## 
 ## Started on  Tue May  6 00:42:35 2014 david tran
-## Last update Tue May  6 05:58:41 2014 david tran
+## Last update Wed May  7 17:53:11 2014 david tran
 ##
 
 RM	=	rm -f
@@ -20,18 +20,23 @@ SRCS	=	$(SOUR)main.c		\
 
 OBJ	=	$(SRCS:.c=.o)
 
-CFLAGS	=	-W -Wall -Wextra -g3 -g -Iinclude
+LIB	=	-L./lib -lmy
+
+CFLAGS	=	-W -Wall -Wextra -g3 -g -I./include
 
 $(NAME):	$(OBJ)
-		cc -o $(NAME) $(OBJ)
+		cd ./lib && $(MAKE) re
+		cc -o $(NAME) $(OBJ) $(LIB)
 
 all:		$(NAME)
 
 clean:
 		$(RM) $(OBJ)
+		cd ./lib && $(MAKE) clean
 
 fclean: 	clean
 		$(RM) $(NAME)
+		cd ./lib && $(MAKE) fclean
 
 re:		fclean all
 

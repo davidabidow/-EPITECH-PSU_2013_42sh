@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 16:18:44 2014 david tran
-** Last update Wed May  7 15:36:39 2014 david tran
+** Last update Fri May  9 00:43:34 2014 david tran
 */
 
 #include "my.h"
@@ -32,6 +32,18 @@ int	count_separ(char *str, char *src)
   return (count + 1);
 }
 
+void	check_after(char *dest, char *src, int *i, int *j)
+{
+  if (src[*i] && src[*i] == src[*i - 1])
+    {
+      dest[(*j)++] = src[*i];
+      *i += 1;
+    }
+  if (src[*i] && src[*i] != ' ')
+      dest[(*j)++] = ' ';
+    }
+}
+
 char	*separate_char(char *src, char *str)
 {
   int	i;
@@ -52,11 +64,11 @@ char	*separate_char(char *src, char *str)
 	    dest[j++] = ' ';
 	  while (str[++k])
 	    dest[j++] = src[i++];
-	  if (src[i + 1] && src[i + 1] != ' ')
-	    dest[j++] = ' ';
+	  check_after(dest, src, &i, &j);
 	}
       else
 	dest[j++] = src[i++];
     }
+  free(src);
   return (dest);
 }
