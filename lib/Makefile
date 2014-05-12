@@ -5,7 +5,7 @@
 ## Login   <tran_0@epitech.net>
 ## 
 ## Started on  Tue May  6 06:01:43 2014 david tran
-## Last update Fri May  9 01:25:47 2014 david tran
+## Last update Mon May 12 23:21:58 2014 david tran
 ##
 
 NAME		= 	libmy.a
@@ -25,6 +25,7 @@ SRC		=	my_getnbr.c			\
 			tab_wordtab.c			\
 			free_all.c			\
 			separate_char.c			\
+			my_puterr.c			\
 
 OBJ		=	$(SRC:.c=.o)
 
