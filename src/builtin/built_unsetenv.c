@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May 12 23:52:26 2014 david tran
-** Last update Tue May 13 00:12:25 2014 david tran
+** Last update Tue May 13 22:58:58 2014 david tran
 */
 
 #include "42sh.h"
@@ -32,7 +32,7 @@ int		suppend(t_env *list, char *str, t_env *current, t_env *tmp)
 void		suppother(t_env *list, t_env *tmp, t_env *current)
 {
   list = tmp;
-  if (current != list>end)
+  if (current != list->end)
     {
       list->next = current->next;
       free(current->data);

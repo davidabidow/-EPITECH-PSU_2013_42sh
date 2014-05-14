@@ -5,18 +5,20 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:36:45 2014 david tran
-** Last update Fri May  9 01:16:22 2014 david tran
+** Last update Wed May 14 14:19:48 2014 david tran
 */
 
 #include "42sh.h"
 #include "my.h"
 
-char	*makeread(t_env *list)
+char	*makeread()
 {
-  char	buffer[1024];
+  char	*buffer;
   int	readed;
   int	i;
 
+  if (!(buffer = malloc(sizeof(char) * 1024)))
+    return (NULL);
   while ((readed = read(0, buffer, 1023)) > 0)
     {
       buffer[readed] = 0;
@@ -24,7 +26,10 @@ char	*makeread(t_env *list)
       while (buffer[i] != 0)
 	{
 	  if (buffer[i] == '\n')
-	    return (my_strdup(buffer));
+	    {
+	      buffer[i] = 0;
+	      return (my_strdup(buffer));
+	    }
 	  i++;
 	}
     }

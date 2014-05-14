@@ -5,10 +5,10 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May 12 16:47:07 2014 david tran
-** Last update Tue May 13 01:42:06 2014 david tran
+** Last update Tue May 13 22:53:52 2014 david tran
 */
 
-#include "42sh"
+#include "42sh.h"
 #include "my.h"
 
 int	my_strenv(char *nb1, char *nb2)

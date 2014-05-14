@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 15:53:46 2014 david tran
-** Last update Wed May  7 17:39:37 2014 david tran
+** Last update Wed May 14 14:24:29 2014 david tran
 */
 
 #include "my.h"
@@ -26,13 +26,13 @@ char	*epur_space(char *str)
   i = 0;
   j = 0;
   flag = 0;
-  if ((dest = malloc(sizeof(char) * (my_strlen(str) + 1))) == NULL)
+  if (!(dest = malloc(sizeof(char) * (my_strlen(str) + 1))))
     return (NULL);
   while (str[i])
     {
       if (str[i] && (str[i] == ' ' || str[i] == '\t'))
 	i++;
-      else if (str[i - 1] && (str[i - 1] == ' ' || str[i - 1] == '\t')
+      else if (i != 0 && (str[i - 1] == ' ' || str[i - 1] == '\t')
 	       && str[i] != ' ' && str[i] != '\t' && flag != 0)
 	feed_epur(dest, str, &i, &j);
       else

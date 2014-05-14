@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 14:49:41 2014 david tran
-** Last update Mon May 12 23:08:11 2014 david tran
+** Last update Tue May 13 19:19:59 2014 david tran
 */
 
 #ifndef __MY_H__
@@ -37,5 +37,6 @@ char	**wordtab(char *, char *);
 void	my_put_nbr(int);
 char	**tab_wordtab(char **, int, int);
 void	free_wordtab(char **);
+int	my_isnumb(char *);
 
 #endif /* !__MY_H__ */

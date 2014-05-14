@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 06:12:27 2014 david tran
-** Last update Wed May  7 18:08:21 2014 david tran
+** Last update Wed May 14 14:28:58 2014 david tran
 */
 
 #include "my.h"
@@ -34,14 +34,8 @@ char	*my_strdup(char *str)
   int	j;
 
   i = my_strlen(str);
-  if ((dest = malloc(sizeof(char) * (i + 1))) == NULL)
+  if (!(dest = malloc(sizeof(char) * (i + 1))))
     return (NULL);
-  dest[i] = 0;
-  j = 0;
-  while (j < i)
-    {
-      dest[j] = str[j];
-      j++;
-    }
+  my_strcpy(dest, str);
   return (dest);
 }

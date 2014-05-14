@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:34:21 2014 david tran
-** Last update Fri May  9 01:25:11 2014 david tran
+** Last update Wed May 14 13:20:01 2014 david tran
 */
 
 #include "42sh.h"
@@ -43,28 +43,41 @@ int		countpvir(char **src, int max)
   return (max);
 }
 
-void		infiniteloop(t_env *list)
+char		**init_buffer()
 {
   char		*buffer;
+  char		**dest;
+
+  if ((buffer = makeread()) == NULL)
+    return (NULL);
+  if (!(buffer = transform_chain(buffer)))
+    return (NULL);
+  if (!(dest = wordtab(buffer, " ")))
+    return ;
+  return (dest);
+}
+
+void		infiniteloop(t_env *list)
+{
   char		**dest;
   int		min;
   int		max;
   char		**new;
+  int		tmp;
 
   while (42)
     {
       initloop(&min, &max);
-      if ((buffer = makeread(list)) == NULL)
-	return ;
-      if (!(buffer = transform_chain(buffer)))
-	return ;
-      if (!(dest = wordtab(buffer, " ")))
+      if (!(dest = init_buffer()))
 	return ;
       while (max != my_strstrlen(dest))
 	{
 	  max = countpvir(dest, max);
 	  if (!(new = tab_wordtab(dest, min, max)))
 	    return ;
+	  if ((tmp = exit_or_nothing(new[0], new[1]) == -1))
+	    return ;
+	  //	  else if (tmp)
 	  min = max + 1;
 	}
       free_wordtab(dest);

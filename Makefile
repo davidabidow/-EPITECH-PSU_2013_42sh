@@ -5,7 +5,7 @@
 ## Login   <tran_0@epitech.net>
 ## 
 ## Started on  Tue May  6 00:42:35 2014 david tran
-## Last update Fri May  9 01:20:59 2014 david tran
+## Last update Tue May 13 22:51:19 2014 david tran
 ##
 
 RM	=	rm -f
@@ -14,11 +14,21 @@ NAME	=	mysh
 
 SOUR	=	src/
 
-SRCS	=	$(SOUR)main.c		\
-		$(SOUR)signal.c		\
-		$(SOUR)my_put_in_list.c	\
-		$(SOUR)infinite_loop.c	\
-		$(SOUR)read_buffer.c	\
+BUILT	=	builtin/
+
+SRCS	=	$(SOUR)main.c			\
+		$(SOUR)signal.c			\
+		$(SOUR)my_put_in_list.c		\
+		$(SOUR)infinite_loop.c		\
+		$(SOUR)read_buffer.c		\
+		$(SOUR)env_funcs.c		\
+		$(SOUR)$(BUILT)built_cd.c	\
+		$(SOUR)$(BUILT)built_cd_other.c	\
+		$(SOUR)$(BUILT)built_env.c	\
+		$(SOUR)$(BUILT)built_setenv.c	\
+		$(SOUR)$(BUILT)built_unsetenv.c	\
+		$(SOUR)$(BUILT)search_builtin.c	\
+
 
 OBJ	=	$(SRCS:.c=.o)
 

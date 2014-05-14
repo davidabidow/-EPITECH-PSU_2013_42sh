@@ -5,10 +5,10 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May 12 15:13:37 2014 david tran
-** Last update Mon May 12 22:26:34 2014 david tran
+** Last update Tue May 13 22:58:31 2014 david tran
 */
 
-#include "42sh"
+#include "42sh.h"
 #include "my.h"
 
 int	setinend(t_env *list, char *dest, char **str)
@@ -18,7 +18,7 @@ int	setinend(t_env *list, char *dest, char **str)
       my_putstr("Could not Set in Env\n");
       return (-1);
     }
-  if (my_countchain(*list) == 0)
+  if (my_countchain(list) == 0)
     {
       if (!(put_in_chainlist(list, dest)))
 	return (-1);

@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 03:28:08 2014 david tran
-** Last update Tue May 13 01:42:20 2014 david tran
+** Last update Tue May 13 23:22:50 2014 david tran
 */
 
 #ifndef __PRINCIPAL_H__
@@ -20,12 +20,6 @@ typedef struct		s_env
   struct s_env		*end;
 }			t_env;
 
-typedef struct		s_buin
-{
-  char			*name;
-  int			(*func)(t_data *, char **);
-}			t_buin;
-
 /*
 ** Signal function
 */
@@ -35,7 +29,7 @@ void			dontquit();
 */
 int			init_list(t_env *, char **);
 int			put_in_chainlist(t_env *, char *);
-char			*makeread(t_env *);
+char			*makeread();
 void			infiniteloop(t_env *);
 /*
 ** Builtin
@@ -49,6 +43,8 @@ int			exit_or_nothing(char *, char *);
 int			suppend(t_env *, char *, t_env *, t_env *);
 void			suppother(t_env *, t_env *, t_env *);
 void			goinghome(t_env *);
+int			countpointpoint(char *);
+char			*createnewpwd(int, char *, char *);
 /*
 ** Env Funcs
 */
@@ -57,5 +53,11 @@ int			my_strenv(char *, char *);
 int			my_countchain(t_env *);
 char			*recupvar(t_env *, char *);
 char			*cutbuffer(char *);
+
+typedef struct		s_buin
+{
+  char			*name;
+  int			(*func)(t_env *, char **);
+}			t_buin;
 
 #endif /* !__PRINCIPAL_H__ */
