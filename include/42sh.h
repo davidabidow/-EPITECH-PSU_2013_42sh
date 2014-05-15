@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May  5 19:16:40 2014 david tran
-** Last update Tue May  6 04:09:03 2014 david tran
+** Last update Thu May 15 01:01:02 2014 david tran
 */
 
 #ifndef _42_SH_
@@ -20,5 +20,6 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include "principal.h"
+# include "binary.h"
 
 #endif /* !_42_SH_ */

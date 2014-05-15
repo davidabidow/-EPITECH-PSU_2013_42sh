@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 03:28:08 2014 david tran
-** Last update Tue May 13 23:22:50 2014 david tran
+** Last update Thu May 15 16:48:05 2014 david tran
 */
 
 #ifndef __PRINCIPAL_H__
@@ -59,5 +59,19 @@ typedef struct		s_buin
   char			*name;
   int			(*func)(t_env *, char **);
 }			t_buin;
+
+typedef struct		s_ope
+{
+  char			*oper;
+  int			(*func)();
+}			t_ope;
+
+typedef struct		s_redir
+{
+  char			*redir;
+  int			(*func)(char *file);
+}			t_redir;
+
+extern t_redir		*redir[];
 
 #endif /* !__PRINCIPAL_H__ */
