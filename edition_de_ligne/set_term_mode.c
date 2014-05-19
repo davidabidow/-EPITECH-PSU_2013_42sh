@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:18:28 2014 valentin wallet
-** Last update Wed May  7 19:41:36 2014 valentin wallet
+** Last update Mon May 19 15:52:09 2014 valentin wallet
 */
 
 #include "termcap.h"
@@ -16,8 +16,9 @@ int                     echo_mode(struct termios *t)
   if ((tcsetattr(0, TCSANOW, t)) == -1)
     {
       my_putstr("tcsetattr error\n");
-      return (1);
+      return (EXIT_FAILURE);
     }
+  return (EXIT_SUCCESS);
 }
 
 int			echo_mode2(struct termios *t)
@@ -27,8 +28,9 @@ int			echo_mode2(struct termios *t)
   if ((tcsetattr(0, TCSANOW, t)) == -1)
     {
       my_putstr("tcsetattr error\n");
-      return (1);
+      return (EXIT_FAILURE);
     }
+  return (EXIT_SUCCESS);
 }
 
 int                     raw_mode(struct termios *t)
@@ -39,8 +41,9 @@ int                     raw_mode(struct termios *t)
   if ((tcsetattr(0, TCSANOW, t)) == -1)
     {
       my_putstr("tcsetattr error\n");
-      return (1);
+      return (EXIT_FAILURE);
     }
+  return (EXIT_SUCCESS);
 }
 
 int			set_term_mode()
