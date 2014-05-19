@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:34:21 2014 david tran
-** Last update Wed May 14 13:20:01 2014 david tran
+** Last update Mon May 19 00:59:02 2014 david tran
 */
 
 #include "42sh.h"
@@ -77,7 +77,9 @@ void		infiniteloop(t_env *list)
 	    return ;
 	  if ((tmp = exit_or_nothing(new[0], new[1]) == -1))
 	    return ;
-	  //	  else if (tmp)
+	  else if (tmp == EXIT_FAILURE)
+	    if (parsing_exec(new) == -1)
+	      return ;
 	  min = max + 1;
 	}
       free_wordtab(dest);

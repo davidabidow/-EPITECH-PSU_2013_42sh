@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 05:39:02 2014 david tran
-** Last update Fri May  9 01:27:34 2014 david tran
+** Last update Thu May 15 18:49:19 2014 david tran
 */
 
 #include "42sh.h"
@@ -13,17 +13,14 @@
 
 int	init_list(t_env *list, char **env)
 {
-  if ((list = malloc(sizeof(*list))) == NULL)
-    return (EXIT_FAILURE);
-    list->head = NULL;
-    list->end = NULL;
-    while (*env != NULL)
-      {
-	if (!(put_in_chainlist(list, my_strdup(*env))))
-	  return (EXIT_FAILURE);
-	env++;
-      }
-    return (EXIT_SUCCESS);
+  while (*env != NULL)
+    {
+      my_putstr(*env);
+      if ((put_in_chainlist(list, my_strdup(*env))) == EXIT_FAILURE)
+	return (EXIT_FAILURE);
+      env++;
+    }
+  return (EXIT_SUCCESS);
 }
 
 int		put_in_chainlist(t_env *list, char *env)

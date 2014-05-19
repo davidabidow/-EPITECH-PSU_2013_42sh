@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May 12 15:00:04 2014 david tran
-** Last update Tue May 13 22:57:36 2014 david tran
+** Last update Thu May 15 18:47:14 2014 david tran
 */
 
 #include "42sh.h"
@@ -15,7 +15,7 @@ int	my_affchain(t_env *list, char *data)
 {
   t_env	*tmp;
 
-  data = data;
+  (void *)data;
   tmp = list->head;
   while (tmp)
     {
@@ -23,4 +23,5 @@ int	my_affchain(t_env *list, char *data)
       my_putchar('\n');
       tmp = tmp->next;
     }
+  return (EXIT_SUCCESS);
 }

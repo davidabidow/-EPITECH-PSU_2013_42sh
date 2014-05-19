@@ -5,11 +5,11 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 14:49:41 2014 david tran
-** Last update Tue May 13 19:19:59 2014 david tran
+** Last update Mon May 19 11:22:35 2014 david tran
 */
 
-#ifndef __MY_H__
-# define __MY_H__
+#ifndef MY_H__
+# define MY_H__
 
 #include <unistd.h>
 #include <stdlib.h>
@@ -26,6 +26,7 @@ int	my_strstrlen(char **);
 int	my_get_nbr(char *);
 char	*my_strcat(char *, char *);
 char	*my_strncat(char *, char *, int);
+char	*my_strcatslash(char *, char *);
 char	*my_strcpy(char *, char *);
 char	*my_strncpy(char *, char *, int);
 int	my_strcmp(char *, char *);
@@ -38,5 +39,10 @@ void	my_put_nbr(int);
 char	**tab_wordtab(char **, int, int);
 void	free_wordtab(char **);
 int	my_isnumb(char *);
+char	**wordtab_realloc(char **, int);
+char	*my_realloc(char *, int);
+char	**wordtabcpy(char **, char **);
+char	**wordtabcat(char **, char *);
+char	**wordtabdup(char **);
 
-#endif /* !__MY_H__ */
+#endif /* !MY_H__ */

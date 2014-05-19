@@ -5,10 +5,32 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 15:20:38 2014 david tran
-** Last update Wed May  7 02:43:55 2014 david tran
+** Last update Mon May 19 13:48:48 2014 david tran
 */
 
 #include "my.h"
+
+char	*my_strcatslash(char *dest, char *src)
+{
+  int	i;
+  int	j;
+  char	*str;
+
+  if (!(str = malloc(my_strlen(dest) + my_strlen(src) + 3)))
+    return (NULL);
+  i = 0;
+  j = 0;
+  while (dest[i])
+    {
+      str[i] = dest[i];
+      i++;
+    }
+  str[i++] = '/';
+  while (src[j])
+    str[i++] = src[j++];
+  str[i] = 0;
+  return (str);
+}
 
 char	*my_strncat(char *dest, char *src, int len)
 {

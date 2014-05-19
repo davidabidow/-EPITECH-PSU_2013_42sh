@@ -5,11 +5,11 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 03:28:08 2014 david tran
-** Last update Thu May 15 16:48:05 2014 david tran
+** Last update Mon May 19 18:34:55 2014 david tran
 */
 
-#ifndef __PRINCIPAL_H__
-# define __PRINCIPAL_H__
+#ifndef PRINCIPAL_H__
+# define PRINCIPAL_H__
 
 typedef struct		s_env
 {
@@ -53,6 +53,13 @@ int			my_strenv(char *, char *);
 int			my_countchain(t_env *);
 char			*recupvar(t_env *, char *);
 char			*cutbuffer(char *);
+/*
+** Redir Funcs
+*/
+int			double_normal(char *);
+char			*double_invert(char *);
+int			simple_invert(char *);
+int			simple_normal(char *);
 
 typedef struct		s_buin
 {
@@ -63,7 +70,6 @@ typedef struct		s_buin
 typedef struct		s_ope
 {
   char			*oper;
-  int			(*func)();
 }			t_ope;
 
 typedef struct		s_redir
@@ -72,6 +78,8 @@ typedef struct		s_redir
   int			(*func)(char *file);
 }			t_redir;
 
-extern t_redir		*redir[];
+extern t_redir		redir[];
+extern t_buin		built[];
+extern t_ope		operate[];
 
-#endif /* !__PRINCIPAL_H__ */
+#endif /* !PRINCIPAL_H__ */

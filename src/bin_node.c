@@ -5,72 +5,83 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May 15 01:01:29 2014 david tran
-** Last update Thu May 15 01:53:34 2014 david tran
+** Last update Mon May 19 22:04:44 2014 david tran
 */
 
 #include "42sh.h"
 #include "my.h"
 
-void	init_node(t_bin *bin)
+int		create_nodd_command(t_bin *bin, char **command, char *princ)
 {
-  bin->left = NULL;
-  bin->right = NULL;
-  bin->wone = 0;
-}
+  t_bin		*tmp;
+  t_bin		*new;
 
-int	create_nodd_command(t_bin **bin, char **command)
-{
-  t_bin *tmpNode;
-  t_bin	*tmpTree;
-  t_bin	*new;
-
-  tmpTree = bin;
   if (!(new = malloc(sizeof(node))))
     return (EXIT_FAILURE);
-  new->command = command;
-  new->wone = 0;
+  new->command = wordtabdup(command);
+  if (!(new->princ = my_strdup(princ)) || !new->command)
+    return (-1);
+  new->op = NULL;
+  new->redo = NULL;
   new->left = NULL;
   new->right = NULL;
-  if (tmpTree)
+  if (!bin)
     {
-      while (tmpTree)
-	{
-	  tmpNode = tmpTree;
-	  tmpTree = tmpTree->left;
-	  if (!tmpTree)
-	    tmpNode->left = new;
-	}
+      bin = new;
+      bin->head = new;
     }
   else
-    *bin = new;
+    {
+      tmp = bin->head;
+      while (tmp->left)
+	tmp = tmp->left;
+      tmp->left = new;
+    }
   return (EXIT_SUCCESS);
 }
 
-int	create_nodd_redir(t_bin **bin, char *file, char id, int fd)
+int		add_redir(t_bin *bin, int fd)
 {
-  t_bin *tmpNode;
-  t_bin	*tmpTree;
-  t_bin	*new;
+  t_bin		*tmp;
 
-  tmpTree = bin;
+  tmp = bin->head;
+  while (tmp->left)
+    tmp = tmp->left;
+  if (my_put_redir(tmp, fd) == -1)
+    return (-1);
+  return (EXIT_SUCCESS);
+}
+
+int		update_op(t_bin *bin, char *op)
+{
+  t_bin		*tmp;
+
+  tmp = bin->head;
+  while (tmp->left)
+    tmp = tmp->left;
+  if (!(tmp->op = my_strdup(op)))
+    return (-1);
+  return (EXIT_SUCCESS);
+}
+
+int		create_nodd_pipe(t_bin *bin, char **command, char *princ)
+{
+  t_bin		*new;
+  t_bin		*tmp;
+
   if (!(new = malloc(sizeof(node))))
     return (EXIT_FAILURE);
-  new->redi.id = id;
-  new->redi.fd = fd;
-  new->wone = 1;
+  new->command = wordtabdup(command);
+  if (!(new->princ = my_strdup(princ)) || !new->command)
+    return (-1);
+  new->op = NULL;
   new->left = NULL;
   new->right = NULL;
-  if (tmpTree)
-    {
-      while (tmpTree)
-	{
-	  tmpNode = tmpTree;
-	  tmpTree = tmpTree->left;
-	  if (!tmpTree)
-	    tmpNode->left = new;
-	}
-    }
-  else
-    *bin = new;
+  tmp = bin->head;
+  while (tmp->left)
+    tmp = tmp->left;
+  while (tmp->right)
+    tmp = tmp->right;
+  tmp->right = new;
   return (EXIT_SUCCESS);
 }

@@ -5,23 +5,34 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Wed May 14 21:52:57 2014 david tran
-** Last update Thu May 15 01:23:05 2014 david tran
+** Last update Mon May 19 21:47:47 2014 david tran
 */
 
-#ifndef __BINARY_H__
-# define __BINARY_H__
+#ifndef BINARY_H__
+# define BINARY_H__
 
-typedef struct		s_redir
+typedef struct		s_redirec
 {
-  char			id;
   int			fd;
-}			t_redir;
+  struct s_redir	*next;
+  struct s_redir	*head;
+}			t_redirec;
+
+typedef struct		s_pars
+{
+  int			i;
+  char			**path;
+  char			*princ;
+  char			**command;
+}			t_pars;
 
 typedef struct		s_bin
 {
-  char			wone;
   char			**command;
-  t_redir		redi;
+  char			*op;
+  char			*princ;
+  t_redirec		*redo;
+  struct s_bin		*head;
   struct s_bin		*left;
   struct s_bin		*right;
 }			t_bin;

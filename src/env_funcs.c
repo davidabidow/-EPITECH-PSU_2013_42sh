@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May 12 16:47:07 2014 david tran
-** Last update Tue May 13 22:53:52 2014 david tran
+** Last update Mon May 19 03:29:42 2014 david tran
 */
 
 #include "42sh.h"
@@ -90,12 +90,5 @@ char		*cutbuffer(char *buffer)
   j = my_strlen(buffer);
   while (buffer[i] && buffer[i] != '=')
     i++;
-  if (!(str = malloc((j - i + 1) * sizeof(*str))))
-    return (NULL);
-  j = 0;
-  i++;
-  while (buffer[i])
-    str[j++] = buffer[i++];
-  str[j] = 0;
-  return (str);
+  return (my_strdup(&buffer[++i]));
 }

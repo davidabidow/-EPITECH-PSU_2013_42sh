@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 06:12:27 2014 david tran
-** Last update Wed May 14 14:28:58 2014 david tran
+** Last update Sun May 18 17:11:26 2014 david tran
 */
 
 #include "my.h"
@@ -31,7 +31,6 @@ char	*my_strdup(char *str)
 {
   int	i;
   char	*dest;
-  int	j;
 
   i = my_strlen(str);
   if (!(dest = malloc(sizeof(char) * (i + 1))))
