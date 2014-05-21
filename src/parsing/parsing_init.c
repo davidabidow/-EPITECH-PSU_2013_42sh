@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May 19 01:00:50 2014 david tran
-** Last update Wed May 21 13:39:23 2014 david tran
+** Last update Wed May 21 16:27:55 2014 david tran
 */
 
 #include "42sh.h"
@@ -19,16 +19,38 @@ t_pinit		go_init[] =
     {3, &parsing_ope},
   };
 
+/* t_pinit		go_pars[] = */
+/*   { */
+/*     {0, &add_command}, */
+/*     {1, &add_redir}, */
+/*     {2, &add_built}, */
+/*     {3, &add_ope}, */
+/*   }; */
+
 char	**search_path(t_env *list)
 {
   char	*str;
   char	**path;
 
   if (!(str = recupvar(list, "PATH")))
-    return (NULL);
+    {
+      my_putstr("No PATH found, Can't exec\n");
+      return (NULL);
+    }
   if (!(path = wordtab(str, ":")))
     return (NULL);
   return (path);
+}
+
+int		finish_parsing(char **src, t_bin *bin, t_pars *pars)
+{
+  /* int		tmp; */
+
+  /* while (src[pars->i]) */
+  /*   { */
+  /*     if ((tmp = check_wone(src[pars->i], pars->path)) == -1 && check_nodes == EXIT_FAILURE) */
+  /* 	return (-1); */
+  /*   } */
 }
 
 int		check_first_pars(char **src, t_bin *bin, t_pars *pars)
@@ -37,10 +59,15 @@ int		check_first_pars(char **src, t_bin *bin, t_pars *pars)
 
   if ((tmp = check_wone(src[pars->i], pars->path)) == -1)
     {
-      my_puterr("Command not Found\n");
-      return (EXIT_FAILURE);
+      my_puterr("Command not Found: ");
+      my_puterr(src[pars->i]);
+      my_puterr("\n");
+      while (src[pars->i] && my_strcmp(src[pars->i], "||") != 0)
+	pars->i++;
+      if (!src[pars->i])
+	return (EXIT_FAILURE);
     }
-  if (go_init[tmp].func(src, bin, pars) == -1)
+  else if (go_init[tmp].func(src, bin, pars) == -1)
     return (-1);
   return (EXIT_SUCCESS);
 }
@@ -55,7 +82,7 @@ int		parsing_exec(char **src, t_env *list)
     return (-1);
   bin->head = NULL;
   if (!(pars.path = search_path(list)))
-    return (-1);
+    return (EXIT_FAILURE);
   if (check_first_pars(src, bin, &pars) == -1)
     return (EXIT_FAILURE);
   return (EXIT_SUCCESS);

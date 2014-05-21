@@ -5,7 +5,7 @@
 ## Login   <tran_0@epitech.net>
 ## 
 ## Started on  Tue May  6 00:42:35 2014 david tran
-## Last update Wed May 21 12:48:56 2014 david tran
+## Last update Wed May 21 15:22:04 2014 david tran
 ##
 
 RM	=	rm -f
@@ -29,6 +29,7 @@ SRCS	=	$(SOUR)main.c				\
 		$(SOUR)read_buffer.c			\
 		$(SOUR)env_funcs.c			\
 		$(SOUR)operation_init.c			\
+		$(SOUR)free_env.c			\
 		$(SOUR)$(BUILT)built_cd.c		\
 		$(SOUR)$(BUILT)built_cd_other.c		\
 		$(SOUR)$(BUILT)built_env.c		\

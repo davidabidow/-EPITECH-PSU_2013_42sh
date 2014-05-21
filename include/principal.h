@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 03:28:08 2014 david tran
-** Last update Tue May 20 22:35:36 2014 david tran
+** Last update Wed May 21 15:21:28 2014 david tran
 */
 
 #ifndef PRINCIPAL_H__
@@ -54,6 +54,7 @@ int			my_strenv(char *, char *);
 int			my_countchain(t_env *);
 char			*recupvar(t_env *, char *);
 char			*cutbuffer(char *);
+void			free_env_list(t_env *);
 /*
 ** Redir Funcs
 */

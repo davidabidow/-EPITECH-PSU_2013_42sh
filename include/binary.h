@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Wed May 14 21:52:57 2014 david tran
-** Last update Tue May 20 22:53:46 2014 david tran
+** Last update Wed May 21 16:13:59 2014 david tran
 */
 
 #ifndef BINARY_H__
@@ -49,6 +49,7 @@ int			update_op(t_bin *, char *);
 int			create_nodd_pipe(t_bin *, char **, char *);
 int			my_put_redir(t_bin *, int);
 int			my_put_princ(t_bin *, int, char *);
+int			check_nodes(t_bin *);
 /*
 ** Parsing Funcs
 */
@@ -58,6 +59,13 @@ int			parsing_command(char **, t_bin *, t_pars *);
 int			parsing_redir(char **, t_bin *, t_pars *);
 int			parsing_built(char **, t_bin *, t_pars *);
 int			parsing_ope(char **, t_bin *, t_pars *);
+/*
+** Parsing Funcs Second Part
+*/
+int			add_command();
+int			add_redir();
+int			add_built();
+int			add_ope();
 
 typedef struct		s_pinit
 {
@@ -66,5 +74,6 @@ typedef struct		s_pinit
 }			t_pinit;
 
 extern t_pinit		go_init[];
+extern t_pinit		go_pars[];
 
 #endif /* !__BINARY_H__ */

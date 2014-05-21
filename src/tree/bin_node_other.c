@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Wed May 21 12:47:58 2014 david tran
-** Last update Wed May 21 13:46:22 2014 david tran
+** Last update Wed May 21 15:53:57 2014 david tran
 */
 
 #include "42sh.h"
@@ -41,5 +41,15 @@ int		create_nodd_command(t_bin *bin, char **command, char *princ)
   new->left = NULL;
   new->right = NULL;
   add_nodd_command(bin, new);
+  return (EXIT_SUCCESS);
+}
+
+int		check_nodes(t_bin *bin)
+{
+  t_bin		*tmp;
+
+  tmp = bin->head;
+  if (!tmp->left)
+    return (EXIT_FAILURE);
   return (EXIT_SUCCESS);
 }
