@@ -5,47 +5,36 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Mon May 19 15:07:30 2014 valentin wallet
-** Last update Mon May 19 16:12:32 2014 valentin wallet
+** Last update Tue May 20 11:58:46 2014 valentin wallet
 */
 
 #include "termcap.h"
 
-char			*ctrl_y(char *dest, char *src, int *i, int *x, t_cmd *data)
+char			*ctrl_y(char *dest, char *src, int *x, t_cmd *data)
 {
-  int			k;
   int			j;
-  int			m;
   char			*end;
   char			*debut;
   char			*final;
 
-  k = *x - 3;
-  j = 0;
   end = malloc(sizeof(char) * (my_strlen(dest) + 1));
-  debut = malloc(sizeof(char) * (my_strlen(dest) + my_strlen(src) + 1));
-  while (dest[k] != '\0')
-    end[j++] = dest[k++];
-  end[j] = '\0';
+  debut = malloc(sizeof(char) * (my_strlen(dest) + my_strlen(src) + 2));
+  my_strcpy(&dest[(*x) - PROMPT_SIZE], end);
   my_putstr(src);
+  tputs(data->save, 1, my_putchar2);
   my_putstr(end);
-  while (j > 0)
-    {
-      tputs(data->curse_l, 1, my_putchar2);
-      j--;
-    }
-  while (j != (*x - 3))
+  tputs(data->restor, 1, my_putchar2);
+  j = 0;
+  while (j != (*x - PROMPT_SIZE))
     {
       debut[j] = dest[j];
       j++;
     }
-  m = 0;
-  while (src[m] != '\0')
-    {
-      debut[j++] = src[m++];
-      *i = *i + 1;
-    }
   debut[j] = '\0';
+  strcat(debut, src);
   final = strcat(debut, end);
+  *x = *x + my_strlen(src);
+  free(dest);
   return (final);
 }
 
@@ -55,9 +44,9 @@ char			*ctrl_k(char *str, t_cmd *data, int *x, struct winsize *mysizewin)
   int			k;
   int			j;
 
-  k = *x - 3;
+  k = *x - PROMPT_SIZE;
   j = 0;
-  if ((*x - 3) == my_strlen(str))
+  if ((*x - PROMPT_SIZE) == my_strlen(str))
     return (NULL);
   buffer = malloc(sizeof(char) * (my_strlen(str) + 1));
   tputs(data->save, 1, my_putchar2);
@@ -68,6 +57,6 @@ char			*ctrl_k(char *str, t_cmd *data, int *x, struct winsize *mysizewin)
     }
   buffer[j] = '\0';
   tputs(data->restor, 1, my_putchar2);
-  str[(*x) - 3] = '\0';
+  str[(*x) - PROMPT_SIZE] = '\0';
   return (buffer);
 }

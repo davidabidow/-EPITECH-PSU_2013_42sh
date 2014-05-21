@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:08:59 2014 valentin wallet
-** Last update Mon May 19 18:33:14 2014 valentin wallet
+** Last update Wed May 21 11:54:49 2014 valentin wallet
 */
 
 #ifndef TERMCAP_H_
@@ -24,6 +24,10 @@
 
 # define UNUSED		__attribute__ ((unused))
 # define BUFF_SIZE	1024
+# define PROMPT_SIZE	3
+# define CTRL_K		11
+# define CTRL_Y		25
+# define CTRL_L		12
 
 typedef struct		s_cmd
 {
@@ -43,6 +47,15 @@ typedef struct		s_cmd
   char			*suppline;
 }			t_cmd;
 
+typedef struct		s_termcap
+{
+  t_cmd			data;
+  char			*str;
+  char			*tmp;
+  int			buff;
+  int			x;
+}			t_termcap;
+
 typedef struct		s_history
 {
   char			*str;
@@ -59,7 +72,7 @@ typedef struct		s_data
 extern	t_data		tab[];
 
 char			*ctrl_k(char *, t_cmd *, int *, struct winsize *);
-char			*ctrl_y(char *, char *, int *, int *, t_cmd *);
+char			*ctrl_y(char *, char *, int *, t_cmd *);
 char			*include_in_line(char *, int, int *, t_cmd *);
 int			my_putchar2(int);
 char			*backslash_n(char *, t_cmd *, int *, struct winsize *);

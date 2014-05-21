@@ -5,14 +5,14 @@
 ** Login   <lacour_a@epitech.net>
 **
 ** Started on  Wed Dec 25 23:43:48 2013 arthur lacour
-** Last update Mon May 19 17:43:18 2014 valentin wallet
+** Last update Tue May 20 11:53:14 2014 valentin wallet
 */
 
 #include "termcap.h"
 
 t_history		*my_put_in_list(t_history *list, char *name)
 {
-  t_history	*elem;
+  t_history		*elem;
 
   elem = malloc(sizeof(*elem));
   if (elem == NULL)
@@ -28,7 +28,7 @@ t_history		*my_put_in_list(t_history *list, char *name)
 
 t_history		*my_put_in_end_list(t_history *list, char *name)
 {
-  t_history	*elem;
+  t_history		*elem;
 
   if (list == NULL)
     list = my_put_in_list(list, name);

@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Mon May 19 15:09:38 2014 valentin wallet
-** Last update Mon May 19 16:02:00 2014 valentin wallet
+** Last update Tue May 20 11:45:42 2014 valentin wallet
 */
 
 #include "termcap.h"
@@ -15,21 +15,15 @@ char			*my_del(char *str, t_cmd *data, int *x, struct winsize *mysizewin)
   char			*tmp;
   char			*newstr;
   char			*final;
-  int			k;
-  int			j;
   int			n;
 
-  k = *x - 3;
-  j = 0;
   n = 0;
-  if (my_strlen(str) == 0 || *x == 3)
+  if ((my_strlen(str) == 0) || (*x == PROMPT_SIZE))
     return (str);
   newstr = malloc(sizeof(char) * my_strlen(str));
-  while (str[k] != '\0')
-    newstr[j++] = str[k++];      
-  newstr[j] = '\0';
+  my_strcpy(&str[(*x) - PROMPT_SIZE], newstr);
   tmp = malloc(sizeof(char) * (my_strlen(str)));
-  while (n != (*x - 4))
+  while (n != (*x - (PROMPT_SIZE + 1)))
     {
       tmp[n] = str[n];
       n++;
@@ -41,6 +35,7 @@ char			*my_del(char *str, t_cmd *data, int *x, struct winsize *mysizewin)
   write(1, " ", 1);
   tputs(data->restor, 1, my_putchar2);
   final = strcat(tmp, newstr);
+  free(str);
   return (final);
 }
 
@@ -49,23 +44,19 @@ char			*my_suppr(char *str, t_cmd *data, int *x, struct winsize *mysizewin UNUSE
   char			*final;
   char			*tmp;
   char			*newstr;
-  int			k;
-  int			j;
   int			m;
 
-  k = *x - 2;
-  j = 0;
+  if ((*x - PROMPT_SIZE) == my_strlen(str))
+    return (str);
   newstr = malloc(sizeof(char) * my_strlen(str));
-  while (str[k] != '\0')
-      newstr[j++] = str[k++];
-  newstr[j] = '\0';
+  my_strcpy(&str[(*x) - (PROMPT_SIZE - 1)], newstr);
   tputs(data->save, 1, my_putchar2);
   my_putstr(newstr);
   write(1, " ", 1);
   tputs(data->restor, 1, my_putchar2);
   tmp = malloc(sizeof(char) * my_strlen(str));
   m = 0;
-  while (m != (*x - 3))
+  while (m != (*x - (PROMPT_SIZE)))
     {
       tmp[m] = str[m];
       m++;

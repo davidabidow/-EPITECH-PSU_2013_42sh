@@ -5,14 +5,14 @@
 ** Login   <lacour_a@epitech.net>
 **
 ** Started on  Thu Dec  5 13:47:29 2013 arthur lacour
-** Last update Mon May 19 17:43:41 2014 valentin wallet
+** Last update Tue May 20 11:10:05 2014 valentin wallet
 */
 
 #include "termcap.h"
 
-void	*xmalloc(int size)
+void		*xmalloc(int size)
 {
-  char	*str;
+  char		*str;
 
   str = malloc(size);
   if (str == NULL)
@@ -20,9 +20,9 @@ void	*xmalloc(int size)
   return (str);
 }
 
-int	my_is_sep(char c, char *sep)
+int		my_is_sep(char c, char *sep)
 {
-  int	i;
+  int		i;
 
   i = 0;
   while (sep[i])
@@ -33,10 +33,10 @@ int	my_is_sep(char c, char *sep)
   return (0);
 }
 
-int	nb_words(char *str, char *sep)
+int		nb_words(char *str, char *sep)
 {
-  int	i;
-  int	nb;
+  int		i;
+  int		nb;
 
   i = 0;
   nb = 0;
@@ -54,9 +54,9 @@ int	nb_words(char *str, char *sep)
   return (nb);
 }
 
-char	*my_strnncpy(char *dest, char *src, int *j, int *i)
+char		*my_strnncpy(char *dest, char *src, int *j, int *i)
 {
-  int	k;
+  int		k;
 
   k = 0;
   while (*j < *i)
@@ -69,13 +69,13 @@ char	*my_strnncpy(char *dest, char *src, int *j, int *i)
   return (dest);
 }
 
-char	**my_str_to_wordtab(char *str, char *sep)
+char		**my_str_to_wordtab(char *str, char *sep)
 {
-  int	i;
-  int	j;
-  int	l;
-  int	word;
-  char	**my_tab;
+  int		i;
+  int		j;
+  int		l;
+  int		word;
+  char		**my_tab;
 
   i = 0;
   j = 0;

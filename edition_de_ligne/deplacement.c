@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:15:44 2014 valentin wallet
-** Last update Mon May 19 16:23:39 2014 valentin wallet
+** Last update Tue May 20 11:49:34 2014 valentin wallet
 */
 
 #include "termcap.h"
@@ -25,7 +25,7 @@ void			move_left(t_cmd *data, int *x, struct winsize *mysizewin)
 	  k++;
 	}
     }
-  else if (*x > 3)
+  else if (*x > PROMPT_SIZE)
     {
       *x = *x - 1;
       tputs(data->curse_l, 1, my_putchar2);
@@ -39,7 +39,7 @@ void			move_right(t_cmd *data, int *x, char *str, struct winsize *mysizewin)
       write(1, "\n", 1);
       *x = *x + 1;
     }
-  else if ((*x - 3) < (my_strlen(str)))
+  else if ((*x - PROMPT_SIZE) < (my_strlen(str)))
     {
       *x = *x + 1;
       tputs(data->curse_r, 1, my_putchar2);
@@ -60,7 +60,7 @@ char			*go_left(char *str, t_cmd *data, int *x, struct winsize *mysizewin)
 	  k++;
 	}
     }
-  else if (*x > 3)
+  else if (*x > PROMPT_SIZE)
     {
       *x = *x - 1;
       tputs(data->curse_l, 1, my_putchar2);
@@ -75,7 +75,7 @@ char			*go_right(char *str, t_cmd *data, int *x, struct winsize *mysizewin)
       write(1, "\n", 1);
       *x = *x + 1;
     }
-  else if ((*x - 3) < (my_strlen(str)))
+  else if ((*x - PROMPT_SIZE) < (my_strlen(str)))
     {
       *x = *x + 1;
       tputs(data->curse_r, 1, my_putchar2);

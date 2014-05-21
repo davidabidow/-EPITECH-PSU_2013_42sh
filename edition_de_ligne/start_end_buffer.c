@@ -5,14 +5,14 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Mon May 19 15:12:22 2014 valentin wallet
-** Last update Mon May 19 16:24:44 2014 valentin wallet
+** Last update Tue May 20 11:46:32 2014 valentin wallet
 */
 
 #include "termcap.h"
 
 char			*start_of_buffer(char *str, t_cmd *data, int *x, struct winsize *mysizewin)
 {
-  while (*x > 3)
+  while (*x > PROMPT_SIZE)
     move_left(data, x, mysizewin);
   return (str);
 }
@@ -21,7 +21,7 @@ char			*end_of_buffer(char *str, t_cmd *data, int *x, struct winsize *mysizewin)
 {
   int			k;
 
-  k = *x - 3;
+  k = *x - PROMPT_SIZE;
   while (k < my_strlen(str))
     {
       move_right(data, x, str, mysizewin);

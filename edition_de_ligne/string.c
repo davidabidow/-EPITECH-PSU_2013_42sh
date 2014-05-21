@@ -5,10 +5,23 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:16:48 2014 valentin wallet
-** Last update Mon May 19 15:56:44 2014 valentin wallet
+** Last update Tue May 20 11:53:11 2014 valentin wallet
 */
 
 #include "termcap.h"
+
+char			*my_strcpy(char *src, char *dest)
+{
+  int			i;
+
+  i = 0;
+  while (src[i] != '\0')
+    {
+      dest[i] = src[i];
+      i++;
+    }
+  dest[i] = '\0';
+}
 
 void			my_putchar(char c)
 {
@@ -54,27 +67,20 @@ char			*my_strcat(char *src, int dest)
 
 char			*include_in_line(char *dest, int src, int *x, t_cmd *data)
 {
-  int			k;
   int			j;
   char			*end;
   char			*debut;
   char			*final;
 
-  k = *x - 3;
   j = 0;
   end = malloc(sizeof(char) * (my_strlen(dest) + 1));
   debut = malloc(sizeof(char) * (my_strlen(dest) + 2));
-  while (dest[k] != '\0')
-    end[j++] = dest[k++];
-  end[j] = '\0';
+  my_strcpy(&dest[(*x - PROMPT_SIZE)], end);
   my_putchar(src);
+  tputs(data->save, 1, my_putchar2);
   my_putstr(end);
-  while (j > 0)
-    {
-      tputs(data->curse_l, 1, my_putchar2);
-      j--;
-    }
-  while (j != (*x - 3))
+  tputs(data->restor, 1, my_putchar2);
+  while (j != (*x - PROMPT_SIZE))
     {
       debut[j] = dest[j];
       j++;
@@ -82,5 +88,6 @@ char			*include_in_line(char *dest, int src, int *x, t_cmd *data)
   debut[j++] = src;
   debut[j] = '\0';
   final = strcat(debut, end);
+  free(dest);
   return (final);
 }

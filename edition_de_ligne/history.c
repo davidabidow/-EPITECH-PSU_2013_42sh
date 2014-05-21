@@ -5,17 +5,17 @@
 ** Login   <lacour_a@epitech.net>
 **
 ** Started on  Wed May  7 11:55:17 2014 arthur lacour
-** Last update Mon May 19 17:43:27 2014 valentin wallet
+** Last update Tue May 20 11:08:38 2014 valentin wallet
 */
 
 #include "termcap.h"
 
-char	**read_history(int fd)
+char		**read_history(int fd)
 {
-  int	ret;
-  char	**my_tab;
-  char  *str;
-  char  buff[BUFF_SIZE];
+  int		ret;
+  char		**my_tab;
+  char		*str;
+  char		buff[BUFF_SIZE];
 
   str = malloc(sizeof(char) * BUFF_SIZE);
   memset(str, '\0', BUFF_SIZE - 1);
@@ -47,7 +47,7 @@ void		free_tab(char **my_tab)
 
 t_history	*put_hist_in_list(t_history *history, char **my_tab)
 {
-  int	i;
+  int		i;
 
   i = 0;
   if (my_tab == NULL)
@@ -65,8 +65,8 @@ t_history	*put_hist_in_list(t_history *history, char **my_tab)
 
 t_history	*load_history(t_history *history)
 {
-  int	fd;
-  char	**my_tab;
+  int		fd;
+  char		**my_tab;
 
   if ((fd = open("history", O_CREAT | O_RDWR,
 	    S_IRWXU | S_IRGRP | S_IROTH)) == -1)
@@ -80,9 +80,9 @@ t_history	*load_history(t_history *history)
   return (history);
 }
 
-int	put_in_hist(t_history *history, char *str)
+int		put_in_hist(t_history *history, char *str)
 {
-  int	fd;
+  int		fd;
 
   fd = open("history", O_APPEND | O_CREAT | O_RDWR,
 	    S_IRWXU | S_IRGRP | S_IROTH);

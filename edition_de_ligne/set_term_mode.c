@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:18:28 2014 valentin wallet
-** Last update Mon May 19 15:52:09 2014 valentin wallet
+** Last update Tue May 20 12:53:33 2014 valentin wallet
 */
 
 #include "termcap.h"
@@ -49,8 +49,14 @@ int                     raw_mode(struct termios *t)
 int			set_term_mode()
 {
   struct termios	t;
+  char			*str;
 
-  tgetent(NULL, "xterm");
+  if ((str = getenv("TERM")) == NULL)
+    {
+      printf("Can't find the variable TERM in env\n");
+      return (EXIT_FAILURE);
+    }
+  tgetent(NULL, str);
   if ((tcgetattr(0, &t)) == -1)
     {
       my_putstr("tcgetattr error\n");
