@@ -5,10 +5,36 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:18:28 2014 valentin wallet
-** Last update Tue May 20 12:53:33 2014 valentin wallet
+** Last update Wed May 21 19:25:45 2014 valentin wallet
 */
 
 #include "termcap.h"
+
+char			*recup_name(char *str)
+{
+  int			i;
+
+  i = 0;
+  while (str[i] != '=')
+    i++;
+  i = i + 1;
+  return (&str[i]);
+}
+char			*my_getenv(char **env, char *str)
+{
+  int			i;
+
+  i = 0;
+  if (env == NULL)
+    return (NULL);
+  while (env[i] != NULL)
+    {
+      if (strncmp(env[i], str, my_strlen(str)) == 0)
+	return (recup_name(env[i]));
+      i++;
+    }
+  return (NULL);
+}
 
 int                     echo_mode(struct termios *t)
 {
@@ -46,12 +72,12 @@ int                     raw_mode(struct termios *t)
   return (EXIT_SUCCESS);
 }
 
-int			set_term_mode()
+int			set_term_mode(char **env)
 {
   struct termios	t;
   char			*str;
 
-  if ((str = getenv("TERM")) == NULL)
+  if ((str = my_getenv(env, "TERM")) == NULL)
     {
       printf("Can't find the variable TERM in env\n");
       return (EXIT_FAILURE);
