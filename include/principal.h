@@ -5,11 +5,12 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 03:28:08 2014 david tran
-** Last update Mon May 19 18:34:55 2014 david tran
+** Last update Tue May 20 22:35:36 2014 david tran
 */
 
 #ifndef PRINCIPAL_H__
 # define PRINCIPAL_H__
+# define BUFFER_SIZE 1023
 
 typedef struct		s_env
 {
@@ -64,7 +65,7 @@ int			simple_normal(char *);
 typedef struct		s_buin
 {
   char			*name;
-  int			(*func)(t_env *, char **);
+  int			(*func)(t_env *, char *);
 }			t_buin;
 
 typedef struct		s_ope
@@ -74,8 +75,8 @@ typedef struct		s_ope
 
 typedef struct		s_redir
 {
-  char			*redir;
-  int			(*func)(char *file);
+  char			*name;
+  int			(*func)(char *);
 }			t_redir;
 
 extern t_redir		redir[];

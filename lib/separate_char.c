@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 16:18:44 2014 david tran
-** Last update Thu May 15 18:27:53 2014 david tran
+** Last update Tue May 20 23:48:57 2014 david tran
 */
 
 #include "my.h"
@@ -57,7 +57,7 @@ char	*separate_char(char *src, char *str)
   char	*dest;
 
   i = 0;
-  if ((dest = malloc(my_strlen(src) + count_separ(src, str) * 2 + 1)) == NULL)
+  if (!(dest = my_xmalloc(my_strlen(src) + count_separ(src, str) * 2 + 1)))
     return (NULL);
   j = 0;
   while (src[i])

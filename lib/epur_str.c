@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 15:53:46 2014 david tran
-** Last update Wed May 14 14:24:29 2014 david tran
+** Last update Tue May 20 23:49:30 2014 david tran
 */
 
 #include "my.h"
@@ -26,7 +26,7 @@ char	*epur_space(char *str)
   i = 0;
   j = 0;
   flag = 0;
-  if (!(dest = malloc(sizeof(char) * (my_strlen(str) + 1))))
+  if (!(dest = my_xmalloc(sizeof(char) * (my_strlen(str) + 1))))
     return (NULL);
   while (str[i])
     {

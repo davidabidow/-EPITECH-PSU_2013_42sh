@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:36:45 2014 david tran
-** Last update Wed May 14 14:19:48 2014 david tran
+** Last update Wed May 21 00:01:00 2014 david tran
 */
 
 #include "42sh.h"
@@ -17,7 +17,7 @@ char	*makeread()
   int	readed;
   int	i;
 
-  if (!(buffer = malloc(sizeof(char) * 1024)))
+  if (!(buffer = my_xmalloc(sizeof(char) * 1024)))
     return (NULL);
   while ((readed = read(0, buffer, 1023)) > 0)
     {

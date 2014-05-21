@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May 12 02:14:50 2014 david tran
-** Last update Mon May 19 01:33:29 2014 david tran
+** Last update Tue May 20 18:41:29 2014 david tran
 */
 
 #include "42sh.h"
@@ -20,7 +20,7 @@ t_buin		built[] =
     /* {"echo", &echo_func}, */
   };
 
-int	search_builtin(char *buffer, t_env *list, char **dest, t_buin *built)
+int	search_builtin(char *buffer, t_env *list, char *dest, t_buin *built)
 {
   int	i;
 

@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Sun May 18 16:48:31 2014 david tran
-** Last update Sun May 18 22:30:43 2014 david tran
+** Last update Tue May 20 23:53:13 2014 david tran
 */
 
 #include "my.h"
@@ -14,7 +14,7 @@ char	**wordtab_realloc(char **str, int len)
 {
   char	**dest;
 
-  if (!(dest = malloc(sizeof(*dest) * len + 1)))
+  if (!(dest = my_taballoc(sizeof(*dest) * len + 1)))
     return (NULL);
   dest = wordtabcpy(dest, str);
   free_wordtab(str);
@@ -25,7 +25,7 @@ char	*my_realloc(char *str, int len)
 {
   char	*dest;
 
-  if (!(dest = malloc(len + 1)))
+  if (!(dest = my_xmalloc(len + 1)))
     return (NULL);
   dest = my_strcpy(dest, str);
   free(str);

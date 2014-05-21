@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May 12 16:47:07 2014 david tran
-** Last update Mon May 19 03:29:42 2014 david tran
+** Last update Wed May 21 12:06:31 2014 david tran
 */
 
 #include "42sh.h"
@@ -40,7 +40,7 @@ char	*searchvar(char *str)
       if (!str[i++])
 	return (NULL);
     }
-  if (!(dest = malloc((i + 1) * sizeof(*dest))))
+  if (!(dest = my_xmalloc((i + 1) * sizeof(*dest))))
     return (NULL);
   while (j < i)
     {
@@ -73,7 +73,7 @@ char		*recupvar(t_env *list, char *str)
   tmp = list->head;
   while (tmp != NULL)
     {
-      if (my_strenv(tmp->data, str))
+      if (my_strncmp(tmp->data, str, my_strlen(str)) == 0)
 	return (cutbuffer(tmp->data));
       tmp = tmp->next;
     }
@@ -82,12 +82,9 @@ char		*recupvar(t_env *list, char *str)
 
 char		*cutbuffer(char *buffer)
 {
-  char		*str;
   int		i;
-  int		j;
 
   i = 0;
-  j = my_strlen(buffer);
   while (buffer[i] && buffer[i] != '=')
     i++;
   return (my_strdup(&buffer[++i]));

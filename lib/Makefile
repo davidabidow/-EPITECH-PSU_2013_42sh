@@ -5,7 +5,7 @@
 ## Login   <tran_0@epitech.net>
 ## 
 ## Started on  Tue May  6 06:01:43 2014 david tran
-## Last update Sun May 18 22:50:56 2014 david tran
+## Last update Tue May 20 23:46:49 2014 david tran
 ##
 
 NAME		= 	libmy.a
@@ -13,6 +13,7 @@ NAME		= 	libmy.a
 SRC		=	my_getnbr.c			\
 			my_putchar.c			\
 			my_put_nbr.c			\
+			my_xmalloc.c			\
 			my_putstr.c			\
 			my_strcat.c			\
 			my_strcmp.c			\

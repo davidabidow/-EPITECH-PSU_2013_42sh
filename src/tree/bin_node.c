@@ -5,42 +5,13 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May 15 01:01:29 2014 david tran
-** Last update Mon May 19 22:04:44 2014 david tran
+** Last update Wed May 21 12:48:38 2014 david tran
 */
 
 #include "42sh.h"
 #include "my.h"
 
-int		create_nodd_command(t_bin *bin, char **command, char *princ)
-{
-  t_bin		*tmp;
-  t_bin		*new;
-
-  if (!(new = malloc(sizeof(node))))
-    return (EXIT_FAILURE);
-  new->command = wordtabdup(command);
-  if (!(new->princ = my_strdup(princ)) || !new->command)
-    return (-1);
-  new->op = NULL;
-  new->redo = NULL;
-  new->left = NULL;
-  new->right = NULL;
-  if (!bin)
-    {
-      bin = new;
-      bin->head = new;
-    }
-  else
-    {
-      tmp = bin->head;
-      while (tmp->left)
-	tmp = tmp->left;
-      tmp->left = new;
-    }
-  return (EXIT_SUCCESS);
-}
-
-int		add_redir(t_bin *bin, int fd)
+int		add_redir_final(t_bin *bin, int fd)
 {
   t_bin		*tmp;
 
@@ -48,6 +19,20 @@ int		add_redir(t_bin *bin, int fd)
   while (tmp->left)
     tmp = tmp->left;
   if (my_put_redir(tmp, fd) == -1)
+    return (-1);
+  return (EXIT_SUCCESS);
+}
+
+int		add_redir_princ(t_bin *bin, int fd, char *str)
+{
+  t_bin		*tmp;
+
+  tmp = bin->head;
+  while (tmp->left)
+    tmp = tmp->left;
+  while (tmp->right)
+    tmp = tmp->right;
+  if (my_put_princ(tmp, fd, str) == -1)
     return (-1);
   return (EXIT_SUCCESS);
 }
@@ -69,7 +54,7 @@ int		create_nodd_pipe(t_bin *bin, char **command, char *princ)
   t_bin		*new;
   t_bin		*tmp;
 
-  if (!(new = malloc(sizeof(node))))
+  if (!(new = malloc(sizeof(t_bin))))
     return (EXIT_FAILURE);
   new->command = wordtabdup(command);
   if (!(new->princ = my_strdup(princ)) || !new->command)

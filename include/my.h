@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 14:49:41 2014 david tran
-** Last update Mon May 19 11:22:35 2014 david tran
+** Last update Tue May 20 23:51:45 2014 david tran
 */
 
 #ifndef MY_H__
@@ -19,6 +19,8 @@
 void	my_putchar(char );
 void	my_putstr(char *);
 void	my_puterr(char *);
+char	*my_xmalloc(int);
+char	**my_taballoc(int);
 char	*my_strdup(char *);
 char	*my_strndup(char *, int);
 int	my_strlen(char *);

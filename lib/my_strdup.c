@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 06:12:27 2014 david tran
-** Last update Sun May 18 17:11:26 2014 david tran
+** Last update Tue May 20 23:49:48 2014 david tran
 */
 
 #include "my.h"
@@ -15,7 +15,7 @@ char	*my_strndup(char *str, int len)
   char	*dest;
   int	j;
 
-  if ((dest = malloc(sizeof(char) * (len + 1))) == NULL)
+  if ((dest = my_xmalloc(sizeof(char) * (len + 1))) == NULL)
     return (NULL);
   j = 0;
   while (str[j] && j < len)
@@ -33,7 +33,7 @@ char	*my_strdup(char *str)
   char	*dest;
 
   i = my_strlen(str);
-  if (!(dest = malloc(sizeof(char) * (i + 1))))
+  if (!(dest = my_xmalloc(sizeof(char) * (i + 1))))
     return (NULL);
   my_strcpy(dest, str);
   return (dest);

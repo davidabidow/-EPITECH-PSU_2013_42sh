@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May 13 13:57:12 2014 david tran
-** Last update Tue May 13 22:57:23 2014 david tran
+** Last update Wed May 21 00:01:43 2014 david tran
 */
 
 #include "42sh.h"
@@ -84,7 +84,7 @@ char	*createnewpwd(int j, char *str, char *path)
   i = my_strlen(str);
   if (path[0] == '/')
     i = 0;
-  if (!(dest = malloc((i + my_strlen(path) - (3 * j) + 2) * sizeof(char))))
+  if (!(dest = my_xmalloc((i + my_strlen(path) - (3 * j) + 2) * sizeof(char))))
     return (NULL);
   if (path[0] != '/')
     {

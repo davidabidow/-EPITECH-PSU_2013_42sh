@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 15:20:38 2014 david tran
-** Last update Mon May 19 13:48:48 2014 david tran
+** Last update Tue May 20 23:49:17 2014 david tran
 */
 
 #include "my.h"
@@ -16,7 +16,7 @@ char	*my_strcatslash(char *dest, char *src)
   int	j;
   char	*str;
 
-  if (!(str = malloc(my_strlen(dest) + my_strlen(src) + 3)))
+  if (!(str = my_xmalloc(my_strlen(dest) + my_strlen(src) + 3)))
     return (NULL);
   i = 0;
   j = 0;

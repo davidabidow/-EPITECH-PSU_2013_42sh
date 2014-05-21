@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Wed May  7 00:48:32 2014 david tran
-** Last update Tue May 13 23:19:14 2014 david tran
+** Last update Tue May 20 23:52:55 2014 david tran
 */
 
 #include "my.h"
@@ -21,7 +21,7 @@ char	**wordtab(char *str, char *pat)
   i = 0;
   k = 0;
   j = count_separ(str, pat);
-  if ((dest = malloc(sizeof(*dest) * (j + 1))) == NULL)
+  if ((dest = my_taballoc(sizeof(*dest) * (j + 1))) == NULL)
     return (NULL);
   while (i < j)
     {

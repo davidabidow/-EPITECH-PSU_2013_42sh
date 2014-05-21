@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May  5 18:48:27 2014 david tran
-** Last update Thu May 15 18:46:33 2014 david tran
+** Last update Tue May 20 22:58:24 2014 david tran
 */
 
 #include "42sh.h"
@@ -22,7 +22,7 @@ int		main(int ac __attribute__((unused)), char **av
   list->head = NULL;
   list->end = NULL;
   signal(SIGINT, dontquit);
-  if (!(init_list(list, env)))
+  if (init_list(list, env) == EXIT_FAILURE)
     return (EXIT_FAILURE);
   infiniteloop(list);
   return (EXIT_SUCCESS);

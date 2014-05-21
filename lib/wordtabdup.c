@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Sun May 18 22:26:36 2014 david tran
-** Last update Sun May 18 22:49:38 2014 david tran
+** Last update Tue May 20 23:54:08 2014 david tran
 */
 
 #include "my.h"
@@ -16,7 +16,7 @@ char	**wordtabdup(char **str)
   char	**dest;
 
   i = my_strstrlen(str);
-  if (!(dest = malloc(sizeof(*dest) * (i + 1))))
+  if (!(dest = my_taballoc(sizeof(*dest) * (i + 1))))
     return (NULL);
   dest = wordtabcpy(dest, str);
   return (dest);
