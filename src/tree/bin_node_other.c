@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Wed May 21 12:47:58 2014 david tran
-** Last update Wed May 21 15:53:57 2014 david tran
+** Last update Thu May 22 01:28:34 2014 david tran
 */
 
 #include "42sh.h"
@@ -32,8 +32,12 @@ int		create_nodd_command(t_bin *bin, char **command, char *princ)
 {
   t_bin		*new;
 
-  if (!(new = malloc(sizeof(t_bin))) || !(new->command = wordtabdup(command)))
+  if (!(new = malloc(sizeof(t_bin))))
     return (-1);
+  new->command = NULL;
+  if (command)
+    if (!(new->command = wordtabdup(command)))
+      return (-1);
   new->princ = princ;
   new->op = NULL;
   new->redo = NULL;

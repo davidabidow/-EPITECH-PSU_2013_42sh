@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 16:18:44 2014 david tran
-** Last update Tue May 20 23:48:57 2014 david tran
+** Last update Thu May 22 01:14:35 2014 david tran
 */
 
 #include "my.h"
@@ -45,7 +45,7 @@ void	check_after(char *dest, char *src, int *i, int *j)
 
 void	feed_separate(char *src, char *dest, int *i, int *j)
 {
-  if (src[*i - 1] && src[*i - 1] != ' ')
+  if (*i != 0 && src[*i - 1] && src[*i - 1] != ' ')
     dest[(*j)++] = ' ';
 }
 
