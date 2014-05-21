@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:08:59 2014 valentin wallet
-** Last update Wed May 21 11:54:49 2014 valentin wallet
+** Last update Wed May 21 19:12:18 2014 valentin wallet
 */
 
 #ifndef TERMCAP_H_
@@ -28,6 +28,9 @@
 # define CTRL_K		11
 # define CTRL_Y		25
 # define CTRL_L		12
+# define BACKSLASH_N	10
+# define UP		4283163
+# define DOWN		4348699
 
 typedef struct		s_cmd
 {

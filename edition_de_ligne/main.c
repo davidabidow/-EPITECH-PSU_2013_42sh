@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Fri Apr 25 17:04:02 2014 valentin wallet
-** Last update Wed May 21 14:22:49 2014 valentin wallet
+** Last update Wed May 21 19:22:29 2014 valentin wallet
 */
 
 #include "termcap.h"
@@ -20,7 +20,6 @@ char			*backslash_n(char *str, t_cmd *data UNUSED, int *x, struct winsize *mysiz
   my_putchar('\n');
   my_putstr("$> ");
   *x = PROMPT_SIZE;
-  free(str);
   newstr = malloc(sizeof(char) * 7);
   memset(newstr, 0, 7);
   return (newstr);
@@ -62,17 +61,16 @@ void			initialize_struct(t_termcap *term)
   memset(term->str, 0, 7);
 }
 
-void			ctrl_l(char *str, int *x, t_cmd *data)
+void			ctrl_l(char *str, t_cmd *data)
 {
   tputs(data->clearstr, 1, my_putchar2);
   my_putstr("$> ");
   my_putstr(str);
 }
 
-void			my_read(t_cmd *data, struct winsize *mysizewin, t_history *history, t_termcap *term)
+void			my_read(struct winsize *mysizewin, t_history *history, t_termcap *term)
 {
   int			count;
-  int			i;
 
   initialize_struct(term);
   ioctl(STDOUT_FILENO, TIOCGWINSZ, mysizewin);
@@ -85,11 +83,17 @@ void			my_read(t_cmd *data, struct winsize *mysizewin, t_history *history, t_ter
       else if (term->buff == CTRL_Y && term->tmp != NULL)
 	term->str = ctrl_y(term->str, term->tmp, &term->x, &term->data);
       else if (term->buff == CTRL_L)
-	ctrl_l(term->str, &term->x, &term->data);
-      else if (term->buff == 4348699)
+	ctrl_l(term->str, &term->data);
+      else if (term->buff == DOWN)
       	term->str = history_down(&history, term->str, &term->data, &term->x, mysizewin);
-      else if (term->buff == 4283163)
+      else if (term->buff == UP)
       	term->str = history_up(&history, term->str, &term->data , &term->x, mysizewin);
+      else if (term->buff == BACKSLASH_N)
+	{
+	  put_in_hist(history, term->str);
+	  history = go_end_list(history);
+	  term->str = backslash_n(term->str, &term->data, &term->x, mysizewin);
+	}
       else if (count == 0)
 	term->str = write_normally(term->str, term->buff, &term->x, &term->data);
       term->buff = 0;
@@ -99,17 +103,16 @@ void			my_read(t_cmd *data, struct winsize *mysizewin, t_history *history, t_ter
 int			main(int ac UNUSED, char **av UNUSED, char **env)
 {
   t_termcap		term;
-  t_cmd			data;
   struct winsize        mysizewin;
   t_history		*history;
 
   history = NULL;
-  if (set_term_mode() == 1)
+  if (set_term_mode(env) == 1)
     return (EXIT_FAILURE);
   my_tgetstr(&term.data);
   history = load_history(history);
   my_putstr("$> ");
-  my_read(&data, &mysizewin, history, &term);
+  my_read(&mysizewin, history, &term);
   free_list(history);
   return (EXIT_SUCCESS);
 }
