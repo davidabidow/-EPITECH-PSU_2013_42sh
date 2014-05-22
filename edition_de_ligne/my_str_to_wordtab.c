@@ -5,18 +5,18 @@
 ** Login   <lacour_a@epitech.net>
 **
 ** Started on  Thu Dec  5 13:47:29 2013 arthur lacour
-** Last update Tue May 20 11:10:05 2014 valentin wallet
+** Last update Thu May 22 22:09:39 2014 valentin wallet
 */
 
 #include "termcap.h"
 
-void		*xmalloc(int size)
+void		*my_xmalloc(int size)
 {
   char		*str;
 
   str = malloc(size);
   if (str == NULL)
-    exit(0);
+    return(NULL);
   return (str);
 }
 
@@ -81,7 +81,8 @@ char		**my_str_to_wordtab(char *str, char *sep)
   j = 0;
   l = 0;
   word = nb_words(str, sep);
-  my_tab = xmalloc(sizeof(char *) * (word + 1));
+  if ((my_tab = my_xmalloc(sizeof(char *) * (word + 1))) == NULL)
+    return (NULL);
   memset(my_tab, '\0', word * sizeof(char *));
   while (str[i] && word-- > 0)
     {
@@ -92,7 +93,7 @@ char		**my_str_to_wordtab(char *str, char *sep)
 	}
       while (str[i] && (my_is_sep(str[i], sep) == 0))
 	i++;
-      my_tab[l] = xmalloc(sizeof(char) * (i - j) + 1);
+      my_tab[l] = my_xmalloc(sizeof(char) * (i - j) + 1);
       memset(my_tab[l], '\0', i - j + 1);
       my_strnncpy(my_tab[l++], str, &j, &i);
     }

@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Mon May 19 15:16:32 2014 valentin wallet
-** Last update Mon May 19 15:37:14 2014 valentin wallet
+** Last update Thu May 22 16:02:10 2014 valentin wallet
 */
 
 #include "termcap.h"
@@ -37,7 +37,7 @@ int                     my_putchar2(int c)
 void			my_memset(char *str, int octet, int size)
 {
   int			i;
-  
+
   i = 0;
   while (i < size)
     {
