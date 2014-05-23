@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:08:59 2014 valentin wallet
-** Last update Wed May 21 19:12:18 2014 valentin wallet
+** Last update Fri May 23 00:54:51 2014 valentin wallet
 */
 
 #ifndef TERMCAP_H_
@@ -74,11 +74,12 @@ typedef struct		s_data
 
 extern	t_data		tab[];
 
-char			*ctrl_k(char *, t_cmd *, int *, struct winsize *);
+char			*my_strcpy(char *, char *);
+char			*ctrl_k(char *, t_cmd *, int *);
 char			*ctrl_y(char *, char *, int *, t_cmd *);
 char			*include_in_line(char *, int, int *, t_cmd *);
 int			my_putchar2(int);
-char			*backslash_n(char *, t_cmd *, int *, struct winsize *);
+char			*backslash_n(t_termcap *, t_history **);
 char			*start_of_buffer(char *, t_cmd *, int *, struct winsize *);
 char			*end_of_buffer(char *, t_cmd *, int *, struct winsize *);
 char			*go_left(char *, t_cmd *, int *, struct winsize *);
@@ -90,15 +91,17 @@ void			my_putchar(char);
 int			my_strlen(char *);
 char			*my_strcat(char *, int);
 void			my_tgetstr(t_cmd *);
-int			set_term_mode();
+int			set_term_mode(char **);
 void			move_left(t_cmd *, int *, struct winsize *);
+void			move_right(t_cmd *, int *, char *, struct winsize *);
 t_history		*load_history(t_history *);
 char			**my_str_to_wordtab(char *, char *);
 t_history		*my_put_in_end_list(t_history * , char *);
 t_history		*my_put_in_list(t_history *, char *);
 int			put_in_hist(t_history *, char *);
-char			*history_down(t_history **, char *str, t_cmd *data, int *, struct winsize *mysizewin);
-char			*history_up(t_history **, char *str, t_cmd *data, int *, struct winsize *);
-t_history		*go_end_list(t_history *list);
+char			*history_down(t_history **, t_termcap *, struct winsize *);
+char			*history_up(t_history **, t_termcap *, struct winsize *);
+t_history		*go_end_list(t_history *);
+void			free_list(t_history *);
 
 #endif /* TERMCAP_H_ */

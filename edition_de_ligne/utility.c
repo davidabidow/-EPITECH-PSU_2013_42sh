@@ -5,7 +5,11 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Mon May 19 15:16:32 2014 valentin wallet
+<<<<<<< HEAD
 ** Last update Thu May 22 15:56:13 2014 david tran
+=======
+** Last update Thu May 22 16:02:10 2014 valentin wallet
+>>>>>>> 8512937cb6cc68c0f2f488bb9a349d49a2291338
 */
 
 #include "termcap.h"

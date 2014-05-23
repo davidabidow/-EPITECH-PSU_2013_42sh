@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:16:48 2014 valentin wallet
-** Last update Tue May 20 11:53:11 2014 valentin wallet
+** Last update Thu May 22 22:07:58 2014 valentin wallet
 */
 
 #include "termcap.h"
@@ -21,6 +21,7 @@ char			*my_strcpy(char *src, char *dest)
       i++;
     }
   dest[i] = '\0';
+  return (dest);
 }
 
 void			my_putchar(char c)
@@ -31,7 +32,7 @@ void			my_putchar(char c)
 int			my_strlen(char *str)
 {
   int			i;
-  
+
   i = 0;
   while (str[i] != '\0')
     i++;
@@ -41,7 +42,7 @@ int			my_strlen(char *str)
 void			my_putstr(char *str)
 {
   int			i;
-  
+
   i = 0;
   while (str[i] != '\0')
     my_putchar(str[i++]);
@@ -75,6 +76,8 @@ char			*include_in_line(char *dest, int src, int *x, t_cmd *data)
   j = 0;
   end = malloc(sizeof(char) * (my_strlen(dest) + 1));
   debut = malloc(sizeof(char) * (my_strlen(dest) + 2));
+  if (end == NULL || debut == NULL)
+    return (NULL);
   my_strcpy(&dest[(*x - PROMPT_SIZE)], end);
   my_putchar(src);
   tputs(data->save, 1, my_putchar2);

@@ -5,7 +5,7 @@
 ** Login   <lacour_a@epitech.net>
 **
 ** Started on  Wed May  7 11:55:17 2014 arthur lacour
-** Last update Tue May 20 11:08:38 2014 valentin wallet
+** Last update Thu May 22 22:01:43 2014 valentin wallet
 */
 
 #include "termcap.h"
@@ -18,9 +18,9 @@ char		**read_history(int fd)
   char		buff[BUFF_SIZE];
 
   str = malloc(sizeof(char) * BUFF_SIZE);
-  memset(str, '\0', BUFF_SIZE - 1);
   if (str == NULL)
     return (NULL);
+  memset(str, '\0', BUFF_SIZE - 1);
   while ((ret = read(fd, buff, BUFF_SIZE - 1)) > 0)
     {
       buff[ret] = '\0';
@@ -68,8 +68,8 @@ t_history	*load_history(t_history *history)
   int		fd;
   char		**my_tab;
 
-  if ((fd = open("history", O_CREAT | O_RDWR,
-	    S_IRWXU | S_IRGRP | S_IROTH)) == -1)
+  if ((fd = open(".42sh_history", O_CREAT | O_RDWR,
+	    0600)) == -1)
     return (history);
   if ((my_tab = read_history(fd)) == NULL)
     return (history);
@@ -84,8 +84,8 @@ int		put_in_hist(t_history *history, char *str)
 {
   int		fd;
 
-  fd = open("history", O_APPEND | O_CREAT | O_RDWR,
-	    S_IRWXU | S_IRGRP | S_IROTH);
+  fd = open(".42sh_history", O_APPEND | O_CREAT | O_RDWR,
+	    0600);
   if (fd == -1)
     return (-1);
   history = my_put_in_end_list(history, str);
