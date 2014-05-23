@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May 19 13:05:55 2014 david tran
-** Last update Wed May 21 13:47:30 2014 david tran
+** Last update Thu May 22 15:12:20 2014 david tran
 */
 
 #include "42sh.h"
@@ -32,6 +32,8 @@ char	*recup_princ(char **path, char *src)
 
 int	parsing_command(char **src, t_bin *bin, t_pars *pars)
 {
+  int	tmp;
+
   if (!(pars->command = my_taballoc(sizeof(*pars->command))))
     return (-1);
   pars->command[0] = NULL;
@@ -41,18 +43,16 @@ int	parsing_command(char **src, t_bin *bin, t_pars *pars)
     return (-1);
   if (!(pars->command = wordtabcat(pars->command, src[pars->i++])))
     return (-1);
-  while (src[pars->i] && check_wone(src[pars->i], pars->path) == -1)
+  while (src[pars->i] && ((tmp = check_wone(src[pars->i], pars->path)) == -1 ||
+			  tmp == 0 || tmp == 2))
     {
-      my_putstr(src[pars->i]);
-      my_putchar('\n');
       if (!(pars->command = wordtab_realloc(pars->command,
 					    my_strstrlen(pars->command) + 2)))
 	return (-1);
       if (!(pars->command = wordtabcat(pars->command, src[pars->i++])))
 	return (-1);
     }
-  if (create_nodd_command(bin, wordtabdup(pars->command),
-			  my_strdup(pars->princ)) == -1)
+  if (create_nodd_command(bin, pars->command, pars->princ) == -1)
     return (-1);
   return (EXIT_SUCCESS);
 }

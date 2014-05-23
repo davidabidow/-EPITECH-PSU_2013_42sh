@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May 19 01:00:50 2014 david tran
-** Last update Wed May 21 16:27:55 2014 david tran
+** Last update Thu May 22 23:33:35 2014 david tran
 */
 
 #include "42sh.h"
@@ -19,13 +19,13 @@ t_pinit		go_init[] =
     {3, &parsing_ope},
   };
 
-/* t_pinit		go_pars[] = */
-/*   { */
-/*     {0, &add_command}, */
-/*     {1, &add_redir}, */
-/*     {2, &add_built}, */
-/*     {3, &add_ope}, */
-/*   }; */
+t_pinit		go_pars[] =
+  {
+    {0, &add_command},
+    {1, &add_redir},
+    {2, &add_built},
+    {3, &add_ope},
+  };
 
 char	**search_path(t_env *list)
 {
@@ -44,13 +44,17 @@ char	**search_path(t_env *list)
 
 int		finish_parsing(char **src, t_bin *bin, t_pars *pars)
 {
-  /* int		tmp; */
+  int		tmp;
 
-  /* while (src[pars->i]) */
-  /*   { */
-  /*     if ((tmp = check_wone(src[pars->i], pars->path)) == -1 && check_nodes == EXIT_FAILURE) */
-  /* 	return (-1); */
-  /*   } */
+  while (src[pars->i])
+    {
+      if ((tmp = check_wone(src[pars->i], pars->path)) == -1 &&
+	  check_nodes(bin) == EXIT_FAILURE)
+  	return (EXIT_FAILURE);
+      if (go_pars[tmp].func(src, bin, pars) == -1)
+	return (-1);
+    }
+  return (EXIT_SUCCESS);
 }
 
 int		check_first_pars(char **src, t_bin *bin, t_pars *pars)
@@ -85,5 +89,8 @@ int		parsing_exec(char **src, t_env *list)
     return (EXIT_FAILURE);
   if (check_first_pars(src, bin, &pars) == -1)
     return (EXIT_FAILURE);
+  if (finish_parsing(src, bin, &pars) == -1)
+    return (EXIT_FAILURE);
+  bin_aff(bin);
   return (EXIT_SUCCESS);
 }

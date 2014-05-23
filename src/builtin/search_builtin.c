@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May 12 02:14:50 2014 david tran
-** Last update Tue May 20 18:41:29 2014 david tran
+** Last update Thu May 22 15:53:59 2014 david tran
 */
 
 #include "42sh.h"
@@ -44,10 +44,10 @@ int	exit_or_nothing(char *buffer, char *second)
     return (EXIT_SUCCESS);
   if (buffer && my_strcmp(buffer, "exit") == 0)
     {
-      if (second && !my_isnumb(second))
+      if (second && my_isnumb(second))
 	{
 	  my_putstr("Exit parameter isn't a number\n");
-	  return (EXIT_SUCCESS);
+	  return (-1);
 	}
       if (second)
 	my_puterr(second);

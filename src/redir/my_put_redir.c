@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May 19 22:05:56 2014 david tran
-** Last update Tue May 20 18:45:43 2014 david tran
+** Last update Thu May 22 18:43:18 2014 david tran
 */
 
 #include "42sh.h"
@@ -14,22 +14,19 @@
 int		my_put_redir(t_bin *tmp, int fd)
 {
   t_redirec	*new;
-  t_redirec	*se;
+  t_redirec	*detailledsearch;
 
   if (!(new = malloc(sizeof(t_redirec))))
     return (-1);
   new->fd = fd;
-  if (!tmp)
-    {
-      tmp->redo = new;
-      tmp->redo->head = new;
-    }
+  if (!tmp->head)
+    tmp->redo->head = new;
   else
     {
-      se = tmp->redo->head;
-      while (se->next)
-	se = se->next;
-      se->next = new;
+      detailledsearch = tmp->redo->head;
+      while (detailledsearch->next)
+	detailledsearch = detailledsearch->next;
+      detailledsearch->next = new;
     }
   return (EXIT_SUCCESS);
 }
@@ -46,14 +43,11 @@ int		my_put_princ(t_bin *tmp, int fd, char *str)
   if (str)
     if (!(new->dinv = my_strdup(str)))
       return (-1);
-  if (!tmp)
-    {
-      tmp->redo = new;
-      tmp->redo->head = new;
-    }
+  if (!tmp->head)
+    tmp->pre->head = new;
   else
     {
-      se = tmp->redo->head;
+      se = tmp->pre->head;
       while (se->next)
 	se = se->next;
       se->next = new;

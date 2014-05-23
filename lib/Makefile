@@ -5,7 +5,7 @@
 ## Login   <tran_0@epitech.net>
 ## 
 ## Started on  Tue May  6 06:01:43 2014 david tran
-## Last update Tue May 20 23:46:49 2014 david tran
+## Last update Thu May 22 22:23:47 2014 david tran
 ##
 
 NAME		= 	libmy.a
@@ -32,7 +32,7 @@ SRC		=	my_getnbr.c			\
 			wordtabcat.c			\
 			wordtabcpy.c			\
 			wordtabdup.c			\
-
+			putwordtab.c			\
 
 OBJ		=	$(SRC:.c=.o)
 

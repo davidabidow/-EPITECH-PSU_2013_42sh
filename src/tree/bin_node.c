@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May 15 01:01:29 2014 david tran
-** Last update Wed May 21 12:48:38 2014 david tran
+** Last update Thu May 22 18:43:31 2014 david tran
 */
 
 #include "42sh.h"
@@ -56,8 +56,15 @@ int		create_nodd_pipe(t_bin *bin, char **command, char *princ)
 
   if (!(new = malloc(sizeof(t_bin))))
     return (EXIT_FAILURE);
-  new->command = wordtabdup(command);
-  if (!(new->princ = my_strdup(princ)) || !new->command)
+  new->command = NULL;
+  new->princ = NULL;
+  if (command && princ)
+    {
+      new->command = wordtabdup(command);
+      if (!new->command || !(new->princ = my_strdup(princ)))
+	return (-1);
+    }
+  if (!(new->pre = malloc(sizeof(t_redirec))))
     return (-1);
   new->op = NULL;
   new->left = NULL;

@@ -5,7 +5,7 @@
 ## Login   <tran_0@epitech.net>
 ## 
 ## Started on  Tue May  6 00:42:35 2014 david tran
-## Last update Wed May 21 15:22:04 2014 david tran
+## Last update Thu May 22 23:33:21 2014 david tran
 ##
 
 RM	=	rm -f
@@ -48,8 +48,14 @@ SRCS	=	$(SOUR)main.c				\
 		$(SOUR)$(PARS)parsing_init.c		\
 		$(SOUR)$(PARS)parsing_oper.c		\
 		$(SOUR)$(PARS)parsing_redir.c		\
+		$(SOUR)$(PARS)parsing_add_ope.c		\
+		$(SOUR)$(PARS)parsing_add_redir.c	\
+		$(SOUR)$(PARS)parsing_add_command.c	\
+		$(SOUR)$(PARS)parsing_add_built.c	\
 		$(SOUR)$(TREE)bin_free.c		\
 		$(SOUR)$(TREE)bin_node.c		\
+		$(SOUR)$(TREE)bin_aff.c			\
+		$(SOUR)$(TREE)bin_node_cat.c		\
 		$(SOUR)$(TREE)bin_node_other.c		\
 
 OBJ	=	$(SRCS:.c=.o)

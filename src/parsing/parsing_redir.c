@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May 20 09:49:30 2014 david tran
-** Last update Wed May 21 00:02:09 2014 david tran
+** Last update Thu May 22 11:43:10 2014 david tran
 */
 
 #include "42sh.h"
@@ -38,6 +38,11 @@ int		parsing_redir(char **src, t_bin *bin, t_pars *pars)
   while (redir[j].name && my_strcmp(src[pars->i], redir[j].name) != 0)
     j++;
   pars->i += 1;
+  if (src[pars->i + 1] && check_wone(src[pars->i + 1], pars->path) == -1)
+    {
+      my_putstr("Parsing error: Command not found after Redirection.\n");
+      return (-1);
+    }
   if (j == 1)
     return (add_redir_princ(bin, redir[j].func(src[pars->i++]), NULL));
   else if (j == 0 || j == 2)
