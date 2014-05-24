@@ -5,10 +5,10 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:16:48 2014 valentin wallet
-** Last update Thu May 22 22:07:58 2014 valentin wallet
+** Last update Sat May 24 00:18:50 2014 valentin wallet
 */
 
-#include "termcap.h"
+#include "42sh.h"
 
 char			*my_strcpy(char *src, char *dest)
 {
@@ -29,16 +29,6 @@ void			my_putchar(char c)
   write(1, &c, 1);
 }
 
-int			my_strlen(char *str)
-{
-  int			i;
-
-  i = 0;
-  while (str[i] != '\0')
-    i++;
-  return (i);
-}
-
 void			my_putstr(char *str)
 {
   int			i;
@@ -48,7 +38,7 @@ void			my_putstr(char *str)
     my_putchar(str[i++]);
 }
 
-char			*my_strcat(char *src, int dest)
+char			*my_strcat_int(char *src, int dest)
 {
   int			i;
   char			*final;

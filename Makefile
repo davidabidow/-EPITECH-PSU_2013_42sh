@@ -5,7 +5,11 @@
 ## Login   <tran_0@epitech.net>
 ## 
 ## Started on  Tue May  6 00:42:35 2014 david tran
+<<<<<<< HEAD
 ## Last update Fri May 23 23:27:45 2014 david tran
+=======
+## Last update Sat May 24 00:22:12 2014 valentin wallet
+>>>>>>> 1388335b4d1081ac0087744e60d4d95a131895ac
 ##
 
 RM	=	rm -f
@@ -21,6 +25,8 @@ REDIR	=	redir/
 PARS	=	parsing/
 
 TREE	=	tree/
+
+EDITION	=	edition_de_ligne/
 
 SRCS	=	$(SOUR)main.c				\
 		$(SOUR)signal.c				\
@@ -60,6 +66,19 @@ SRCS	=	$(SOUR)main.c				\
 		$(SOUR)$(TREE)bin_aff.c			\
 		$(SOUR)$(TREE)bin_node_cat.c		\
 		$(SOUR)$(TREE)bin_node_other.c		\
+		$(EDITION)main.c 			\
+		$(EDITION)set_term_mode.c 		\
+		$(EDITION)string.c 			\
+		$(EDITION)ptrfunc.c 			\
+		$(EDITION)deplacement.c 		\
+		$(EDITION)supp_delete.c 		\
+		$(EDITION)start_end_buffer.c 		\
+		$(EDITION)ctrl.c 			\
+		$(EDITION)history.c 			\
+		$(EDITION)list.c 			\
+		$(EDITION)my_str_to_wordtab.c 		\
+		$(EDITION)utility.c 			\
+		$(EDITION)history_deplacement.c
 
 OBJ	=	$(SRCS:.c=.o)
 
@@ -69,7 +88,7 @@ CFLAGS	=	-W -Wall -Wextra -g3 -g -I./include
 
 $(NAME):	$(OBJ)
 		cd ./lib && $(MAKE) re
-		cc -o $(NAME) $(OBJ) $(LIB)
+		cc -o $(NAME) $(OBJ) -lncurses $(LIB)
 
 all:		$(NAME)
 

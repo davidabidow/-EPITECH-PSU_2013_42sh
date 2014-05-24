@@ -5,10 +5,10 @@
 ** Login   <lacour_a@epitech.net>
 **
 ** Started on  Wed May  7 11:55:17 2014 arthur lacour
-** Last update Thu May 22 22:01:43 2014 valentin wallet
+** Last update Fri May 23 23:49:28 2014 valentin wallet
 */
 
-#include "termcap.h"
+#include "42sh.h"
 
 char		**read_history(int fd)
 {

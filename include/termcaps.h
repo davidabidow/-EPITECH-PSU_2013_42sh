@@ -5,32 +5,22 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:08:59 2014 valentin wallet
-** Last update Fri May 23 00:54:51 2014 valentin wallet
+** Last update Sat May 24 01:38:08 2014 valentin wallet
 */
 
 #ifndef TERMCAP_H_
 # define TERMCAP_H_
 
-# include <stdio.h>
-# include <string.h>
-# include <signal.h>
-# include <termcap.h>
-# include <sys/ioctl.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-
 # define UNUSED		__attribute__ ((unused))
 # define BUFF_SIZE	1024
-# define PROMPT_SIZE	3
+# define PROMPT_SIZE	7
 # define CTRL_K		11
 # define CTRL_Y		25
 # define CTRL_L		12
 # define BACKSLASH_N	10
 # define UP		4283163
 # define DOWN		4348699
+# undef  tab
 
 typedef struct		s_cmd
 {
@@ -89,9 +79,9 @@ char			*my_del(char *, t_cmd *, int *, struct winsize *);
 void			my_putstr(char *);
 void			my_putchar(char);
 int			my_strlen(char *);
-char			*my_strcat(char *, int);
+char			*my_strcat_int(char *, int);
 void			my_tgetstr(t_cmd *);
-int			set_term_mode(char **);
+int			set_term_mode();
 void			move_left(t_cmd *, int *, struct winsize *);
 void			move_right(t_cmd *, int *, char *, struct winsize *);
 t_history		*load_history(t_history *);
@@ -103,5 +93,6 @@ char			*history_down(t_history **, t_termcap *, struct winsize *);
 char			*history_up(t_history **, t_termcap *, struct winsize *);
 t_history		*go_end_list(t_history *);
 void			free_list(t_history *);
+char			*my_read(struct winsize *, t_history *, t_termcap *);
 
 #endif /* TERMCAP_H_ */

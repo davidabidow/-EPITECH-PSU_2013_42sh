@@ -5,10 +5,10 @@
 ** Login   <lacour_a@epitech.net>
 **
 ** Started on  Wed Dec 25 23:43:48 2013 arthur lacour
-** Last update Tue May 20 11:53:14 2014 valentin wallet
+** Last update Fri May 23 23:49:34 2014 valentin wallet
 */
 
-#include "termcap.h"
+#include "42sh.h"
 
 t_history		*my_put_in_list(t_history *list, char *name)
 {

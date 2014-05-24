@@ -5,10 +5,10 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:15:44 2014 valentin wallet
-** Last update Tue May 20 11:49:34 2014 valentin wallet
+** Last update Fri May 23 23:49:13 2014 valentin wallet
 */
 
-#include "termcap.h"
+#include "42sh.h"
 
 void			move_left(t_cmd *data, int *x, struct winsize *mysizewin)
 {

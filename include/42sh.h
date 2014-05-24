@@ -5,21 +5,27 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May  5 19:16:40 2014 david tran
-** Last update Fri May 23 17:59:09 2014 david tran
+** Last update Sat May 24 02:11:03 2014 david tran
 */
 
 #ifndef _42_SH_
 # define _42_SH_
 
-# include <stdlib.h>
 # include <stdio.h>
-# include <unistd.h>
+# include <string.h>
 # include <signal.h>
-# include <sys/wait.h>
+# include <ncurses/curses.h>
+# include <term.h>
+# include <termcap.h>
+# include <sys/ioctl.h>
+# include <unistd.h>
+# include <stdlib.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <sys/wait.h>
 # include "principal.h"
 # include "binary.h"
+# include "termcaps.h"
 
 #endif /* !_42_SH_ */
