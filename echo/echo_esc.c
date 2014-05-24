@@ -5,8 +5,11 @@
 ** Login   <lacour_a@epitech.net>
 **
 ** Started on  Fri May 23 17:00:53 2014 arthur lacour
-** Last update Fri May 23 17:04:13 2014 arthur lacour
+** Last update Sat May 24 05:47:50 2014 valentin wallet
 */
+
+#include "42sh.h"
+#include "my.h"
 
 int	put_esc_char(char *str, int *i)
 {
@@ -30,9 +33,10 @@ int	put_esc_char(char *str, int *i)
     esc = '\r';
   my_putchar(esc);
   (*i)++;
+  return (0);
 }
 
-int	put_one_esc(char *str, char **env)
+int	put_one_esc(char *str, t_env *list)
 {
   int	i;
 
@@ -40,7 +44,7 @@ int	put_one_esc(char *str, char **env)
   while (str[i])
     {
       if (str[i] == '$')
-        if (put_env_var(str, &i) == -1)
+        if (put_env_var(str, &i, list) == -1)
           return (-1);
       if (str[i] == '\\')
         put_esc_char(str, &i);
@@ -51,14 +55,14 @@ int	put_one_esc(char *str, char **env)
   return (0);
 }
 
-void	esc_char(char **tab, char **env)
+void	esc_char(char **tab, t_env *list)
 {
   int	i;
 
   i = 0;
   while (tab[i])
     {
-      put_one_esc(tab[i], env);
+      put_one_esc(tab[i], list);
       my_putchar(' ');
       ++i;
     }

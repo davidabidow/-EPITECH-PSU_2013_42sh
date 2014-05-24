@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:34:21 2014 david tran
-** Last update Sat May 24 04:35:16 2014 david tran
+** Last update Sat May 24 06:02:41 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -17,10 +17,10 @@ char		*transform_chain(char *str)
   if (!(str = epur_space(str)))
     return (NULL);
   else if (!(str = separate_char(str, ";")) ||
-	   !(str = separate_char(str, "<")) ||
-	   !(str = separate_char(str, ">")) ||
-	   !(str = separate_char(str, "&")) ||
-	   !(str = separate_char(str, "|")))
+  	   !(str = separate_char(str, "<")) ||
+  	   !(str = separate_char(str, ">")) ||
+  	   !(str = separate_char(str, "&")) ||
+  	   !(str = separate_char(str, "|")))
     return (NULL);
   return (str);
 }
@@ -52,6 +52,7 @@ char		**init_buffer(struct winsize *mysizewin, t_history **history, t_termcap *t
   if ((buffer = my_read(mysizewin, history, term)) == NULL)
     return (NULL);
   printf("\nbuffer = [%s]\n", buffer);
+  printf("%d\n", my_strlen(buffer));
   if (!(buffer = transform_chain(buffer)))
     return (NULL);
   if (!(dest = wordtab(buffer, " ")))
@@ -85,6 +86,8 @@ void			infiniteloop(t_env *list)
 	{
 	  max = countpvir(dest, max);
 	  if (!(new = tab_wordtab(dest, min, max)))
+	    return ;
+	  if (new[0] == NULL)
 	    return ;
 	  if ((tmp = exit_or_nothing(new[0], new[1])) == -1)
 	    return ;
