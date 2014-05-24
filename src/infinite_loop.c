@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:34:21 2014 david tran
-** Last update Sat May 24 04:15:27 2014 david tran
+** Last update Sat May 24 04:35:16 2014 david tran
 */
 
 #include "42sh.h"
@@ -51,6 +51,7 @@ char		**init_buffer(struct winsize *mysizewin, t_history **history, t_termcap *t
 
   if ((buffer = my_read(mysizewin, history, term)) == NULL)
     return (NULL);
+  printf("\nbuffer = [%s]\n", buffer);
   if (!(buffer = transform_chain(buffer)))
     return (NULL);
   if (!(dest = wordtab(buffer, " ")))
@@ -70,6 +71,7 @@ void			infiniteloop(t_env *list)
   t_history		*history;
 
   history = NULL;
+  term.tmp = NULL;
   if ((set_term_mode()) == 1)
     return ;
   my_tgetstr(&term.data);

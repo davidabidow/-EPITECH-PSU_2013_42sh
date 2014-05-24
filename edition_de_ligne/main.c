@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Fri Apr 25 17:04:02 2014 valentin wallet
-** Last update Sat May 24 03:35:52 2014 valentin wallet
+** Last update Sat May 24 04:21:49 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -42,7 +42,6 @@ int			parcours_ptr_func(t_termcap *term, struct winsize *mysizewin, int *count)
 int			initialize_struct(t_termcap *term)
 {
   term->str = NULL;
-  term->tmp = NULL;
   term->buff = 0;
   term->x = PROMPT_SIZE;
   if ((term->str = malloc(sizeof(char) * 7)) == NULL)
@@ -81,8 +80,11 @@ char			*my_read(struct winsize *mysizewin, t_history **history, t_termcap *term)
       parcours_ptr_func(term, mysizewin, &count);
       if (term->buff == CTRL_K)
       	term->tmp = ctrl_k(term->str, &term->data, &term->x);
-      else if (term->buff == CTRL_Y && term->tmp != NULL)
-	term->str = ctrl_y(term->str, term->tmp, &term->x, &term->data);
+      else if (term->buff == CTRL_Y)
+	{
+	  if (term->tmp != NULL)
+	    term->str = ctrl_y(term->str, term->tmp, &term->x, &term->data);
+	}
       else if (term->buff == CTRL_L)
 	ctrl_l(term->str, &term->data);
       else if (term->buff == DOWN)
