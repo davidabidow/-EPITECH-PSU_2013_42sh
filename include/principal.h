@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 03:28:08 2014 david tran
-** Last update Fri May 23 23:13:50 2014 david tran
+** Last update Sat May 24 05:52:22 2014 david tran
 */
 
 #ifndef PRINCIPAL_H__
@@ -23,10 +23,17 @@ typedef struct		s_env
 
 char			woexit;
 
+typedef struct		s_signa
+{
+  int			sign;
+  char			*signal;
+}			t_signa;
+
 /*
 ** Signal function
 */
 void			dontquit();
+void			aff_signalcaught(int);
 /*
 ** Chained lists
 */
@@ -87,5 +94,6 @@ typedef struct		s_redir
 extern t_redir		redir[];
 extern t_buin		built[];
 extern t_ope		operate[];
+extern t_signa		sesign[];
 
 #endif /* !PRINCIPAL_H__ */

@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May 21 19:45:51 2014 valentin wallet
-** Last update Sat May 24 04:29:23 2014 valentin wallet
+** Last update Sat May 24 05:48:33 2014 david tran
 */
 
 #include "42sh.h"
@@ -23,7 +23,12 @@ int		go_son(t_bin *bin, char **list, t_exec *execa)
 
 int		go_dad(t_exec *execa)
 {
+  int		i;
+
+  i = 0;
   wait(&execa->status);
+  if (WIFSIGNALED(execa->status) == true)
+    aff_signalcaught(WTERMSIG(execa->status));
   close(execa->pipefd[1]);
   execa->save_pipeout = execa->pipefd[0];
   return (WEXITSTATUS(execa->status));
