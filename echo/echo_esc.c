@@ -5,7 +5,7 @@
 ** Login   <lacour_a@epitech.net>
 **
 ** Started on  Fri May 23 17:00:53 2014 arthur lacour
-** Last update Sat May 24 18:54:47 2014 arthur lacour
+** Last update Sat May 24 19:05:42 2014 arthur lacour
 */
 
 #include "42sh.h"
@@ -63,8 +63,8 @@ void	esc_char(char **tab, t_env *list)
   while (tab[i])
     {
       put_one_esc(tab[i], list);
-      if (tab[i][0] != '\0');
-      my_putchar(' ');
+      if (tab[i][0] != '\0')
+	my_putchar(' ');
       ++i;
     }
 }

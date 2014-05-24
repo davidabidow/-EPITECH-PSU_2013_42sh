@@ -5,7 +5,7 @@
 ** Login   <lacour_a@epitech.net>
 **
 ** Started on  Wed May 21 11:56:05 2014 arthur lacour
-** Last update Sat May 24 18:53:02 2014 arthur lacour
+** Last update Sat May 24 19:19:23 2014 arthur lacour
 */
 
 #include "42sh.h"
@@ -44,7 +44,7 @@ int	check_opt(char **tab, char id)
 
   i = 0;
   flag = 0;
-  while (tab[i] && i < 2)
+  while (tab[i] && i <= 2)
     {
       if (id == 1)
 	if (strcmp(tab[i], "-n") == 0)
@@ -105,14 +105,14 @@ int	my_echo(t_env *list, char **tab)
   if (esc == 1)
     {
       if (ret == 1)
-	esc_char(tab + 2, list);
+	esc_char(tab, list);
       else
-	esc_char(tab + 1, list);
+	esc_char(tab, list);
     }
   else
     {
       if (ret == 1)
-	put_normal(tab + 1, list);
+	put_normal(tab, list);
       else
 	put_normal(tab, list);
     }
