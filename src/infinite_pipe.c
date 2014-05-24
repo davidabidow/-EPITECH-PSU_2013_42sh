@@ -5,13 +5,13 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May 21 19:45:51 2014 valentin wallet
-** Last update Sat May 24 16:26:34 2014 david tran
+** Last update Sat May 24 18:05:53 2014 david tran
 */
 
 #include "42sh.h"
 #include "my.h"
 
-int		go_son(t_bin *bin, char **list, t_exec *execa, t_env *env)
+int		go_son(t_bin *bin, char **list, t_exec *execa, t_env **env)
 {
   int		i;
 
@@ -23,15 +23,23 @@ int		go_son(t_bin *bin, char **list, t_exec *execa, t_env *env)
   while (built[i].name && bin->command && bin->command[0] &&
 	 my_strcmp(built[i].name, bin->command[0]) != 0)
     i++;
-  if (i < 5)
-    built[i].func(&env, bin->command);
-  else
+  if (i >= 5)
     execve(bin->princ, bin->command, list);
   return (EXIT_SUCCESS);
 }
 
-int		go_dad(t_exec *execa)
+int		go_dad(t_exec *execa, t_env **env, t_bin *bin)
 {
+  int		i;
+
+  i = 0;
+  if (bin->right)
+    dup2(execa->pipefd[1], 1);
+  while (built[i].name && bin->command && bin->command[0] &&
+	 my_strcmp(built[i].name, bin->command[0]) != 0)
+    i++;
+  if (i < 5)
+    built[i].func(*env, bin->command);
   wait(&execa->status);
   if (WIFSIGNALED(execa->status) == true)
     aff_signalcaught(WTERMSIG(execa->status));
@@ -40,7 +48,7 @@ int		go_dad(t_exec *execa)
   return (WEXITSTATUS(execa->status));
 }
 
-int		loop_pipe(t_bin *tmp, char **list, t_env *env)
+int		loop_pipe(t_bin *tmp, char **list, t_env **env)
 {
   t_exec	execa;
   t_bin		*bin;
@@ -61,10 +69,15 @@ int		loop_pipe(t_bin *tmp, char **list, t_env *env)
 	}
       else
 	{
-	  if (go_dad(&execa) == EXIT_FAILURE)
-	    return (EXIT_FAILURE);
+	  if (go_dad(&execa, env, bin) == EXIT_FAILURE)
+	    {
+	      close(execa.pipefd[1]);
+	      return (EXIT_FAILURE);
+	    }
 	  bin = bin->right;
 	}
     }
+  close(execa.pipefd[1]);
+  close(execa.pipefd[0]);
   return (EXIT_SUCCESS);
 }

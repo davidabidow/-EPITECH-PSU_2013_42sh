@@ -5,19 +5,19 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May 13 00:13:56 2014 david tran
-** Last update Sat May 24 07:27:26 2014 david tran
+** Last update Sat May 24 18:16:40 2014 david tran
 */
 
 #include "42sh.h"
 #include "my.h"
 
-void		changedirenv(t_env **list, char *dest)
+void		changedirenv(t_env *list, char *dest)
 {
   char		*path;
   int		j;
   char		*str;
 
-  if (!(path = recupvar(*list, "PWD")))
+  if (!(path = recupvar(list, "PWD")))
     {
       my_putstr("Can't set PWD");
       return ;
@@ -34,13 +34,13 @@ void		changedirenv(t_env **list, char *dest)
     my_putstr("Can't set OLDPWD\n");
 }
 
-void		dirminus(t_env **list)
+void		dirminus(t_env *list)
 {
   char		*path;
   char		*oldpath;
 
-  path = recupvar(*list, "PWD");
-  oldpath = recupvar(*list, "OLDPWD");
+  path = recupvar(list, "PWD");
+  oldpath = recupvar(list, "OLDPWD");
   if (!oldpath || !path)
     {
       my_putstr("Can't go back");
@@ -59,18 +59,19 @@ void		dirminus(t_env **list)
     }
 }
 
-void		goinghome(t_env **list)
+void		goinghome(t_env *list)
 {
   char		*home;
   char		*path;
 
-  home = recupvar(*list, "HOME");
-  path = recupvar(*list, "PWD");
-  if (!home || !path)
+  if (!(home = recupvar(list, "HOME")) || !(path = recupvar(list, "PWD")))
     {
       my_putstr("Can't go home\n");
       return ;
     }
+  if (!(home = my_realloc(home, my_strlen(home) + 5)) ||
+      !(path = my_realloc(path, my_strlen(path) + 8)))
+      return ;
   if (access(home, F_OK) == -1)
     my_putstr("Can't access home\n");
   else if (chdir(home) == -1)
@@ -84,11 +85,11 @@ void		goinghome(t_env **list)
     }
 }
 
-int		changedirect(t_env **list, char **dest)
+int		changedirect(t_env *list, char **dest)
 {
   if (!dest[1])
     goinghome(list);
-  else if (dest[1][0] && dest[1][1] &&dest[1][0] == ' ' && dest[1][1] == 0)
+  else if (dest[1][0] && dest[1][1] && dest[1][0] == ' ' && dest[1][1] == 0)
     dirminus(list);
   else if (access(dest[1], F_OK) == -1)
     my_putstr("Can't access to repository\n");

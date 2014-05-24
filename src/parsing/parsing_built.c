@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May 20 15:43:48 2014 david tran
-** Last update Thu May 22 15:39:20 2014 david tran
+** Last update Sat May 24 16:45:55 2014 david tran
 */
 
 #include "42sh.h"
@@ -15,7 +15,7 @@ int	parsing_built(char **src, t_bin *bin, t_pars *pars)
 {
   int	tmp;
 
-  if (!(pars->command = my_taballoc(sizeof(*pars->command))))
+  if (!(pars->command = my_taballoc(sizeof(*pars->command) + 1)))
     return (-1);
   pars->command[0] = NULL;
   if (!(pars->command = wordtab_realloc(pars->command, 2)))
@@ -26,7 +26,7 @@ int	parsing_built(char **src, t_bin *bin, t_pars *pars)
 			  tmp == 0 || tmp == 2))
     {
       if (!(pars->command = wordtab_realloc(pars->command,
-					    my_strstrlen(pars->command) + 1)))
+					    my_strstrlen(pars->command) + 2)))
 	return (-1);
       if (!(pars->command = wordtabcat(pars->command, src[(pars->i)++])))
 	return (-1);

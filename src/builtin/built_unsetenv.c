@@ -5,23 +5,23 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May 12 23:52:26 2014 david tran
-** Last update Sat May 24 16:39:08 2014 david tran
+** Last update Sat May 24 17:44:04 2014 david tran
 */
 
 #include "42sh.h"
 #include "my.h"
 
-int		suppend(t_env **list, char *str, t_env *current, t_env *tmp)
+int		suppend(t_env *list, char *str, t_env *current, t_env *tmp)
 {
   t_env		*fnext;
 
-  if (!str || !*list)
+  if (!str || !list)
     return (EXIT_FAILURE);
   if (my_strenv(tmp->data, str) == EXIT_SUCCESS)
     {
-      current = (*list)->head;
-      fnext = (*list)->head->next;
-      (*list)->head = fnext;
+      current = list->head;
+      fnext = list->head->next;
+      list->head = fnext;
       free(current->data);
       free(current);
       return (EXIT_SUCCESS);
@@ -29,38 +29,38 @@ int		suppend(t_env **list, char *str, t_env *current, t_env *tmp)
   return (EXIT_FAILURE);
 }
 
-void		suppother(t_env **list, t_env *tmp, t_env *current)
+void		suppother(t_env *list, t_env *tmp, t_env *current)
 {
-  *list = tmp;
-  if (current != (*list)->end)
+  if (current != list->end)
     {
-      (*list)->next = current->next;
+      tmp->next = current->next;
       free(current->data);
       free(current);
     }
-  else if (current == (*list)->end)
+  else if (current == list->end)
     {
-      (*list)->end->prev->next = NULL;
-      (*list)->end = (*list)->end->prev;
+      list->end->prev->next = NULL;
+      list->end = list->end->prev;
       free(current->data);
       free(current);
     }
 }
 
-int		supplist(t_env **list, char **str)
+int		supplist(t_env *list, char **str)
 {
   t_env		*tmp;
   t_env		*current;
 
-  tmp = (*list)->head;
-  current = (*list)->head;
+  tmp = list->head;
+  current = list->head;
   if (!str || !str[1])
     return (EXIT_FAILURE);
   if (suppend(list, str[1], current, tmp) == EXIT_SUCCESS)
     return (EXIT_SUCCESS);
+  current = current->next;
   while (current)
     {
-      if (my_strenv(current->data, str[1]) == EXIT_SUCCESS)
+      if (my_strenv(current->data, str[1]) == EXIT_FAILURE)
 	{
 	  tmp = tmp->next;
 	  current = current->next;
