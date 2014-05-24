@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:08:59 2014 valentin wallet
-** Last update Sat May 24 01:38:08 2014 valentin wallet
+** Last update Sat May 24 03:15:56 2014 david tran
 */
 
 #ifndef TERMCAP_H_
@@ -64,7 +64,6 @@ typedef struct		s_data
 
 extern	t_data		tab[];
 
-char			*my_strcpy(char *, char *);
 char			*ctrl_k(char *, t_cmd *, int *);
 char			*ctrl_y(char *, char *, int *, t_cmd *);
 char			*include_in_line(char *, int, int *, t_cmd *);
@@ -76,9 +75,6 @@ char			*go_left(char *, t_cmd *, int *, struct winsize *);
 char			*go_right(char *, t_cmd *, int *, struct winsize *);
 char			*my_suppr(char *, t_cmd *, int *, struct winsize *);
 char			*my_del(char *, t_cmd *, int *, struct winsize *);
-void			my_putstr(char *);
-void			my_putchar(char);
-int			my_strlen(char *);
 char			*my_strcat_int(char *, int);
 void			my_tgetstr(t_cmd *);
 int			set_term_mode();
