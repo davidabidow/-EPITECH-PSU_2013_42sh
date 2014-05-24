@@ -5,7 +5,7 @@
 ** Login   <briard_g@epitech.net>
 ** 
 ** Started on  Fri May 23 18:11:43 2014 Guillaume Briard
-** Last update Fri May 23 22:34:54 2014 Guillaume Briard
+** Last update Sat May 24 02:07:08 2014 Guillaume Briard
 */
 
 #include <unistd.h>
@@ -14,10 +14,11 @@
 
 char		**check_glob(char *path)
 {
-  glob_t	*pglob;
+  glob_t	globbuf;
 
-
-
+  if (glob(path, GLOB_DOOFS | GLOB_APPEND, NULL, &globbuf)
+      == GLOB_NOMATCH)
+    return (NULL);
   return (pglob.gl_pathv);
 }
 
