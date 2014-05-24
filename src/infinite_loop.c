@@ -5,11 +5,12 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:34:21 2014 david tran
-** Last update Wed May 21 11:55:53 2014 david tran
+** Last update Sat May 24 01:46:02 2014 valentin wallet
 */
 
 #include "42sh.h"
 #include "my.h"
+#include "termcap.h"
 
 char		*transform_chain(char *str)
 {
@@ -43,13 +44,14 @@ int		countpvir(char **src, int max)
   return (max);
 }
 
-char		**init_buffer()
+char		**init_buffer(struct winsize *mysizewin, t_history *history, t_termcap *term)
 {
   char		*buffer;
   char		**dest;
 
-  if ((buffer = makeread()) == NULL)
+  if ((buffer = my_read(mysizewin, history, term)) == NULL)
     return (NULL);
+  printf("buffer = %s\n", buffer);
   if (!(buffer = transform_chain(buffer)))
     return (NULL);
   if (!(dest = wordtab(buffer, " ")))
@@ -57,18 +59,26 @@ char		**init_buffer()
   return (dest);
 }
 
-void		infiniteloop(t_env *list)
+void			infiniteloop(t_env *list)
 {
-  char		**dest;
-  int		min;
-  int		max;
-  char		**new;
-  int		tmp;
+  char			**dest;
+  int			min;
+  int			max;
+  char			**new;
+  int			tmp;
+  t_termcap		term;
+  struct winsize        mysizewin;
+  t_history		*history;
 
+  history = NULL;
+  if ((set_term_mode()) == 1)
+    return ;
+  my_tgetstr(&term.data);
+  history = load_history(history);
   while (42)
     {
       initloop(&min, &max);
-      if (!(dest = init_buffer()))
+      if (!(dest = init_buffer(&mysizewin, history, &term)))
 	return ;
       while (max != my_strstrlen(dest))
 	{

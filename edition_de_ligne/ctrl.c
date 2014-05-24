@@ -5,10 +5,10 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Mon May 19 15:07:30 2014 valentin wallet
-** Last update Thu May 22 21:57:01 2014 valentin wallet
+** Last update Fri May 23 23:49:21 2014 valentin wallet
 */
 
-#include "termcap.h"
+#include "42sh.h"
 
 char			*ctrl_y(char *dest, char *src, int *x, t_cmd *data)
 {

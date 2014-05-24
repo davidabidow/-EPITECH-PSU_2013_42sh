@@ -5,15 +5,15 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Fri Apr 25 17:04:02 2014 valentin wallet
-** Last update Fri May 23 00:54:16 2014 valentin wallet
+** Last update Sat May 24 02:08:54 2014 valentin wallet
 */
 
-#include "termcap.h"
+#include "42sh.h"
 
 char			*write_normally(char *str, int buff, int *x, t_cmd *data)
 {
   if (my_strlen(str) == (*x - PROMPT_SIZE))
-    str = my_strcat(str, buff);
+    str = my_strcat_int(str, buff);
   else
     str = include_in_line(str, buff, x, data);
   *x = *x + 1;
@@ -35,6 +35,7 @@ int			parcours_ptr_func(t_termcap *term, struct winsize *mysizewin, int *count)
 	}
       i++;
     }
+  return (EXIT_SUCCESS);
 }
 
 int			initialize_struct(t_termcap *term)
@@ -52,35 +53,26 @@ int			initialize_struct(t_termcap *term)
 void			ctrl_l(char *str, t_cmd *data)
 {
   tputs(data->clearstr, 1, my_putchar2);
-  my_putstr("$> ");
+  my_putstr("$42sh> ");
   my_putstr(str);
 }
 
 char			*backslash_n(t_termcap *term, t_history **history)
 {
-  char			*newstr;
-
   put_in_hist((*history), term->str);
   (*history) = go_end_list((*history));
   write(1, "\n", 1);
-  my_putstr("$> ");
-  my_putstr(term->str);
-  my_putchar('\n');
-  my_putstr("$> ");
   term->x = PROMPT_SIZE;
-  if ((newstr = malloc(sizeof(char) * 7)) == NULL)
-    return (NULL);
-  memset(newstr, 0, 7);
-  return (newstr);
+  return (term->str);
 }
 
 
-int			my_read(struct winsize *mysizewin, t_history *history, t_termcap *term)
+char			*my_read(struct winsize *mysizewin, t_history *history, t_termcap *term)
 {
   int			count;
 
   if ((initialize_struct(term)) == 1)
-    return (EXIT_FAILURE);
+    return (NULL);
   ioctl(STDOUT_FILENO, TIOCGWINSZ, mysizewin);
   while ((read(0, &term->buff, sizeof(int))) != 0)
     {
@@ -97,29 +89,15 @@ int			my_read(struct winsize *mysizewin, t_history *history, t_termcap *term)
       else if (term->buff == UP)
       	term->str = history_up(&history, term, mysizewin);
       else if (term->buff == BACKSLASH_N)
-	term->str = backslash_n(term, &history);
+	{
+	  term->str = backslash_n(term, &history);
+	  return (term->str);
+	}
+      else if (term->buff == 4)
+	return (NULL);
       else if (count == 0)
 	term->str = write_normally(term->str, term->buff, &term->x, &term->data);
-      if (term->str == NULL)
-	return (EXIT_FAILURE);
       term->buff = 0;
     }
-  return (EXIT_SUCCESS);
-}
-
-int			main(int ac UNUSED, char **av UNUSED, char **env)
-{
-  t_termcap		term;
-  struct winsize        mysizewin;
-  t_history		*history;
-
-  history = NULL;
-  if ((set_term_mode(env)) == 1)
-    return (EXIT_FAILURE);
-  my_tgetstr(&term.data);
-  history = load_history(history);
-  my_putstr("$> ");
-  my_read(&mysizewin, history, &term);
-  free_list(history);
-  return (EXIT_SUCCESS);
+  return (NULL);
 }

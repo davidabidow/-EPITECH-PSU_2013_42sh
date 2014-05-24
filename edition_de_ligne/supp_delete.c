@@ -5,10 +5,10 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Mon May 19 15:09:38 2014 valentin wallet
-** Last update Fri May 23 01:16:37 2014 valentin wallet
+** Last update Fri May 23 23:48:39 2014 valentin wallet
 */
 
-#include "termcap.h"
+#include "42sh.h"
 
 char			*my_del(char *str, t_cmd *data, int *x, struct winsize *mysizewin)
 {

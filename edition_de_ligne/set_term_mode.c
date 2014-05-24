@@ -5,10 +5,10 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:18:28 2014 valentin wallet
-** Last update Wed May 21 19:25:45 2014 valentin wallet
+** Last update Fri May 23 23:49:49 2014 valentin wallet
 */
 
-#include "termcap.h"
+#include "42sh.h"
 
 char			*recup_name(char *str)
 {
@@ -20,6 +20,7 @@ char			*recup_name(char *str)
   i = i + 1;
   return (&str[i]);
 }
+
 char			*my_getenv(char **env, char *str)
 {
   int			i;
@@ -77,12 +78,12 @@ int			set_term_mode(char **env)
   struct termios	t;
   char			*str;
 
-  if ((str = my_getenv(env, "TERM")) == NULL)
-    {
-      printf("Can't find the variable TERM in env\n");
-      return (EXIT_FAILURE);
-    }
-  tgetent(NULL, str);
+  /* if ((str = my_getenv(env, "TERM")) == NULL) */
+  /*   { */
+  /*     printf("Can't find the variable TERM in env\n"); */
+  /*     return (EXIT_FAILURE); */
+  /*   } */
+  tgetent(NULL, "xterm");
   if ((tcgetattr(0, &t)) == -1)
     {
       my_putstr("tcgetattr error\n");

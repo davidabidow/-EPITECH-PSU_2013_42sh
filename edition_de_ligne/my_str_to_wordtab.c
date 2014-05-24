@@ -5,20 +5,10 @@
 ** Login   <lacour_a@epitech.net>
 **
 ** Started on  Thu Dec  5 13:47:29 2013 arthur lacour
-** Last update Thu May 22 22:09:39 2014 valentin wallet
+** Last update Sat May 24 00:17:58 2014 valentin wallet
 */
 
-#include "termcap.h"
-
-void		*my_xmalloc(int size)
-{
-  char		*str;
-
-  str = malloc(size);
-  if (str == NULL)
-    return(NULL);
-  return (str);
-}
+#include "42sh.h"
 
 int		my_is_sep(char c, char *sep)
 {
