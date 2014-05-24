@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May 13 00:13:56 2014 david tran
-** Last update Sat May 24 19:01:49 2014 david tran
+** Last update Sat May 24 21:16:21 2014 david tran
 */
 
 #include "42sh.h"
@@ -50,11 +50,11 @@ void		dirminus(t_env *list)
   if (!(path = recupvar(list, "PWD")) || !(oldpath = recupvar(list, "OLDPWD"))
       || !(pwd = my_strdup("PWD=")) || !(oldpwd = my_strdup("OLDPWD=")))
     {
-      my_putstr("Can't go home\n");
+      my_putstr("Can't go back\n");
       return ;
     }
-  if (!(pwd = my_realloc(pwd, my_strlen(path) + 5)) ||
-      !(oldpwd = my_realloc(oldpwd, my_strlen(oldpath) + 8)))
+  if (!(pwd = my_realloc(pwd, my_strlen(oldpath) + 5)) ||
+      !(oldpwd = my_realloc(oldpwd, my_strlen(path) + 8)))
     return ;
   if (access(oldpath, F_OK) == -1)
     my_putstr("Can't access the repository\n");
@@ -62,9 +62,9 @@ void		dirminus(t_env *list)
     my_putstr("Can't open the repository\n");
   else
     {
-      if (setinlist_cd(list, my_strcat(pwd, path)))
+      if (setinlist_cd(list, my_strcat(pwd, oldpath)))
 	my_putstr("Can't set PWD\n");
-      if (setinlist_cd(list, my_strcat(oldpwd, oldpath)))
+      if (setinlist_cd(list, my_strcat(oldpwd, path)))
 	my_putstr("Can't set OLDPWD\n");
     }
 }
@@ -102,7 +102,7 @@ int		changedirect(t_env *list, char **dest)
 {
   if (!dest[1])
     goinghome(list);
-  else if (dest[1][0] && dest[1][1] && dest[1][0] == '-' && dest[1][1] == 0)
+  else if (dest[1] && dest[1][0] && dest[1][0] == '-' && !dest[1][1])
     dirminus(list);
   else if (access(dest[1], F_OK) == -1)
     my_putstr("Can't access to repository\n");
