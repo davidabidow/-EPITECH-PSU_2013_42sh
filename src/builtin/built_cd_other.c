@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May 13 13:57:12 2014 david tran
-** Last update Wed May 21 00:01:43 2014 david tran
+** Last update Sat May 24 18:55:07 2014 david tran
 */
 
 #include "42sh.h"
@@ -47,11 +47,12 @@ char	*analizeall(char *dest, char *path, int i)
 	  (!path[j + 2] || path[j + 2] == '/'))
 	{
 	  --i;
-	  while (dest[i] != '/')
+	  while (dest[i] && dest[i] != '/')
 	    --i;
 	  j += 3;
 	}
-      else if (path[j] == '.' && (!path[j + 1] || path[j + 1] == '/'))
+      else if (path[j] && path[j] == '.' &&
+	       (!path[j + 1] || path[j + 1] == '/'))
 	j += 2;
       dest[i++] = path[j++];
     }
