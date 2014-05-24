@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May 21 19:45:51 2014 valentin wallet
-** Last update Sat May 24 01:21:33 2014 david tran
+** Last update Sat May 24 04:29:23 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -43,6 +43,7 @@ int		loop_pipe(t_bin *tmp, char **list)
 	return (EXIT_FAILURE);
       else if (execa.pid == 0)
 	{
+	  setpgid(0, 0);
 	  if (go_son(bin, list, &execa) == -1)
 	    woexit = EXIT_FAILURE;
 	  return (-1);
@@ -51,7 +52,7 @@ int		loop_pipe(t_bin *tmp, char **list)
 	{
 	  if (go_dad(&execa) == EXIT_FAILURE)
 	    return (EXIT_FAILURE);
-	    bin = bin->right;
+	  bin = bin->right;
 	}
     }
   return (EXIT_SUCCESS);
