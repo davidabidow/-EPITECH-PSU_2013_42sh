@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:34:21 2014 david tran
-** Last update Sat May 24 03:15:23 2014 david tran
+** Last update Sat May 24 03:27:10 2014 david tran
 */
 
 #include "42sh.h"
@@ -84,10 +84,11 @@ void			infiniteloop(t_env *list)
 	  max = countpvir(dest, max);
 	  if (!(new = tab_wordtab(dest, min, max)))
 	    return ;
-	  if (tmp = exit_or_nothing(new[0], new[1]) == -1)
+	  if ((tmp = exit_or_nothing(new[0], new[1])) == -1)
 	    return ;
 	  else if (tmp == EXIT_FAILURE)
 	    {
+	      my_putstr("salut\n");
 	      if (parsing_exec(new, list) == -1)
 		return ;
 	    }
