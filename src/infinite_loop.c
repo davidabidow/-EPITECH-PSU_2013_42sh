@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:34:21 2014 david tran
-** Last update Sat May 24 20:22:25 2014 david tran
+** Last update Sat May 24 21:10:17 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -44,15 +44,15 @@ int		countpvir(char **src, int max)
   return (max);
 }
 
-char		**init_buffer(struct winsize *mysizewin, t_history **history, t_termcap *term)
+char		**init_buffer(struct winsize *mysizewin, t_history **history, t_termcap *term, struct termios *t, t_env *list)
 {
   char		*buffer;
   char		**dest;
 
-  if ((buffer = my_read(mysizewin, history, term)) == NULL)
+  if ((set_term_mode(t, list)) == 1)
     return (NULL);
-  printf("\nbuffer = [%s]\n", buffer);
-  printf("%d\n", my_strlen(buffer));
+  if ((buffer = my_read(mysizewin, history, term, t)) == NULL)
+    return (NULL);
   if (!(buffer = transform_chain(buffer)))
     return (NULL);
   if (!(dest = wordtab(buffer, " ")))
@@ -70,18 +70,22 @@ void			infiniteloop(t_env *list)
   t_termcap		term;
   struct winsize        mysizewin;
   t_history		*history;
+  struct termios	t;
+  struct termios	tsave;
 
   history = NULL;
   term.tmp = NULL;
-  if ((set_term_mode()) == 1)
-    return ;
+  tgetent(NULL, "xterm");
+  tcgetattr(0, &tsave);
   my_tgetstr(&term.data);
   history = load_history(history);
   while (42)
     {
+      printf("\ntoto\n");
       initloop(&min, &max);
-      if (!(dest = init_buffer(&mysizewin, &history, &term)))
+      if (!(dest = init_buffer(&mysizewin, &history, &term, &t, list)))
 	return ;
+      tcsetattr(0, TCSANOW, &tsave);
       while (max != my_strstrlen(dest))
 	{
 	  max = countpvir(dest, max);

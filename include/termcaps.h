@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:08:59 2014 valentin wallet
-** Last update Sat May 24 04:06:49 2014 david tran
+** Last update Sat May 24 18:45:06 2014 valentin wallet
 */
 
 #ifndef TERMCAP_H_
@@ -77,7 +77,7 @@ char			*my_suppr(char *, t_cmd *, int *, struct winsize *);
 char			*my_del(char *, t_cmd *, int *, struct winsize *);
 char			*my_strcat_int(char *, int);
 void			my_tgetstr(t_cmd *);
-int			set_term_mode();
+int			set_term_mode(struct termios *, t_env *);
 void			move_left(t_cmd *, int *, struct winsize *);
 void			move_right(t_cmd *, int *, char *, struct winsize *);
 t_history		*load_history(t_history *);
@@ -89,6 +89,6 @@ char			*history_down(t_history **, t_termcap *, struct winsize *);
 char			*history_up(t_history **, t_termcap *, struct winsize *);
 t_history		*go_end_list(t_history *);
 void			free_list(t_history *);
-char			*my_read(struct winsize *, t_history **, t_termcap *);
+char			*my_read(struct winsize *, t_history **, t_termcap *, struct termios *);
 
 #endif /* TERMCAP_H_ */

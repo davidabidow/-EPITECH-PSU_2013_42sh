@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Fri Apr 25 17:04:02 2014 valentin wallet
-** Last update Sat May 24 04:21:49 2014 valentin wallet
+** Last update Sat May 24 20:35:42 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -67,7 +67,7 @@ char			*backslash_n(t_termcap *term, t_history **history)
 }
 
 
-char			*my_read(struct winsize *mysizewin, t_history **history, t_termcap *term)
+char			*my_read(struct winsize *mysizewin, t_history **history, t_termcap *term, struct termios *t)
 {
   int			count;
 
