@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May 19 01:00:50 2014 david tran
-** Last update Fri May 23 14:53:26 2014 david tran
+** Last update Sun May 25 01:13:49 2014 david tran
 */
 
 #include "42sh.h"
@@ -94,7 +94,6 @@ int		parsing_exec(char **src, t_env *list)
     return (EXIT_FAILURE);
   if (finish_parsing(src, bin, &pars) == -1)
     return (EXIT_FAILURE);
-  bin_aff(bin);
   if (parsing_send(bin, list) == -1)
     return (-1);
   return (EXIT_SUCCESS);

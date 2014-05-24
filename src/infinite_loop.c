@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:34:21 2014 david tran
-** Last update Sat May 24 21:10:17 2014 valentin wallet
+** Last update Sun May 25 01:13:12 2014 david tran
 */
 
 #include "42sh.h"
@@ -81,7 +81,6 @@ void			infiniteloop(t_env *list)
   history = load_history(history);
   while (42)
     {
-      printf("\ntoto\n");
       initloop(&min, &max);
       if (!(dest = init_buffer(&mysizewin, &history, &term, &t, list)))
 	return ;

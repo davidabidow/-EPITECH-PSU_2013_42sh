@@ -1,0 +1,11 @@
+auteur
+echo/
+edition_de_ligne/
+globbing/
+include/
+lib/
+Makefile
+mysh*
+src/
+test/
+toto

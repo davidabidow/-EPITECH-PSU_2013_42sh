@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May 15 01:01:29 2014 david tran
-** Last update Fri May 23 12:57:42 2014 david tran
+** Last update Sat May 24 23:07:26 2014 david tran
 */
 
 #include "42sh.h"
@@ -18,6 +18,7 @@ int		add_redir_final(t_bin *bin, int fd)
   tmp = bin->head;
   while (tmp->left)
     tmp = tmp->left;
+  tmp->head = NULL;
   if (my_put_redir(tmp, fd) == -1)
     return (-1);
   return (EXIT_SUCCESS);
@@ -32,6 +33,7 @@ int		add_redir_princ(t_bin *bin, int fd, char *str)
     tmp = tmp->left;
   while (tmp->right)
     tmp = tmp->right;
+  tmp->head = NULL;
   if (my_put_princ(tmp, fd, str) == -1)
     return (-1);
   return (EXIT_SUCCESS);
