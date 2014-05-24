@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:08:59 2014 valentin wallet
-** Last update Sat May 24 03:16:11 2014 valentin wallet
+** Last update Sat May 24 03:32:35 2014 valentin wallet
 */
 
 #ifndef TERMCAP_H_
@@ -92,6 +92,6 @@ char			*history_down(t_history **, t_termcap *, struct winsize *);
 char			*history_up(t_history **, t_termcap *, struct winsize *);
 t_history		*go_end_list(t_history *);
 void			free_list(t_history *);
-char			*my_read(struct winsize *, t_history *, t_termcap *);
+char			*my_read(struct winsize *, t_history **, t_termcap *);
 
 #endif /* TERMCAP_H_ */

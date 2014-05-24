@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:34:21 2014 david tran
-** Last update Sat May 24 02:43:56 2014 david tran
+** Last update Sat May 24 03:35:19 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -44,7 +44,7 @@ int		countpvir(char **src, int max)
   return (max);
 }
 
-char		**init_buffer(struct winsize *mysizewin, t_history *history, t_termcap *term)
+char		**init_buffer(struct winsize *mysizewin, t_history **history, t_termcap *term)
 {
   char		*buffer;
   char		**dest;
@@ -77,7 +77,7 @@ void			infiniteloop(t_env *list)
   while (42)
     {
       initloop(&min, &max);
-      if (!(dest = init_buffer(&mysizewin, history, &term)))
+      if (!(dest = init_buffer(&mysizewin, &history, &term)))
 	return ;
       while (max != my_strstrlen(dest))
 	{
