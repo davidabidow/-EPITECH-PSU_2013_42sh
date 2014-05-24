@@ -5,10 +5,11 @@
 ** Login   <lacour_a@epitech.net>
 **
 ** Started on  Thu Dec  5 13:47:29 2013 arthur lacour
-** Last update Sat May 24 00:17:58 2014 valentin wallet
+** Last update Sat May 24 02:30:16 2014 david tran
 */
 
 #include "42sh.h"
+#include "my.h"
 
 int		my_is_sep(char c, char *sep)
 {
@@ -71,7 +72,7 @@ char		**my_str_to_wordtab(char *str, char *sep)
   j = 0;
   l = 0;
   word = nb_words(str, sep);
-  if ((my_tab = my_xmalloc(sizeof(char *) * (word + 1))) == NULL)
+  if ((my_tab = malloc(sizeof(char *) * (word + 1))) == NULL)
     return (NULL);
   memset(my_tab, '\0', word * sizeof(char *));
   while (str[i] && word-- > 0)

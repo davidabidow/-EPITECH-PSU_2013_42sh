@@ -5,10 +5,11 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:18:28 2014 valentin wallet
-** Last update Fri May 23 23:49:49 2014 valentin wallet
+** Last update Sat May 24 03:00:30 2014 david tran
 */
 
 #include "42sh.h"
+#include "my.h"
 
 char			*recup_name(char *str)
 {

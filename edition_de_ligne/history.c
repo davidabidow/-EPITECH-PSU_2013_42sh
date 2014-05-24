@@ -5,10 +5,11 @@
 ** Login   <lacour_a@epitech.net>
 **
 ** Started on  Wed May  7 11:55:17 2014 arthur lacour
-** Last update Fri May 23 23:49:28 2014 valentin wallet
+** Last update Sat May 24 02:59:37 2014 david tran
 */
 
 #include "42sh.h"
+#include "my.h"
 
 char		**read_history(int fd)
 {

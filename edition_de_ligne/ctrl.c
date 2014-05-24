@@ -5,10 +5,11 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Mon May 19 15:07:30 2014 valentin wallet
-** Last update Fri May 23 23:49:21 2014 valentin wallet
+** Last update Sat May 24 02:59:28 2014 david tran
 */
 
 #include "42sh.h"
+#include "my.h"
 
 char			*ctrl_y(char *dest, char *src, int *x, t_cmd *data)
 {

@@ -5,10 +5,11 @@
 ** Login   <wallet_v@epitech.net>
 **
 ** Started on  Mon May 19 17:54:09 2014 valentin wallet
-** Last update Fri May 23 23:49:06 2014 valentin wallet
+** Last update Sat May 24 02:58:51 2014 david tran
 */
 
 #include "42sh.h"
+#include "my.h"
 
 void		clean_buffer(t_termcap *term, struct winsize *mysizewin)
 {

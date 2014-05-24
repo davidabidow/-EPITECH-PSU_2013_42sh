@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May 22 22:21:26 2014 david tran
-** Last update Thu May 22 22:22:57 2014 david tran
+** Last update Sat May 24 02:36:57 2014 david tran
 */
 
 #include "my.h"
@@ -19,5 +19,6 @@ void	putwordtab(char **src)
     {
       my_putstr(src[i]);
       i++;
+      my_putchar('\n');
     }
 }

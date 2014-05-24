@@ -5,10 +5,11 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Fri Apr 25 17:04:02 2014 valentin wallet
-** Last update Sat May 24 02:08:54 2014 valentin wallet
+** Last update Sat May 24 02:58:22 2014 david tran
 */
 
 #include "42sh.h"
+#include "my.h"
 
 char			*write_normally(char *str, int buff, int *x, t_cmd *data)
 {

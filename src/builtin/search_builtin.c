@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May 12 02:14:50 2014 david tran
-** Last update Thu May 22 15:53:59 2014 david tran
+** Last update Sat May 24 02:42:05 2014 david tran
 */
 
 #include "42sh.h"
@@ -40,6 +40,7 @@ int	search_builtin(char *buffer, t_env *list, char *dest, t_buin *built)
 
 int	exit_or_nothing(char *buffer, char *second)
 {
+  my_putstr(buffer);
   if (buffer && my_strcmp(buffer, "\0") == 0)
     return (EXIT_SUCCESS);
   if (buffer && my_strcmp(buffer, "exit") == 0)

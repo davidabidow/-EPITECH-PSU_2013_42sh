@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May  5 18:48:27 2014 david tran
-** Last update Fri May 23 18:05:54 2014 david tran
+** Last update Sat May 24 02:47:30 2014 david tran
 */
 
 #include "42sh.h"
@@ -16,12 +16,12 @@ int		main(int ac __attribute__((unused)), char **av
 {
   t_env		*list;
 
-  list = NULL;
   woexit = EXIT_SUCCESS;
   if ((list = malloc(sizeof(*list))) == NULL)
     return (EXIT_FAILURE);
   list->head = NULL;
   list->end = NULL;
+  list->head = NULL;
   signal(SIGINT, dontquit);
   if (init_list(list, env) == EXIT_FAILURE)
     return (EXIT_FAILURE);

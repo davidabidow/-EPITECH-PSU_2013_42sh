@@ -5,11 +5,7 @@
 ## Login   <tran_0@epitech.net>
 ## 
 ## Started on  Tue May  6 00:42:35 2014 david tran
-<<<<<<< HEAD
-## Last update Fri May 23 23:27:45 2014 david tran
-=======
-## Last update Sat May 24 00:22:12 2014 valentin wallet
->>>>>>> 1388335b4d1081ac0087744e60d4d95a131895ac
+## Last update Sat May 24 02:22:42 2014 david tran
 ##
 
 RM	=	rm -f

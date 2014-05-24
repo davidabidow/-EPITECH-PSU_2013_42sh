@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:34:21 2014 david tran
-** Last update Sat May 24 02:10:46 2014 david tran
+** Last update Sat May 24 02:43:56 2014 david tran
 */
 
 #include "42sh.h"
@@ -51,7 +51,6 @@ char		**init_buffer(struct winsize *mysizewin, t_history *history, t_termcap *te
 
   if ((buffer = my_read(mysizewin, history, term)) == NULL)
     return (NULL);
-  printf("buffer = %s\n", buffer);
   if (!(buffer = transform_chain(buffer)))
     return (NULL);
   if (!(dest = wordtab(buffer, " ")))
@@ -85,7 +84,7 @@ void			infiniteloop(t_env *list)
 	  max = countpvir(dest, max);
 	  if (!(new = tab_wordtab(dest, min, max)))
 	    return ;
-	  if (new[0] && new[1] && (tmp = exit_or_nothing(new[0], new[1])) == -1)
+	  if (tmp = exit_or_nothing(new[0], new[1]) == -1)
 	    return ;
 	  else if (tmp == EXIT_FAILURE)
 	    {
