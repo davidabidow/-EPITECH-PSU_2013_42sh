@@ -5,13 +5,13 @@
 ** Login   <lacour_a@epitech.net>
 **
 ** Started on  Wed May 21 11:56:05 2014 arthur lacour
-** Last update Fri May 23 17:03:21 2014 arthur lacour
+** Last update Sat May 24 05:48:43 2014 valentin wallet
 */
 
-#include <stdlib.h>
-#include <string.h>
+#include "42sh.h"
+#include "my.h"
 
-int	put_env_var(char *str, int *i)
+int	put_env_var(char *str, int *i, t_env *list)
 {
   int	j;
   int	save;
@@ -31,7 +31,7 @@ int	put_env_var(char *str, int *i)
       j++;
       (*i)++;
     }
-  value = getenv(env_var);
+  value = recupvar(list, env_var);
   if (value != NULL)
     my_putstr(value);
   return (0);
@@ -57,7 +57,7 @@ int	check_opt(char **tab, char id)
   return (flag);
 }
 
-int	one_str_normal(char *str, char **env)
+int	one_str_normal(char *str, t_env *list)
 {
   int	i;
 
@@ -65,7 +65,7 @@ int	one_str_normal(char *str, char **env)
   while (str[i])
     {
       if (str[i] == '$')
-	if (put_env_var(str, &i) == -1)
+	if (put_env_var(str, &i, list) == -1)
 	  return (-1);
       my_putchar(str[i]);
       ++i;
@@ -73,21 +73,21 @@ int	one_str_normal(char *str, char **env)
   return (0);
 }
 
-int	put_normal(char **tab, char **env)
+int	put_normal(char **tab, t_env *list)
 {
   int	i;
 
   i = 0;
   while (tab[i])
     {
-      one_str_normal(tab[i], env);
+      one_str_normal(tab[i], list);
       my_putchar(' ');
       ++i;
     }
   return (0);
 }
 
-int	my_echo(char **env, char **tab)
+int	my_echo(t_env *list, char **tab)
 {
   int	ret;
   int	esc;
@@ -97,16 +97,16 @@ int	my_echo(char **env, char **tab)
   if (esc == 1)
     {
       if (ret == 1)
-	esc_char(tab + 2, env);
+	esc_char(tab + 2, list);
       else
-	esc_char(tab + 1, env);
+	esc_char(tab + 1, list);
     }
   else
     {
       if (ret == 1)
-	put_normal(tab + 1, env);
+	put_normal(tab + 1, list);
       else
-	put_normal(tab, env);
+	put_normal(tab, list);
     }
   if (ret == 0)
     write(1, "\n", 1);

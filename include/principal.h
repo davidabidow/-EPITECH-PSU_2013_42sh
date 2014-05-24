@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 03:28:08 2014 david tran
-** Last update Fri May 23 23:13:50 2014 david tran
+** Last update Sat May 24 05:51:07 2014 valentin wallet
 */
 
 #ifndef PRINCIPAL_H__
@@ -48,6 +48,10 @@ void			suppother(t_env *, t_env *, t_env *);
 void			goinghome(t_env *);
 int			countpointpoint(char *);
 char			*createnewpwd(int, char *, char *);
+int			put_env_var(char *, int *, t_env *);
+void			esc_char(char **, t_env *);
+
+
 /*
 ** Env Funcs
 */

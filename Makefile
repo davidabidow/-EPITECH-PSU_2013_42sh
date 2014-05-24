@@ -5,7 +5,7 @@
 ## Login   <tran_0@epitech.net>
 ## 
 ## Started on  Tue May  6 00:42:35 2014 david tran
-## Last update Sat May 24 02:22:42 2014 david tran
+## Last update Sat May 24 05:45:12 2014 valentin wallet
 ##
 
 RM	=	rm -f
@@ -23,6 +23,8 @@ PARS	=	parsing/
 TREE	=	tree/
 
 EDITION	=	edition_de_ligne/
+
+ECHO	=	echo/
 
 SRCS	=	$(SOUR)main.c				\
 		$(SOUR)signal.c				\
@@ -74,7 +76,9 @@ SRCS	=	$(SOUR)main.c				\
 		$(EDITION)list.c 			\
 		$(EDITION)my_str_to_wordtab.c 		\
 		$(EDITION)utility.c 			\
-		$(EDITION)history_deplacement.c
+		$(EDITION)history_deplacement.c		\
+		$(ECHO)echo.c				\
+		$(ECHO)echo_esc.c
 
 OBJ	=	$(SRCS:.c=.o)
 
