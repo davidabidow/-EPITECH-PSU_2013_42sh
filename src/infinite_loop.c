@@ -5,11 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:34:21 2014 david tran
-<<<<<<< HEAD
-** Last update Sat May 24 03:27:10 2014 david tran
-=======
-** Last update Sat May 24 03:35:19 2014 valentin wallet
->>>>>>> 5971aa7d03e692028bb4bc1d9edbc3ab6f8f98db
+** Last update Sat May 24 04:15:27 2014 david tran
 */
 
 #include "42sh.h"
@@ -92,7 +88,7 @@ void			infiniteloop(t_env *list)
 	    return ;
 	  else if (tmp == EXIT_FAILURE)
 	    {
-	      my_putstr("salut\n");
+	      my_putstr(new[0]);
 	      if (parsing_exec(new, list) == -1)
 		return ;
 	    }
