@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May  5 18:48:27 2014 david tran
-** Last update Wed May 21 15:21:14 2014 david tran
+** Last update Fri May 23 18:05:54 2014 david tran
 */
 
 #include "42sh.h"
@@ -17,6 +17,7 @@ int		main(int ac __attribute__((unused)), char **av
   t_env		*list;
 
   list = NULL;
+  woexit = EXIT_SUCCESS;
   if ((list = malloc(sizeof(*list))) == NULL)
     return (EXIT_FAILURE);
   list->head = NULL;
@@ -26,5 +27,5 @@ int		main(int ac __attribute__((unused)), char **av
     return (EXIT_FAILURE);
   infiniteloop(list);
   free_env_list(list);
-  return (EXIT_SUCCESS);
+  return (woexit);
 }

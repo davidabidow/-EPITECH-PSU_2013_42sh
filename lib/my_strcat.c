@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 15:20:38 2014 david tran
-** Last update Tue May 20 23:49:17 2014 david tran
+** Last update Fri May 23 13:55:13 2014 david tran
 */
 
 #include "my.h"
@@ -41,6 +41,7 @@ char	*my_strncat(char *dest, char *src, int len)
   j = 0;
   while (src[j] && j < len)
     dest[i++] = src[j++];
+  dest[i] = 0;
   return (dest);
 }
 
@@ -53,5 +54,6 @@ char	*my_strcat(char *dest, char *src)
   j = 0;
   while (src[j])
     dest[i++] = src[j++];
+  dest[i] = 0;
   return (dest);
 }

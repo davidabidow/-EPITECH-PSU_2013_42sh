@@ -5,39 +5,54 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May 21 19:45:51 2014 valentin wallet
-** Last update Wed May 21 22:16:47 2014 valentin wallet
+** Last update Sat May 24 01:21:33 2014 david tran
 */
 
 #include "42sh.h"
 #include "my.h"
 
-int		loop_pipe(t_bin *bin)
+int		go_son(t_bin *bin, char **list, t_exec *execa)
 {
-  int		status;
-  int		pipefd[2];
-  pid_t		pid;
-  int		save_pipeout;
+  dup2(execa->save_pipeout, 0);
+  if (bin->right != NULL)
+    dup2(execa->pipefd[1], 1);
+  close(execa->pipefd[0]);
+  execve(bin->princ, bin->command, list);
+  return (EXIT_SUCCESS);
+}
 
-  save_pipeout = 0;
-  while (bin->right != NULL)
+int		go_dad(t_exec *execa)
+{
+  wait(&execa->status);
+  close(execa->pipefd[1]);
+  execa->save_pipeout = execa->pipefd[0];
+  return (WEXITSTATUS(execa->status));
+}
+
+int		loop_pipe(t_bin *tmp, char **list)
+{
+  t_exec	execa;
+  t_bin		*bin;
+
+  bin = tmp;
+  execa.save_pipeout = 0;
+  while (bin != NULL)
     {
-      pipe(pipefd);
-      if ((pid = fork()) == -1)
+      pipe(execa.pipefd);
+      if ((execa.pid = fork()) == -1)
 	return (EXIT_FAILURE);
-      else if (pid == 0)
+      else if (execa.pid == 0)
 	{
-	  dup2(save_pipeout, 0);
-	  if (bin->right != NULL)
-	    dup2(pipefd[1], 1);
-	  close(pipefd[0]);
-	  // execve
+	  if (go_son(bin, list, &execa) == -1)
+	    woexit = EXIT_FAILURE;
+	  return (-1);
 	}
       else
 	{
-	  wait(&status);
-	  close(pipefd[1]);
-	  save_pipeout = pipefd[0];
-	  bin = bin->right;
+	  if (go_dad(&execa) == EXIT_FAILURE)
+	    return (EXIT_FAILURE);
+	    bin = bin->right;
 	}
     }
+  return (EXIT_SUCCESS);
 }

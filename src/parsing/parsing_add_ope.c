@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May 22 02:42:35 2014 david tran
-** Last update Fri May 23 02:17:46 2014 david tran
+** Last update Fri May 23 12:51:44 2014 david tran
 */
 
 #include "42sh.h"
@@ -15,7 +15,7 @@ int		add_ope(char **src, t_bin *bin, t_pars *pars)
 {
   int		tmp;
 
-  if (my_strcmp(src[pars->i], "|") == 0)
+  if (src[pars->i] && my_strcmp(src[pars->i], "|") == 0)
     {
       if (create_nodd_pipe(bin, NULL, NULL) == -1)
 	return (-1);

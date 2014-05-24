@@ -5,7 +5,7 @@
 ## Login   <tran_0@epitech.net>
 ## 
 ## Started on  Tue May  6 00:42:35 2014 david tran
-## Last update Thu May 22 23:33:21 2014 david tran
+## Last update Fri May 23 23:27:45 2014 david tran
 ##
 
 RM	=	rm -f
@@ -28,8 +28,10 @@ SRCS	=	$(SOUR)main.c				\
 		$(SOUR)infinite_loop.c			\
 		$(SOUR)read_buffer.c			\
 		$(SOUR)env_funcs.c			\
+		$(SOUR)env_transform.c			\
 		$(SOUR)operation_init.c			\
 		$(SOUR)free_env.c			\
+		$(SOUR)infinite_pipe.c			\
 		$(SOUR)$(BUILT)built_cd.c		\
 		$(SOUR)$(BUILT)built_cd_other.c		\
 		$(SOUR)$(BUILT)built_env.c		\
@@ -48,6 +50,7 @@ SRCS	=	$(SOUR)main.c				\
 		$(SOUR)$(PARS)parsing_init.c		\
 		$(SOUR)$(PARS)parsing_oper.c		\
 		$(SOUR)$(PARS)parsing_redir.c		\
+		$(SOUR)$(PARS)parsing_send.c		\
 		$(SOUR)$(PARS)parsing_add_ope.c		\
 		$(SOUR)$(PARS)parsing_add_redir.c	\
 		$(SOUR)$(PARS)parsing_add_command.c	\

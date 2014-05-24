@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Wed May 14 21:52:57 2014 david tran
-** Last update Thu May 22 23:33:02 2014 david tran
+** Last update Fri May 23 22:10:58 2014 david tran
 */
 
 #ifndef BINARY_H__
@@ -38,6 +38,14 @@ typedef struct		s_bin
   struct s_bin		*left;
   struct s_bin		*right;
 }			t_bin;
+
+typedef struct		s_exec
+{
+  int			save_pipeout;
+  pid_t			pid;
+  int			pipefd[2];
+  int			status;
+}			t_exec;
 
 /*
 ** Tree Nodes

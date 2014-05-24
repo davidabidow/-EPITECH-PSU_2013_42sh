@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May 19 01:00:50 2014 david tran
-** Last update Thu May 22 23:33:35 2014 david tran
+** Last update Fri May 23 14:53:26 2014 david tran
 */
 
 #include "42sh.h"
@@ -61,10 +61,11 @@ int		check_first_pars(char **src, t_bin *bin, t_pars *pars)
 {
   int		tmp;
 
-  if ((tmp = check_wone(src[pars->i], pars->path)) == -1)
+  if (!src[pars->i] || (tmp = check_wone(src[pars->i], pars->path)) == -1)
     {
       my_puterr("Command not Found: ");
-      my_puterr(src[pars->i]);
+      if (src[pars->i])
+	my_puterr(src[pars->i]);
       my_puterr("\n");
       while (src[pars->i] && my_strcmp(src[pars->i], "||") != 0)
 	pars->i++;
@@ -85,6 +86,8 @@ int		parsing_exec(char **src, t_env *list)
   if (!(bin = malloc(sizeof(t_bin))))
     return (-1);
   bin->head = NULL;
+  bin->redo = NULL;
+  bin->pre = NULL;
   if (!(pars.path = search_path(list)))
     return (EXIT_FAILURE);
   if (check_first_pars(src, bin, &pars) == -1)
@@ -92,5 +95,7 @@ int		parsing_exec(char **src, t_env *list)
   if (finish_parsing(src, bin, &pars) == -1)
     return (EXIT_FAILURE);
   bin_aff(bin);
+  if (parsing_send(bin, list) == -1)
+    return (-1);
   return (EXIT_SUCCESS);
 }

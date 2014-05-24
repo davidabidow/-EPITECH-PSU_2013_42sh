@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 03:28:08 2014 david tran
-** Last update Wed May 21 15:21:28 2014 david tran
+** Last update Fri May 23 23:13:50 2014 david tran
 */
 
 #ifndef PRINCIPAL_H__
@@ -20,6 +20,8 @@ typedef struct		s_env
   struct s_env		*head;
   struct s_env		*end;
 }			t_env;
+
+char			woexit;
 
 /*
 ** Signal function
@@ -55,6 +57,8 @@ int			my_countchain(t_env *);
 char			*recupvar(t_env *, char *);
 char			*cutbuffer(char *);
 void			free_env_list(t_env *);
+char			**transform_list(t_env *);
+int			count_env(t_env *);
 /*
 ** Redir Funcs
 */

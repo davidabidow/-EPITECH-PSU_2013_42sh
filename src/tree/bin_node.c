@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May 15 01:01:29 2014 david tran
-** Last update Thu May 22 18:43:31 2014 david tran
+** Last update Fri May 23 12:57:42 2014 david tran
 */
 
 #include "42sh.h"
@@ -42,11 +42,19 @@ int		update_op(t_bin *bin, char *op)
   t_bin		*tmp;
 
   tmp = bin->head;
-  while (tmp->left)
+  while (tmp && tmp->left)
     tmp = tmp->left;
-  if (!(tmp->op = my_strdup(op)))
+  if (tmp && !(tmp->op = my_strdup(op)))
     return (-1);
   return (EXIT_SUCCESS);
+}
+
+void		init_new_bin(t_bin *new)
+{
+  new->op = NULL;
+  new->left = NULL;
+  new->right = NULL;
+  new->pre->head = NULL;
 }
 
 int		create_nodd_pipe(t_bin *bin, char **command, char *princ)
@@ -66,9 +74,7 @@ int		create_nodd_pipe(t_bin *bin, char **command, char *princ)
     }
   if (!(new->pre = malloc(sizeof(t_redirec))))
     return (-1);
-  new->op = NULL;
-  new->left = NULL;
-  new->right = NULL;
+  init_new_bin(new);
   tmp = bin->head;
   while (tmp->left)
     tmp = tmp->left;
