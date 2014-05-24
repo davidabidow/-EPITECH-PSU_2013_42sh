@@ -5,17 +5,17 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Fri May 23 14:21:33 2014 david tran
-** Last update Sat May 24 01:51:31 2014 david tran
+** Last update Sat May 24 16:27:17 2014 david tran
 */
 
 #include "42sh.h"
 #include "my.h"
 
-int		parsing_send_find(t_bin **tmp, char **list)
+int		parsing_send_find(t_bin **tmp, char **list, t_env *env)
 {
   int		ret;
 
-  if ((ret = loop_pipe(*tmp, list)) == -1)
+  if ((ret = loop_pipe(*tmp, list, env)) == -1)
     return (-1);
   if ((ret == EXIT_FAILURE && (*tmp)->op && my_strcmp((*tmp)->op, "&&") == 0))
     {
@@ -48,7 +48,7 @@ int		parsing_send(t_bin *bin, t_env *list)
   if (!tmp)
     return (EXIT_FAILURE);
   while (tmp)
-    if (parsing_send_find(&tmp, env) == -1)
+    if (parsing_send_find(&tmp, env, list) == -1)
       return (-1);
   free_wordtab(env);
   return (EXIT_SUCCESS);

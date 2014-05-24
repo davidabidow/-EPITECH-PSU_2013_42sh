@@ -5,7 +5,7 @@
 ** Login   <lacour_a@epitech.net>
 **
 ** Started on  Fri May 23 17:00:53 2014 arthur lacour
-** Last update Sat May 24 05:47:50 2014 valentin wallet
+** Last update Sat May 24 07:32:52 2014 david tran
 */
 
 #include "42sh.h"
@@ -36,7 +36,7 @@ int	put_esc_char(char *str, int *i)
   return (0);
 }
 
-int	put_one_esc(char *str, t_env *list)
+int	put_one_esc(char *str, t_env **list)
 {
   int	i;
 
@@ -55,7 +55,7 @@ int	put_one_esc(char *str, t_env *list)
   return (0);
 }
 
-void	esc_char(char **tab, t_env *list)
+void	esc_char(char **tab, t_env **list)
 {
   int	i;
 

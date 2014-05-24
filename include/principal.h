@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 03:28:08 2014 david tran
-** Last update Sat May 24 06:08:11 2014 david tran
+** Last update Sat May 24 07:31:17 2014 david tran
 */
 
 #ifndef PRINCIPAL_H__
@@ -44,21 +44,23 @@ void			infiniteloop(t_env *);
 /*
 ** Builtin
 */
-int			my_affchain(t_env *, char *);
-int			setinlist(t_env *, char *);
-int			changedirect(t_env *, char *);
-int			supplist(t_env *, char *);
-int			echo_func(t_env *, char *);
+int			my_affchain(t_env **, char **);
+int			setinlist(t_env **, char **);
+int			changedirect(t_env **, char **);
+int			supplist(t_env **, char **);
 int			exit_or_nothing(char *, char *);
-int			suppend(t_env *, char *, t_env *, t_env *);
-void			suppother(t_env *, t_env *, t_env *);
-void			goinghome(t_env *);
+int			suppend(t_env **, char *, t_env *, t_env *);
+void			suppother(t_env **, t_env *, t_env *);
+void			goinghome(t_env **);
 int			countpointpoint(char *);
 char			*createnewpwd(int, char *, char *);
-int			put_env_var(char *, int *, t_env *);
-void			esc_char(char **, t_env *);
-
-
+int			put_env_var(char *, int *, t_env **);
+void			esc_char(char **, t_env **);
+int			my_echo(t_env **, char **);
+int			put_esc_char(char *, int *);
+int			put_one_esc(char *, t_env **);
+void			esc_char(char **, t_env **);
+int			setinlist_cd(t_env **, char *);
 /*
 ** Env Funcs
 */
@@ -81,7 +83,7 @@ int			simple_normal(char *);
 typedef struct		s_buin
 {
   char			*name;
-  int			(*func)(t_env *, char *);
+  int			(*func)(t_env **, char **);
 }			t_buin;
 
 typedef struct		s_ope

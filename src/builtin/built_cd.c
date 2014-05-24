@@ -5,19 +5,19 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May 13 00:13:56 2014 david tran
-** Last update Tue May 13 22:54:25 2014 david tran
+** Last update Sat May 24 07:27:26 2014 david tran
 */
 
 #include "42sh.h"
 #include "my.h"
 
-void		changedirenv(t_env *list, char *dest)
+void		changedirenv(t_env **list, char *dest)
 {
   char		*path;
   int		j;
   char		*str;
 
-  if (!(path = recupvar(list, "PWD")))
+  if (!(path = recupvar(*list, "PWD")))
     {
       my_putstr("Can't set PWD");
       return ;
@@ -28,19 +28,19 @@ void		changedirenv(t_env *list, char *dest)
       my_putstr("Can't change PWD | OLDPWD in env\n");
       return ;
     }
-  if (!setinlist(list, my_strcat("PWD=", str)))
+  if (!setinlist_cd(list, my_strcat("PWD=", str)))
     my_putstr("Can't set PWD\n");
-  if (!setinlist(list, my_strcat("OLDPWD=", path)))
+  if (!setinlist_cd(list, my_strcat("OLDPWD=", path)))
     my_putstr("Can't set OLDPWD\n");
 }
 
-void		dirminus(t_env *list)
+void		dirminus(t_env **list)
 {
   char		*path;
   char		*oldpath;
 
-  path = recupvar(list, "PWD");
-  oldpath = recupvar(list, "OLDPWD");
+  path = recupvar(*list, "PWD");
+  oldpath = recupvar(*list, "OLDPWD");
   if (!oldpath || !path)
     {
       my_putstr("Can't go back");
@@ -52,20 +52,20 @@ void		dirminus(t_env *list)
     my_putstr("Can't open the repository\n");
   else
     {
-      if (!setinlist(list, my_strcat("PWD=", path)))
+      if (!setinlist_cd(list, my_strcat("PWD=", path)))
 	my_putstr("Can't set PWD\n");
-      if (!setinlist(list, my_strcat("OLDPWD=", oldpath)))
+      if (!setinlist_cd(list, my_strcat("OLDPWD=", oldpath)))
 	my_putstr("Can't set OLDPWD\n");
     }
 }
 
-void		goinghome(t_env *list)
+void		goinghome(t_env **list)
 {
   char		*home;
   char		*path;
 
-  home = recupvar(list, "HOME");
-  path = recupvar(list, "PWD");
+  home = recupvar(*list, "HOME");
+  path = recupvar(*list, "PWD");
   if (!home || !path)
     {
       my_putstr("Can't go home\n");
@@ -77,24 +77,24 @@ void		goinghome(t_env *list)
     my_putstr("Can't go to home\n");
   else
     {
-      if (!setinlist(list, my_strcat("PWD=", home)))
+      if (!setinlist_cd(list, my_strcat("PWD=", home)))
 	my_putstr("Can't set PWD\n");
-      if (!setinlist(list, my_strcat("OLDPWD=", path)))
+      if (!setinlist_cd(list, my_strcat("OLDPWD=", path)))
 	my_putstr("Can't set OLDPWD\n");
     }
 }
 
-int		changedirect(t_env *list, char *dest)
+int		changedirect(t_env **list, char **dest)
 {
-  if (!dest)
+  if (!dest[1])
     goinghome(list);
-  else if (dest[0] == ' ' && dest[1] == 0)
+  else if (dest[1][0] && dest[1][1] &&dest[1][0] == ' ' && dest[1][1] == 0)
     dirminus(list);
-  else if (access(dest, F_OK) == -1)
+  else if (access(dest[1], F_OK) == -1)
     my_putstr("Can't access to repository\n");
-  else if (chdir(dest) == -1)
+  else if (chdir(dest[1]) == -1)
     my_putstr("Can't open the repository\n");
   else
-    changedirenv(list, dest);
+    changedirenv(list, dest[1]);
   return (EXIT_SUCCESS);
 }

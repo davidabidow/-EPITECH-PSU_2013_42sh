@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May 12 16:47:07 2014 david tran
-** Last update Wed May 21 12:06:31 2014 david tran
+** Last update Sat May 24 16:35:39 2014 david tran
 */
 
 #include "42sh.h"
@@ -19,7 +19,7 @@ int	my_strenv(char *nb1, char *nb2)
   while (nb1 && nb2 && nb1[i] == nb2[i])
     {
       i++;
-      if (nb2[i] == 0 && nb2[i] == '=')
+      if (nb2[i] == 0 && nb1[i] == '=')
 	return (EXIT_SUCCESS);
     }
   return (EXIT_FAILURE);

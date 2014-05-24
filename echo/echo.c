@@ -5,13 +5,13 @@
 ** Login   <lacour_a@epitech.net>
 **
 ** Started on  Wed May 21 11:56:05 2014 arthur lacour
-** Last update Sat May 24 05:48:43 2014 valentin wallet
+** Last update Sat May 24 07:34:02 2014 david tran
 */
 
 #include "42sh.h"
 #include "my.h"
 
-int	put_env_var(char *str, int *i, t_env *list)
+int	put_env_var(char *str, int *i, t_env **list)
 {
   int	j;
   int	save;
@@ -31,7 +31,7 @@ int	put_env_var(char *str, int *i, t_env *list)
       j++;
       (*i)++;
     }
-  value = recupvar(list, env_var);
+  value = recupvar(*list, env_var);
   if (value != NULL)
     my_putstr(value);
   return (0);
@@ -57,7 +57,7 @@ int	check_opt(char **tab, char id)
   return (flag);
 }
 
-int	one_str_normal(char *str, t_env *list)
+int	one_str_normal(char *str, t_env **list)
 {
   int	i;
 
@@ -73,7 +73,7 @@ int	one_str_normal(char *str, t_env *list)
   return (0);
 }
 
-int	put_normal(char **tab, t_env *list)
+int	put_normal(char **tab, t_env **list)
 {
   int	i;
 
@@ -87,7 +87,7 @@ int	put_normal(char **tab, t_env *list)
   return (0);
 }
 
-int	my_echo(t_env *list, char **tab)
+int	my_echo(t_env **list, char **tab)
 {
   int	ret;
   int	esc;
@@ -110,4 +110,5 @@ int	my_echo(t_env *list, char **tab)
     }
   if (ret == 0)
     write(1, "\n", 1);
+  return (EXIT_SUCCESS);
 }
