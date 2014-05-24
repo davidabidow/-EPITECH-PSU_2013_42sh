@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:16:48 2014 valentin wallet
-** Last update Sat May 24 02:57:14 2014 david tran
+** Last update Sat May 24 03:20:42 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -41,7 +41,7 @@ char			*include_in_line(char *dest, int src, int *x, t_cmd *data)
   debut = malloc(sizeof(char) * (my_strlen(dest) + 2));
   if (end == NULL || debut == NULL)
     return (NULL);
-  my_strcpy(&dest[(*x - PROMPT_SIZE)], end);
+  strcpy(end, &dest[(*x - PROMPT_SIZE)]);
   my_putchar(src);
   tputs(data->save, 1, my_putchar2);
   my_putstr(end);

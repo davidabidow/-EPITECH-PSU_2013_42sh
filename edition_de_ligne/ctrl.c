@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Mon May 19 15:07:30 2014 valentin wallet
-** Last update Sat May 24 02:59:28 2014 david tran
+** Last update Sat May 24 03:20:21 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -22,7 +22,7 @@ char			*ctrl_y(char *dest, char *src, int *x, t_cmd *data)
   if ((debut = malloc(sizeof(char) * (my_strlen(dest) + my_strlen(src) + 2))) == NULL)
     return (NULL);
   memset(debut, '\0', (my_strlen(dest) + my_strlen(src) + 2));
-  my_strcpy(&dest[(*x) - PROMPT_SIZE], end);
+  strcpy(end, &dest[(*x) - PROMPT_SIZE]);
   my_putstr(src);
   tputs(data->save, 1, my_putchar2);
   my_putstr(end);

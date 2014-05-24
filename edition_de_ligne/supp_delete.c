@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Mon May 19 15:09:38 2014 valentin wallet
-** Last update Sat May 24 02:57:52 2014 david tran
+** Last update Sat May 24 03:19:36 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -21,7 +21,7 @@ char			*my_del(char *str, t_cmd *data, int *x, struct winsize *mysizewin)
     return (str);
   if ((newstr = malloc(sizeof(char) * my_strlen(str))) == NULL)
     return (NULL);
-  my_strcpy(&str[(*x) - PROMPT_SIZE], newstr);
+  strcpy(newstr, &str[(*x) - PROMPT_SIZE]);
   if ((tmp = malloc(sizeof(char) * (my_strlen(str)))) == NULL)
     return (NULL);
   tmp = memset(tmp, '\0', my_strlen(str));
@@ -46,7 +46,7 @@ char			*my_suppr(char *str, t_cmd *data, int *x, struct winsize *mysizewin UNUSE
     return (str);
   if ((newstr = malloc(sizeof(char) * my_strlen(str))) == NULL)
     return (NULL);
-  my_strcpy(&str[(*x) - (PROMPT_SIZE - 1)], newstr);
+  strcpy(newstr, &str[(*x) - (PROMPT_SIZE - 1)]);
   tputs(data->save, 1, my_putchar2);
   my_putstr(newstr);
   write(1, " ", 1);

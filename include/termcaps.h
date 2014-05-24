@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:08:59 2014 valentin wallet
-** Last update Sat May 24 01:38:08 2014 valentin wallet
+** Last update Sat May 24 03:16:11 2014 valentin wallet
 */
 
 #ifndef TERMCAP_H_
@@ -64,7 +64,6 @@ typedef struct		s_data
 
 extern	t_data		tab[];
 
-char			*my_strcpy(char *, char *);
 char			*ctrl_k(char *, t_cmd *, int *);
 char			*ctrl_y(char *, char *, int *, t_cmd *);
 char			*include_in_line(char *, int, int *, t_cmd *);
