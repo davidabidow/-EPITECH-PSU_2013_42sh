@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Fri Apr 25 17:04:02 2014 valentin wallet
-** Last update Sat May 24 02:58:22 2014 david tran
+** Last update Sat May 24 03:35:52 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -68,7 +68,7 @@ char			*backslash_n(t_termcap *term, t_history **history)
 }
 
 
-char			*my_read(struct winsize *mysizewin, t_history *history, t_termcap *term)
+char			*my_read(struct winsize *mysizewin, t_history **history, t_termcap *term)
 {
   int			count;
 
@@ -86,12 +86,12 @@ char			*my_read(struct winsize *mysizewin, t_history *history, t_termcap *term)
       else if (term->buff == CTRL_L)
 	ctrl_l(term->str, &term->data);
       else if (term->buff == DOWN)
-      	term->str = history_down(&history, term, mysizewin);
+      	term->str = history_down(history, term, mysizewin);
       else if (term->buff == UP)
-      	term->str = history_up(&history, term, mysizewin);
+      	term->str = history_up(history, term, mysizewin);
       else if (term->buff == BACKSLASH_N)
 	{
-	  term->str = backslash_n(term, &history);
+	  term->str = backslash_n(term, history);
 	  return (term->str);
 	}
       else if (term->buff == 4)
