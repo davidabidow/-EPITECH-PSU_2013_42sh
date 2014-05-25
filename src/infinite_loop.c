@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:34:21 2014 david tran
-** Last update Sun May 25 03:36:23 2014 valentin wallet
+** Last update Sun May 25 03:39:24 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -92,8 +92,6 @@ void			infiniteloop(t_env *list)
 	{
 	  max = countpvir(dest, max);
 	  if (!(new = tab_wordtab(dest, min, max)))
-	    return ;
-	  if (new[0] == NULL)
 	    return ;
 	  if ((tmp = exit_or_nothing(new[0], new[1])) == -1)
 	    return ;
