@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May 21 19:45:51 2014 valentin wallet
-** Last update Sun May 25 06:54:33 2014 david tran
+** Last update Sun May 25 08:44:15 2014 david tran
 */
 
 #include "42sh.h"
@@ -26,7 +26,7 @@ void		built_dad(t_exec *execa, t_bin *bin, t_env **env)
       built[i].func(*env, bin->command);
     }
 }
-int		go_son(t_bin *bin, char **list, t_exec *execa, t_env **env)
+int		go_son(t_bin *bin, char **list, t_exec *execa)
 {
   int		i;
 
@@ -90,7 +90,7 @@ int		loop_pipe(t_bin *tmp, char **list, t_env **env)
       else if (execa.pid == 0)
 	{
 	  //	  setpgid(0, 0);
-	  if (go_son(bin, list, &execa, env) == -1)
+	  if (go_son(bin, list, &execa) == -1)
 	    {
 	      my_putstr("Command not found : ");
 	      my_putstr(bin->princ);

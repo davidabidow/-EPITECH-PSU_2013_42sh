@@ -5,7 +5,7 @@
 ## Login   <tran_0@epitech.net>
 ## 
 ## Started on  Tue May  6 06:01:43 2014 david tran
-## Last update Sun May 25 04:14:34 2014 david tran
+## Last update Sun May 25 07:48:09 2014 david tran
 ##
 
 NAME		= 	libmy.a
@@ -40,9 +40,6 @@ OBJ		=	$(SRC:.c=.o)
 CFLAGS		=	-I../include -W -Wextra -Wall
 
 RM		=	rm -f
-
-%.o:			%.c
-			@cc $(CFLAGS) -c $< -o $@
 
 $(NAME):		$(OBJ)
 			ar rc $(NAME) $(OBJ)

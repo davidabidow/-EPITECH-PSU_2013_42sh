@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:34:21 2014 david tran
-** Last update Sun May 25 03:39:24 2014 valentin wallet
+** Last update Sun May 25 08:38:42 2014 david tran
 */
 
 #include "42sh.h"
@@ -44,14 +44,15 @@ int		countpvir(char **src, int max)
   return (max);
 }
 
-char		**init_buffer(struct winsize *mysizewin, t_history **history, t_termcap *term, struct termios *t, t_env *list)
+char		**init_buffer(struct winsize *mysizewin, t_loop *loop,
+			      struct termios *t, t_env *list)
 {
   char		*buffer;
   char		**dest;
 
   if ((set_term_mode(t, list)) == 1)
     return (NULL);
-  if ((buffer = my_read(mysizewin, history, term, t)) == NULL)
+  if ((buffer = my_read(mysizewin, &loop->history, &loop->term, t)) == NULL)
     return (NULL);
   if (!(buffer = transform_chain(buffer)))
     return (NULL);
@@ -62,47 +63,15 @@ char		**init_buffer(struct winsize *mysizewin, t_history **history, t_termcap *t
 
 void			infiniteloop(t_env *list)
 {
-  char			**dest;
-  int			min;
-  int			max;
-  char			**new;
-  int			tmp;
-  t_termcap		term;
-  struct winsize        mysizewin;
-  t_history		*history;
-  struct termios	t;
-  struct termios	tsave;
+  t_loop		loop;
 
-  history = NULL;
-  term.tmp = NULL;
+  loop.history = NULL;
+  loop.term.tmp = NULL;
   tgetent(NULL, "xterm");
-  tcgetattr(0, &tsave);
-  my_tgetstr(&term.data);
-  history = load_history(history);
+  tcgetattr(0, &loop.tsave);
+  my_tgetstr(&loop.term.data);
+  loop.history = load_history(loop.history);
   while (42)
-    {
-      initloop(&min, &max);
-      if (!(dest = init_buffer(&mysizewin, &history, &term, &t, list)))
-	{
-	  tcsetattr(0, TCSANOW, &tsave);
-	  return ;
-	}
-      tcsetattr(0, TCSANOW, &tsave);
-      while (max != my_strstrlen(dest))
-	{
-	  max = countpvir(dest, max);
-	  if (!(new = tab_wordtab(dest, min, max)))
-	    return ;
-	  if ((tmp = exit_or_nothing(new[0], new[1])) == -1)
-	    return ;
-	  else if (tmp == EXIT_FAILURE)
-	    {
-	      if (parsing_exec(new, list) == -1)
-		return ;
-	    }
-	  min = max + 1;
-   	  free_wordtab(new);
-	}
-      free_wordtab(dest);
-    }
+    if (infinite_loop_feed(&loop, list) == -1)
+      return ;
 }

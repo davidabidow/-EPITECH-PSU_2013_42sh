@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 03:28:08 2014 david tran
-** Last update Sat May 24 16:51:53 2014 david tran
+** Last update Sun May 25 08:17:30 2014 david tran
 */
 
 #ifndef PRINCIPAL_H__
@@ -41,6 +41,9 @@ int			init_list(t_env *, char **);
 int			put_in_chainlist(t_env *, char *);
 char			*makeread();
 void			infiniteloop(t_env *);
+char			*transform_chain(char *);
+void			initloop(int *, int *);
+int			countpvir(char **, int);
 /*
 ** Builtin
 */
