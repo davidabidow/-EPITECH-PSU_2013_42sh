@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:18:28 2014 valentin wallet
-** Last update Sun May 25 18:14:48 2014 valentin wallet
+** Last update Sun May 25 21:50:04 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -74,7 +74,7 @@ int                     raw_mode(struct termios *t)
   return (EXIT_SUCCESS);
 }
 
-int			set_term_mode(struct termios *t, t_env *list)
+int			set_term_mode(struct termios *t, t_env *list UNUSED)
 {
   if ((tcgetattr(0, t)) == -1)
     {
