@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:18:28 2014 valentin wallet
-** Last update Sun May 25 21:50:04 2014 valentin wallet
+** Last update Sun May 25 22:05:05 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -41,18 +41,6 @@ char			*my_getenv(char **env, char *str)
 int                     echo_mode(struct termios *t)
 {
   t->c_lflag &= ~ECHO;
-  if ((tcsetattr(0, TCSANOW, t)) == -1)
-    {
-      my_putstr("tcsetattr error\n");
-      return (EXIT_FAILURE);
-    }
-  return (EXIT_SUCCESS);
-}
-
-int			echo_mode2(struct termios *t)
-{
-  t->c_lflag = ICANON;
-  t->c_lflag = ECHO;
   if ((tcsetattr(0, TCSANOW, t)) == -1)
     {
       my_putstr("tcsetattr error\n");
