@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Wed May 14 21:52:57 2014 david tran
-** Last update Sun May 25 20:02:14 2014 david tran
+** Last update Sun May 25 20:36:41 2014 david tran
 */
 
 #ifndef BINARY_H__
@@ -134,6 +134,9 @@ int			add_ope(char **, t_bin *, t_pars *);
 int			loop_pipe(t_bin *, char **, t_env **);
 int			son_error(t_bin *, char **, t_exec *);
 int			go_son(t_bin *, char **, t_exec *);
+int			check_star(char *);
+char			**check_glob(char *);
+int			check_globbing(t_bin *);
 
 typedef struct		s_pinit
 {

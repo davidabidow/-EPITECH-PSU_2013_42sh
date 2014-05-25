@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May 21 19:45:51 2014 valentin wallet
-** Last update Sun May 25 20:02:36 2014 david tran
+** Last update Sun May 25 20:44:20 2014 david tran
 */
 
 #include "42sh.h"
@@ -38,6 +38,8 @@ int		feed_son(t_bin *bin, char **list, t_exec *execa)
   if (i >= 5)
     {
       if (!bin->princ || access(bin->princ, X_OK) == -1)
+	return (-1);
+      if (check_globbing(bin) == -1)
 	return (-1);
       execve(bin->princ, bin->command, list);
     }

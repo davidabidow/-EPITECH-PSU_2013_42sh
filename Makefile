@@ -5,7 +5,7 @@
 ## Login   <tran_0@epitech.net>
 ## 
 ## Started on  Tue May  6 00:42:35 2014 david tran
-## Last update Sun May 25 19:43:43 2014 david tran
+## Last update Sun May 25 20:41:47 2014 david tran
 ##
 
 RM	=	rm -f
@@ -25,6 +25,8 @@ TREE	=	tree/
 EDITION	=	edition_de_ligne/
 
 ECHO	=	echo/
+
+GLOB	=	globbing/
 
 SRCS	=	$(SOUR)main.c				\
 		$(SOUR)signal.c				\
@@ -75,11 +77,11 @@ SRCS	=	$(SOUR)main.c				\
 		$(EDITION)ctrl.c 			\
 		$(EDITION)history.c 			\
 		$(EDITION)list.c 			\
-		$(EDITION)my_str_to_wordtab.c 		\
 		$(EDITION)utility.c 			\
 		$(EDITION)history_deplacement.c		\
 		$(ECHO)echo.c				\
-		$(ECHO)echo_esc.c
+		$(ECHO)echo_esc.c			\
+		$(GLOB)globbing.c			\
 
 OBJ	=	$(SRCS:.c=.o)
 

@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 14:49:41 2014 david tran
-** Last update Sun May 25 04:14:07 2014 david tran
+** Last update Sun May 25 20:10:24 2014 david tran
 */
 
 #ifndef MY_H__
@@ -47,6 +47,6 @@ char	*my_realloc(char *, int);
 char	**wordtabcpy(char **, char **);
 char	**wordtabcat(char **, char *);
 char	**wordtabdup(char **);
-char	**catwordtab(char **, char **);
+char	**catwordtab(char **, char **, int);
 
 #endif /* !MY_H__ */

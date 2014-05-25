@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Mon May  5 19:16:40 2014 david tran
-** Last update Sat May 24 02:11:03 2014 david tran
+** Last update Sun May 25 20:07:55 2014 david tran
 */
 
 #ifndef _42_SH_
@@ -24,6 +24,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <sys/wait.h>
+# include <glob.h>
 # include "principal.h"
 # include "binary.h"
 # include "termcaps.h"

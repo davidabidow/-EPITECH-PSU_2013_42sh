@@ -5,14 +5,37 @@
 ** Login   <briard_g@epitech.net>
 ** 
 ** Started on  Fri May 23 18:11:43 2014 Guillaume Briard
-** Last update Sat May 24 14:29:15 2014 Guillaume Briard
+** Last update Sun May 25 21:00:47 2014 david tran
 */
+
+#include "42sh.h"
+#include "my.h"
+
+int		check_star(char *str)
+{
+  int		i;
+
+  i = 0;
+  while (str && str[i])
+    {
+      if (str[i] == '*')
+	return (EXIT_SUCCESS);
+      i++;
+    }
+  return (EXIT_FAILURE);
+}
 
 char		**check_glob(char *path)
 {
   glob_t	globbuf;
+  int		tmp;
+  char		**dup;
 
-  if (glob(path, GLOB_DOOFS | GLOB_APPEND, NULL, &globbuf) != 0)
-    return (NULL);
+  globbuf.gl_pathv = NULL;
+  if ((tmp = glob(path, 0, NULL, &globbuf)) != 0)
+    {
+      my_putstr("Globing error / No matches\n");
+      return (NULL);
+    }
   return (globbuf.gl_pathv);
 }
