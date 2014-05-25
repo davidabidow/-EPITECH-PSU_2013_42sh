@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May 15 18:07:03 2014 david tran
-** Last update Thu May 15 18:07:51 2014 david tran
+** Last update Sun May 25 02:24:01 2014 david tran
 */
 
 #include "42sh.h"
@@ -13,5 +13,5 @@
 
 int		double_normal(char *file)
 {
-  return (open(file, O_RDWR | O_CREAT | O_TRUNC, 0644));
+  return (open(file, O_RDWR | O_CREAT | O_APPEND, 0644));
 }

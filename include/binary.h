@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Wed May 14 21:52:57 2014 david tran
-** Last update Fri May 23 22:10:58 2014 david tran
+** Last update Sun May 25 02:12:31 2014 david tran
 */
 
 #ifndef BINARY_H__
@@ -45,6 +45,7 @@ typedef struct		s_exec
   pid_t			pid;
   int			pipefd[2];
   int			status;
+  int			ffd;
 }			t_exec;
 
 /*

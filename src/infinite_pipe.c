@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May 21 19:45:51 2014 valentin wallet
-** Last update Sun May 25 01:11:53 2014 david tran
+** Last update Sun May 25 02:22:54 2014 david tran
 */
 
 #include "42sh.h"
@@ -33,10 +33,12 @@ int		go_son(t_bin *bin, char **list, t_exec *execa, t_env **env)
   i = 0;
   (bin->pre->head && bin->pre->head->fd != -1) ? dup2(bin->pre->head->fd, 0) :
     dup2(execa->save_pipeout, 0);
-  if (execa->save_pipeout == 0)
+  if (bin->pre->head && bin->pre->head->dinv)
     dup2(execa->pipefd[0], 0);
   if (bin->right != NULL)
     dup2(execa->pipefd[1], 1);
+  if (!bin->right && execa->ffd != -1)
+    dup2(execa->ffd, 1);
   close(execa->pipefd[0]);
   close(execa->pipefd[1]);
   while (built[i].name && bin->command && bin->command[0] &&
@@ -72,6 +74,10 @@ int		loop_pipe(t_bin *tmp, char **list, t_env **env)
 
   bin = tmp;
   execa.save_pipeout = 0;
+  if (tmp->redo && tmp->redo->head)
+    execa.ffd = tmp->redo->head->fd;
+  else
+    execa.ffd = -1;
   while (bin != NULL)
     {
       pipe(execa.pipefd);

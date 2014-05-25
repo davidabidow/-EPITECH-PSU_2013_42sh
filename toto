@@ -1,11 +1,34 @@
-auteur
-echo/
-edition_de_ligne/
-globbing/
-include/
-lib/
-Makefile
-mysh*
-src/
-test/
-toto
+total 428
+drwxr-xr-x 10 tran_0 users   4096 May 25 02:22 .
+drwxr-xr-x 19 tran_0 users   4096 May 24 20:48 ..
+-rw-r--r--  1 tran_0 users   6826 May 25 02:23 .42sh_history
+-rw-r--r--  1 tran_0 users     43 May 22 01:01 auteur
+drwxr-xr-x  2 tran_0 users   4096 May 25 02:22 echo
+drwxr-xr-x  2 tran_0 users   4096 May 25 02:22 edition_de_ligne
+drwxr-xr-x  8 tran_0 users   4096 May 25 01:14 .git
+-rw-r--r--  1 tran_0 users     11 May  6 21:47 .gitignore
+drwxr-xr-x  2 tran_0 users   4096 May 24 16:00 globbing
+drwxr-xr-x  2 tran_0 users   4096 May 25 02:12 include
+drwxr-xr-x  2 tran_0 users   4096 May 25 02:22 lib
+-rw-r--r--  1 tran_0 users   2403 May 24 06:07 Makefile
+-rwxr-xr-x  1 tran_0 users 366828 May 25 02:22 mysh
+drwxr-xr-x  6 tran_0 users   4096 May 25 02:22 src
+drwxr-xr-x  2 tran_0 users  12288 May 23 14:00 test
+-rw-r--r--  1 tran_0 users      0 May 25 02:23 toto
+total 432
+drwxr-xr-x 10 tran_0 users   4096 May 25 02:24 .
+drwxr-xr-x 19 tran_0 users   4096 May 24 20:48 ..
+-rw-r--r--  1 tran_0 users   6850 May 25 02:24 .42sh_history
+-rw-r--r--  1 tran_0 users     43 May 22 01:01 auteur
+drwxr-xr-x  2 tran_0 users   4096 May 25 02:24 echo
+drwxr-xr-x  2 tran_0 users   4096 May 25 02:24 edition_de_ligne
+drwxr-xr-x  8 tran_0 users   4096 May 25 01:14 .git
+-rw-r--r--  1 tran_0 users     11 May  6 21:47 .gitignore
+drwxr-xr-x  2 tran_0 users   4096 May 24 16:00 globbing
+drwxr-xr-x  2 tran_0 users   4096 May 25 02:12 include
+drwxr-xr-x  2 tran_0 users   4096 May 25 02:24 lib
+-rw-r--r--  1 tran_0 users   2403 May 24 06:07 Makefile
+-rwxr-xr-x  1 tran_0 users 366828 May 25 02:24 mysh
+drwxr-xr-x  6 tran_0 users   4096 May 25 02:24 src
+drwxr-xr-x  2 tran_0 users  12288 May 23 14:00 test
+-rw-r--r--  1 tran_0 users    875 May 25 02:23 toto
