@@ -5,7 +5,7 @@
 ## Login   <tran_0@epitech.net>
 ## 
 ## Started on  Tue May  6 00:42:35 2014 david tran
-## Last update Sun May 25 20:41:47 2014 david tran
+## Last update Sun May 25 21:41:55 2014 valentin wallet
 ##
 
 RM	=	rm -f
@@ -87,7 +87,7 @@ OBJ	=	$(SRCS:.c=.o)
 
 LIB	=	-L./lib -lmy
 
-CFLAGS	=	-W -Wall -Wextra -g3 -g -I./include
+CFLAGS	=	-Werror -W -Wall -Wextra -g3 -g -I./include
 
 $(NAME):	$(OBJ)
 		cd ./lib && $(MAKE) re

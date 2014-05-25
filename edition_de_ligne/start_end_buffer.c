@@ -5,10 +5,11 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Mon May 19 15:12:22 2014 valentin wallet
-** Last update Sun May 25 08:53:13 2014 david tran
+** Last update Sun May 25 21:50:31 2014 valentin wallet
 */
 
 #include "42sh.h"
+#include "my.h"
 
 char			*start_of_buffer(char *str, t_cmd *data,
 					 int *x, struct winsize *mysizewin)
