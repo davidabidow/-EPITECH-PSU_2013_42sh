@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:34:21 2014 david tran
-** Last update Sun May 25 18:25:30 2014 valentin wallet
+** Last update Sun May 25 22:07:07 2014 david tran
 */
 
 #include "42sh.h"
@@ -52,7 +52,7 @@ char		**init_buffer(struct winsize *mysizewin, t_loop *loop,
 
   if ((set_term_mode(t, list)) == 1)
     return (NULL);
-  if ((buffer = my_read(mysizewin, &loop->history, &loop->term, t)) == NULL)
+  if ((buffer = my_read(mysizewin, &loop->history, &loop->term)) == NULL)
     return (NULL);
   if (!(buffer = transform_chain(buffer)))
     return (NULL);
