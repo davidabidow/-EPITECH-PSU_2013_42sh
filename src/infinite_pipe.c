@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May 21 19:45:51 2014 valentin wallet
-** Last update Sun May 25 05:19:21 2014 david tran
+** Last update Sun May 25 06:54:33 2014 david tran
 */
 
 #include "42sh.h"
@@ -31,31 +31,25 @@ int		go_son(t_bin *bin, char **list, t_exec *execa, t_env **env)
   int		i;
 
   i = 0;
-  my_putstr("son: entry\n");
   (bin->pre->head && bin->pre->head->fd != -1) ? dup2(bin->pre->head->fd, 0) :
     dup2(execa->save_pipeout, 0);
   if (bin->pre->head && bin->pre->head->dinv)
-    {
-      my_putstr("son :salut, <<\n");
-      dup2(execa->pipefd[0], 0);
-    }
+    dup2(execa->pipefd[0], 0);
   if (bin->right != NULL)
-    {
-      my_putstr("son : salut, normal\n");
-      dup2(execa->pipefd[1], 1);
-    }
+    dup2(execa->pipefd[1], 1);
   if (!bin->right && execa->ffd != -1)
-    {
-      my_putstr("son : salut, >/>>\n");
-      dup2(execa->ffd, 1);
-    }
+    dup2(execa->ffd, 1);
   close(execa->pipefd[0]);
   close(execa->pipefd[1]);
   while (built[i].name && bin->command && bin->command[0] &&
 	 my_strcmp(built[i].name, bin->command[0]) != 0)
     i++;
   if (i >= 5)
-    execve(bin->princ, bin->command, list);
+    {
+      if (!bin->princ || access(bin->princ, X_OK) == -1)
+	return (-1);
+      execve(bin->princ, bin->command, list);
+    }
   return (EXIT_SUCCESS);
 }
 
@@ -97,7 +91,12 @@ int		loop_pipe(t_bin *tmp, char **list, t_env **env)
 	{
 	  //	  setpgid(0, 0);
 	  if (go_son(bin, list, &execa, env) == -1)
-	    woexit = EXIT_FAILURE;
+	    {
+	      my_putstr("Command not found : ");
+	      my_putstr(bin->princ);
+	      my_putstr("\n");
+	      woexit = EXIT_FAILURE;
+	    }
 	  return (-1);
 	}
       else
