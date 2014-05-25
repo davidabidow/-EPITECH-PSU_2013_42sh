@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Wed May 21 12:47:58 2014 david tran
-** Last update Fri May 23 12:42:39 2014 david tran
+** Last update Sun May 25 21:53:37 2014 david tran
 */
 
 #include "42sh.h"
@@ -60,7 +60,8 @@ int		update_command(t_bin *bin, char **command, char *princ)
     tmp = tmp->left;
   while (tmp->right)
     tmp = tmp->right;
-  if (!(tmp->command = wordtabdup(command)) || !(tmp->princ = my_strdup(princ)))
+  if (!(tmp->command = wordtabdup(command)) ||
+      !(tmp->princ = my_strdup(princ)))
     return (-1);
   return (EXIT_SUCCESS);
 }

@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Tue May  6 14:49:41 2014 david tran
-** Last update Sun May 25 20:10:24 2014 david tran
+** Last update Sun May 25 21:39:04 2014 david tran
 */
 
 #ifndef MY_H__
@@ -15,6 +15,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+
+typedef struct	s_catwo
+{
+  int		i;
+  int		j;
+  int		len;
+  char		**go;
+}		t_catwo;
 
 void	my_putchar(char );
 void	my_putstr(char *);

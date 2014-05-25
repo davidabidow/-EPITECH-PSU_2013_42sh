@@ -5,34 +5,35 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Sun May 25 04:01:30 2014 david tran
-** Last update Sun May 25 21:17:47 2014 david tran
+** Last update Sun May 25 21:44:22 2014 david tran
 */
 
 #include "my.h"
 
-char	**catwordtab(char **dest, char **src, int x)
+char		**catwordtab(char **dest, char **src, int x)
 {
-  int	i;
-  int	j;
-  int	len;
-  char	**go;
+  t_catwo	cwo;
 
-  len = my_strstrlen(dest);
-  j = 0;
-  i = 0;
-  if (!(go = my_taballoc((len + my_strstrlen(src) + 2) * sizeof(char *))))
+  cwo.len = my_strstrlen(dest);
+  cwo.j = 0;
+  cwo.i = 0;
+  if (!(cwo.go = my_taballoc((cwo.len + my_strstrlen(src) + 2)
+			     * sizeof(char *))))
     return (NULL);
-  while (i < x)
-    if (!(go[i] = my_strdup(dest[i++])))
+  while (cwo.i < x)
+    {
+      if (!(cwo.go[cwo.i] = my_strdup(dest[cwo.i])))
+	return (NULL);
+      cwo.i++;
+    }
+  cwo.len = cwo.i + 1;
+  while (src[cwo.j])
+    if (!(cwo.go[cwo.i++] = my_strdup(src[cwo.j++])))
       return (NULL);
-  len = i + 1;
-  while (src[j])
-    if (!(go[i++] = my_strdup(src[j++])))
+  while (dest[cwo.len])
+    if (!(cwo.go[cwo.i++] = my_strdup(dest[cwo.len++])))
       return (NULL);
-  while (dest[len])
-    if (!(go[i++] = my_strdup(dest[len++])))
-      return (NULL);
-  go[i] = NULL;
+  cwo.go[cwo.i] = NULL;
   free_wordtab(dest);
-  return (go);
+  return (cwo.go);
 }

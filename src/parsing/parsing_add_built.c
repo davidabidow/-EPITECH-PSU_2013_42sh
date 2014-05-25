@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May 22 02:41:43 2014 david tran
-** Last update Thu May 22 15:43:11 2014 david tran
+** Last update Sun May 25 21:52:30 2014 david tran
 */
 
 #include "42sh.h"
@@ -43,7 +43,8 @@ int	add_partialy_built(char **src, t_bin *bin, t_pars *pars)
   int	tmp;
 
   while (src[pars->i] &&
-	 ((tmp = check_wone(src[pars->i], pars->path)) == -1 || tmp == 0 || tmp == 2))
+	 ((tmp = check_wone(src[pars->i], pars->path)) == -1
+	  || tmp == 0 || tmp == 2))
     if (bin_command_cat(bin, src[pars->i++]) == -1)
       return (-1);
   return (EXIT_SUCCESS);

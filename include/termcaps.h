@@ -5,12 +5,11 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:08:59 2014 valentin wallet
-** Last update Sun May 25 08:39:56 2014 david tran
+** Last update Sun May 25 21:49:55 2014 david tran
 */
 
 #ifndef TERMCAP_H_
 # define TERMCAP_H_
-
 # define UNUSED		__attribute__ ((unused))
 # define BUFF_SIZE	1024
 # define PROMPT_SIZE	7

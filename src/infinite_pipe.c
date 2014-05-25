@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May 21 19:45:51 2014 valentin wallet
-** Last update Sun May 25 21:36:10 2014 david tran
+** Last update Sun May 25 21:51:42 2014 david tran
 */
 
 #include "42sh.h"
@@ -49,8 +49,8 @@ int		go_son(t_bin *bin, char **list, t_exec *execa)
   if (bin->pre->head && bin->pre->head->dinv)
     dup2(execa->pipefd[0], 0);
   else
-    (bin->pre->head && bin->pre->head->fd != -1) ? dup2(bin->pre->head->fd, 0) :
-      dup2(execa->save_pipeout, 0);
+    (bin->pre->head && bin->pre->head->fd != -1) ?
+      dup2(bin->pre->head->fd, 0) : dup2(execa->save_pipeout, 0);
   if (bin->pre->head && bin->pre->head->fd != -1)
     close(bin->pre->head->fd);
   if (bin->right != NULL)
