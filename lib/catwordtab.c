@@ -5,10 +5,22 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Sun May 25 04:01:30 2014 david tran
-** Last update Sun May 25 21:44:22 2014 david tran
+** Last update Sun May 25 22:27:40 2014 david tran
 */
 
 #include "my.h"
+
+int		cat_feed(t_catwo *cwo, char **src)
+{
+  while (src[cwo->j])
+    {
+      if (access(src[cwo->j], R_OK) != -1)
+	if (!(cwo->go[cwo->i++] = my_strdup(src[cwo->j])))
+	  return (EXIT_FAILURE);
+      cwo->j++;
+    }
+  return (EXIT_SUCCESS);
+}
 
 char		**catwordtab(char **dest, char **src, int x)
 {
@@ -27,9 +39,8 @@ char		**catwordtab(char **dest, char **src, int x)
       cwo.i++;
     }
   cwo.len = cwo.i + 1;
-  while (src[cwo.j])
-    if (!(cwo.go[cwo.i++] = my_strdup(src[cwo.j++])))
-      return (NULL);
+  if (cat_feed(&cwo, src) == EXIT_FAILURE)
+    return (NULL);
   while (dest[cwo.len])
     if (!(cwo.go[cwo.i++] = my_strdup(dest[cwo.len++])))
       return (NULL);
