@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:34:21 2014 david tran
-** Last update Sun May 25 01:13:12 2014 david tran
+** Last update Sun May 25 03:36:23 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -83,7 +83,10 @@ void			infiniteloop(t_env *list)
     {
       initloop(&min, &max);
       if (!(dest = init_buffer(&mysizewin, &history, &term, &t, list)))
-	return ;
+	{
+	  tcsetattr(0, TCSANOW, &tsave);
+	  return ;
+	}
       tcsetattr(0, TCSANOW, &tsave);
       while (max != my_strstrlen(dest))
 	{
