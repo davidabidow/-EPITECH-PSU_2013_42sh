@@ -32,3 +32,14 @@ drwxr-xr-x  2 tran_0 users   4096 May 25 02:24 lib
 drwxr-xr-x  6 tran_0 users   4096 May 25 02:24 src
 drwxr-xr-x  2 tran_0 users  12288 May 23 14:00 test
 -rw-r--r--  1 tran_0 users    875 May 25 02:23 toto
+auteur
+echo
+edition_de_ligne
+globbing
+include
+lib
+Makefile
+mysh
+src
+test
+toto

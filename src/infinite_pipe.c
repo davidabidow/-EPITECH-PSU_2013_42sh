@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May 21 19:45:51 2014 valentin wallet
-** Last update Sun May 25 08:44:15 2014 david tran
+** Last update Sun May 25 20:02:36 2014 david tran
 */
 
 #include "42sh.h"
@@ -26,21 +26,12 @@ void		built_dad(t_exec *execa, t_bin *bin, t_env **env)
       built[i].func(*env, bin->command);
     }
 }
-int		go_son(t_bin *bin, char **list, t_exec *execa)
+
+int		feed_son(t_bin *bin, char **list, t_exec *execa)
 {
   int		i;
 
   i = 0;
-  (bin->pre->head && bin->pre->head->fd != -1) ? dup2(bin->pre->head->fd, 0) :
-    dup2(execa->save_pipeout, 0);
-  if (bin->pre->head && bin->pre->head->dinv)
-    dup2(execa->pipefd[0], 0);
-  if (bin->right != NULL)
-    dup2(execa->pipefd[1], 1);
-  if (!bin->right && execa->ffd != -1)
-    dup2(execa->ffd, 1);
-  close(execa->pipefd[0]);
-  close(execa->pipefd[1]);
   while (built[i].name && bin->command && bin->command[0] &&
 	 my_strcmp(built[i].name, bin->command[0]) != 0)
     i++;
@@ -51,6 +42,26 @@ int		go_son(t_bin *bin, char **list, t_exec *execa)
       execve(bin->princ, bin->command, list);
     }
   return (EXIT_SUCCESS);
+}
+
+int		go_son(t_bin *bin, char **list, t_exec *execa)
+{
+  if (bin->pre->head && bin->pre->head->dinv)
+    dup2(execa->pipefd[0], 0);
+  else
+    (bin->pre->head && bin->pre->head->fd != -1) ? dup2(bin->pre->head->fd, 0) :
+      dup2(execa->save_pipeout, 0);
+  if (bin->pre->head && bin->pre->head->fd != -1)
+    close(bin->pre->head->fd);
+  if (bin->right != NULL)
+    dup2(execa->pipefd[1], 1);
+  close(execa->pipefd[0]);
+  close(execa->pipefd[1]);
+  if (!bin->right && execa->ffd != -1)
+    dup2(execa->ffd, 1);
+  if (!bin->right && execa->ffd != -1)
+    close(execa->ffd);
+  return (feed_son(bin, list, execa));
 }
 
 int		go_dad(t_exec *execa, t_env **env, t_bin *bin)
@@ -88,17 +99,7 @@ int		loop_pipe(t_bin *tmp, char **list, t_env **env)
       if ((execa.pid = fork()) == -1)
 	return (EXIT_FAILURE);
       else if (execa.pid == 0)
-	{
-	  //	  setpgid(0, 0);
-	  if (go_son(bin, list, &execa) == -1)
-	    {
-	      my_putstr("Command not found : ");
-	      my_putstr(bin->princ);
-	      my_putstr("\n");
-	      woexit = EXIT_FAILURE;
-	    }
-	  return (-1);
-	}
+	return (son_error(bin, list, &execa));
       else
 	{
 	  if (go_dad(&execa, env, bin) == EXIT_FAILURE)

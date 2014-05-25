@@ -5,7 +5,7 @@
 ## Login   <tran_0@epitech.net>
 ## 
 ## Started on  Tue May  6 00:42:35 2014 david tran
-## Last update Sat May 24 05:45:12 2014 valentin wallet
+## Last update Sun May 25 19:43:43 2014 david tran
 ##
 
 RM	=	rm -f
@@ -36,6 +36,7 @@ SRCS	=	$(SOUR)main.c				\
 		$(SOUR)operation_init.c			\
 		$(SOUR)free_env.c			\
 		$(SOUR)infinite_pipe.c			\
+		$(SOUR)infinite_pipe_other.c		\
 		$(SOUR)$(BUILT)built_cd.c		\
 		$(SOUR)$(BUILT)built_cd_other.c		\
 		$(SOUR)$(BUILT)built_env.c		\
