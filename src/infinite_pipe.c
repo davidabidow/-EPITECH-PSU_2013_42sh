@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May 21 19:45:51 2014 valentin wallet
-** Last update Sun May 25 02:22:54 2014 david tran
+** Last update Sun May 25 05:19:21 2014 david tran
 */
 
 #include "42sh.h"
@@ -31,14 +31,24 @@ int		go_son(t_bin *bin, char **list, t_exec *execa, t_env **env)
   int		i;
 
   i = 0;
+  my_putstr("son: entry\n");
   (bin->pre->head && bin->pre->head->fd != -1) ? dup2(bin->pre->head->fd, 0) :
     dup2(execa->save_pipeout, 0);
   if (bin->pre->head && bin->pre->head->dinv)
-    dup2(execa->pipefd[0], 0);
+    {
+      my_putstr("son :salut, <<\n");
+      dup2(execa->pipefd[0], 0);
+    }
   if (bin->right != NULL)
-    dup2(execa->pipefd[1], 1);
+    {
+      my_putstr("son : salut, normal\n");
+      dup2(execa->pipefd[1], 1);
+    }
   if (!bin->right && execa->ffd != -1)
-    dup2(execa->ffd, 1);
+    {
+      my_putstr("son : salut, >/>>\n");
+      dup2(execa->ffd, 1);
+    }
   close(execa->pipefd[0]);
   close(execa->pipefd[1]);
   while (built[i].name && bin->command && bin->command[0] &&
