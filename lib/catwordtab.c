@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Sun May 25 04:01:30 2014 david tran
-** Last update Sun May 25 21:01:16 2014 david tran
+** Last update Sun May 25 21:17:47 2014 david tran
 */
 
 #include "my.h"
@@ -23,11 +23,8 @@ char	**catwordtab(char **dest, char **src, int x)
   if (!(go = my_taballoc((len + my_strstrlen(src) + 2) * sizeof(char *))))
     return (NULL);
   while (i < x)
-    {
-      if (!(go[i] = my_strdup(dest[i])))
-	return (NULL);
-      i++;
-    }
+    if (!(go[i] = my_strdup(dest[i++])))
+      return (NULL);
   len = i + 1;
   while (src[j])
     if (!(go[i++] = my_strdup(src[j++])))
@@ -36,5 +33,6 @@ char	**catwordtab(char **dest, char **src, int x)
     if (!(go[i++] = my_strdup(dest[len++])))
       return (NULL);
   go[i] = NULL;
+  free_wordtab(dest);
   return (go);
 }

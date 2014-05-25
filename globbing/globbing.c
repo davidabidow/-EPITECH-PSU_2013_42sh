@@ -5,7 +5,7 @@
 ** Login   <briard_g@epitech.net>
 ** 
 ** Started on  Fri May 23 18:11:43 2014 Guillaume Briard
-** Last update Sun May 25 21:00:47 2014 david tran
+** Last update Sun May 25 21:09:34 2014 david tran
 */
 
 #include "42sh.h"
@@ -37,5 +37,8 @@ char		**check_glob(char *path)
       my_putstr("Globing error / No matches\n");
       return (NULL);
     }
-  return (globbuf.gl_pathv);
+  if (!(dup = wordtabdup(globbuf.gl_pathv)))
+    return (NULL);
+  globfree(&globbuf);
+  return (dup);
 }

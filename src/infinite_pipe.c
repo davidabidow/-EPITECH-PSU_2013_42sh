@@ -5,13 +5,13 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May 21 19:45:51 2014 valentin wallet
-** Last update Sun May 25 20:44:20 2014 david tran
+** Last update Sun May 25 21:36:10 2014 david tran
 */
 
 #include "42sh.h"
 #include "my.h"
 
-void		built_dad(t_exec *execa, t_bin *bin, t_env **env)
+void		built_dad(t_bin *bin, t_env **env)
 {
   int		i;
 
@@ -19,15 +19,11 @@ void		built_dad(t_exec *execa, t_bin *bin, t_env **env)
   while (built[i].name && bin->command && bin->command[0] &&
 	 my_strcmp(built[i].name, bin->command[0]) != 0)
     i++;
-  if (i < 5)
-    {
-      if (bin->right)
-	dup2(execa->pipefd[1], 1);
-      built[i].func(*env, bin->command);
-    }
+  if (i < 5 && !bin->right)
+    built[i].func(*env, bin->command);
 }
 
-int		feed_son(t_bin *bin, char **list, t_exec *execa)
+int		feed_son(t_bin *bin, char **list)
 {
   int		i;
 
@@ -48,6 +44,8 @@ int		feed_son(t_bin *bin, char **list, t_exec *execa)
 
 int		go_son(t_bin *bin, char **list, t_exec *execa)
 {
+  if (bin->pre->head && bin->pre->head->dinv && bin->right)
+    return (-1);
   if (bin->pre->head && bin->pre->head->dinv)
     dup2(execa->pipefd[0], 0);
   else
@@ -63,19 +61,19 @@ int		go_son(t_bin *bin, char **list, t_exec *execa)
     dup2(execa->ffd, 1);
   if (!bin->right && execa->ffd != -1)
     close(execa->ffd);
-  return (feed_son(bin, list, execa));
+  return (feed_son(bin, list));
 }
 
 int		go_dad(t_exec *execa, t_env **env, t_bin *bin)
 {
-  if (bin->pre->head && bin->pre->head->dinv)
+  if (bin->pre->head && bin->pre->head->dinv && !bin->right)
     {
       close(execa->pipefd[0]);
       write(execa->pipefd[1], bin->pre->head->dinv,
 	    my_strlen(bin->pre->head->dinv));
     }
   else
-    built_dad(execa, bin, env);
+    built_dad(bin, env);
   close(execa->pipefd[1]);
   wait(&execa->status);
   if (WIFSIGNALED(execa->status) == true)

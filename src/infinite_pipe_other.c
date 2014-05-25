@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Sun May 25 19:41:09 2014 david tran
-** Last update Sun May 25 20:44:47 2014 david tran
+** Last update Sun May 25 21:11:14 2014 david tran
 */
 
 #include "42sh.h"
@@ -27,6 +27,7 @@ int	check_globbing(t_bin *bin)
 	    return (-1);
 	  if (!(bin->command = catwordtab(bin->command, src, i)))
 	    return (-1);
+	  free_wordtab(src);
 	}
       i++;
     }
