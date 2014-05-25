@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 **
 ** Started on  Mon May 19 17:54:09 2014 valentin wallet
-** Last update Sat May 24 02:58:51 2014 david tran
+** Last update Sun May 25 18:10:14 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -30,7 +30,8 @@ void		clean_buffer(t_termcap *term, struct winsize *mysizewin)
   tputs(term->data.restor, 1, my_putchar2);
 }
 
-char		*history_up(t_history **history, t_termcap *term, struct winsize *mysizewin)
+char		*history_up(t_history **history, t_termcap *term,
+			    struct winsize *mysizewin)
 {
   t_history     *tmp;
 
@@ -47,7 +48,8 @@ char		*history_up(t_history **history, t_termcap *term, struct winsize *mysizewi
   return (term->str);
 }
 
-char		*history_down(t_history **history, t_termcap *term, struct winsize *mysizewin)
+char		*history_down(t_history **history, t_termcap *term,
+			      struct winsize *mysizewin)
 {
   if (*history)
     {

@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:18:28 2014 valentin wallet
-** Last update Sat May 24 20:45:12 2014 valentin wallet
+** Last update Sun May 25 18:14:48 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -76,13 +76,6 @@ int                     raw_mode(struct termios *t)
 
 int			set_term_mode(struct termios *t, t_env *list)
 {
-  //  char			*str;
-
-  /* if ((str = my_getenv(env, "TERM")) == NULL) */
-  /*   { */
-  /*     printf("Can't find the variable TERM in env\n"); */
-  /*     return (EXIT_FAILURE); */
-  /*   } */
   if ((tcgetattr(0, t)) == -1)
     {
       my_putstr("tcgetattr error\n");

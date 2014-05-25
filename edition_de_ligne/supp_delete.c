@@ -5,13 +5,14 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Mon May 19 15:09:38 2014 valentin wallet
-** Last update Sat May 24 03:19:36 2014 valentin wallet
+** Last update Sun May 25 18:09:24 2014 valentin wallet
 */
 
 #include "42sh.h"
 #include "my.h"
 
-char			*my_del(char *str, t_cmd *data, int *x, struct winsize *mysizewin)
+char			*my_del(char *str, t_cmd *data, int *x,
+				struct winsize *mysizewin)
 {
   char			*tmp;
   char			*newstr;
@@ -32,11 +33,11 @@ char			*my_del(char *str, t_cmd *data, int *x, struct winsize *mysizewin)
   write(1, " ", 1);
   tputs(data->restor, 1, my_putchar2);
   final = strcat(tmp, newstr);
-  //  free(str);
   return (final);
 }
 
-char			*my_suppr(char *str, t_cmd *data, int *x, struct winsize *mysizewin UNUSED)
+char			*my_suppr(char *str, t_cmd *data, int *x,
+				  struct winsize *mysizewin UNUSED)
 {
   char			*final;
   char			*tmp;

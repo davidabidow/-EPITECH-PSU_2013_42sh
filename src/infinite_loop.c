@@ -5,7 +5,7 @@
 ** Login   <tran_0@epitech.net>
 ** 
 ** Started on  Thu May  8 18:34:21 2014 david tran
-** Last update Sun May 25 08:38:42 2014 david tran
+** Last update Sun May 25 18:25:30 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -64,11 +64,14 @@ char		**init_buffer(struct winsize *mysizewin, t_loop *loop,
 void			infiniteloop(t_env *list)
 {
   t_loop		loop;
+  char			*str;
 
   loop.history = NULL;
   loop.term.tmp = NULL;
-  tgetent(NULL, "xterm");
-  tcgetattr(0, &loop.tsave);
+  str = recupvar(list, "TERM");
+  tgetent(NULL, str);
+  if ((tcgetattr(0, &loop.tsave)) == -1)
+    return ;
   my_tgetstr(&loop.term.data);
   loop.history = load_history(loop.history);
   while (42)

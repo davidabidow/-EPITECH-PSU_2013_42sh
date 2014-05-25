@@ -5,11 +5,18 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Mon May 19 15:07:30 2014 valentin wallet
-** Last update Sat May 24 03:20:21 2014 valentin wallet
+** Last update Sun May 25 18:34:01 2014 valentin wallet
 */
 
 #include "42sh.h"
 #include "my.h"
+
+void			ctrl_l(char *str, t_cmd *data)
+{
+  tputs(data->clearstr, 1, my_putchar2);
+  my_putstr("$42sh> ");
+  my_putstr(str);
+}
 
 char			*ctrl_y(char *dest, char *src, int *x, t_cmd *data)
 {
@@ -19,7 +26,8 @@ char			*ctrl_y(char *dest, char *src, int *x, t_cmd *data)
 
   if ((end = malloc(sizeof(char) * (my_strlen(dest) + 1))) == NULL)
     return (NULL);
-  if ((debut = malloc(sizeof(char) * (my_strlen(dest) + my_strlen(src) + 2))) == NULL)
+  if ((debut = malloc(sizeof(char) * (my_strlen(dest) + my_strlen(src) + 2)))
+      == NULL)
     return (NULL);
   memset(debut, '\0', (my_strlen(dest) + my_strlen(src) + 2));
   strcpy(end, &dest[(*x) - PROMPT_SIZE]);

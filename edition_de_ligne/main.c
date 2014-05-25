@@ -5,13 +5,14 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Fri Apr 25 17:04:02 2014 valentin wallet
-** Last update Sun May 25 08:56:42 2014 david tran
+** Last update Sun May 25 18:34:25 2014 valentin wallet
 */
 
 #include "42sh.h"
 #include "my.h"
 
-char			*write_normally(char *str, int buff, int *x, t_cmd *data)
+char			*write_normally(char *str, int buff, int *x,
+					t_cmd *data)
 {
   if (my_strlen(str) == (*x - PROMPT_SIZE))
     str = my_strcat_int(str, buff);
@@ -19,24 +20,6 @@ char			*write_normally(char *str, int buff, int *x, t_cmd *data)
     str = include_in_line(str, buff, x, data);
   *x = *x + 1;
   return (str);
-}
-
-int			parcours_ptr_func(t_termcap *term, struct winsize *mysizewin, int *count)
-{
-  int			i;
-
-  i = 0;
-  while (tab[i].ptr != NULL)
-    {
-      if (term->buff == tab[i].id)
-	{
-	  if ((term->str = tab[i].ptr(term->str, &term->data, &term->x, mysizewin)) == NULL)
-	    return (EXIT_FAILURE);
-	  (*count)++;
-	}
-      i++;
-    }
-  return (EXIT_SUCCESS);
 }
 
 int			initialize_struct(t_termcap *term)
@@ -50,13 +33,6 @@ int			initialize_struct(t_termcap *term)
   return (EXIT_SUCCESS);
 }
 
-void			ctrl_l(char *str, t_cmd *data)
-{
-  tputs(data->clearstr, 1, my_putchar2);
-  my_putstr("$42sh> ");
-  my_putstr(str);
-}
-
 char			*backslash_n(t_termcap *term, t_history **history)
 {
   put_in_hist((*history), term->str);
@@ -66,6 +42,25 @@ char			*backslash_n(t_termcap *term, t_history **history)
   return (term->str);
 }
 
+void			edition(t_termcap *term, t_history **history,
+				struct winsize *mysizewin, int count)
+{
+  if (term->buff == CTRL_K)
+    term->tmp = ctrl_k(term->str, &term->data, &term->x);
+  else if (term->buff == CTRL_Y)
+    {
+      if (term->tmp != NULL)
+	term->str = ctrl_y(term->str, term->tmp, &term->x, &term->data);
+    }
+  else if (term->buff == CTRL_L)
+    ctrl_l(term->str, &term->data);
+  else if (term->buff == DOWN)
+    term->str = history_down(history, term, mysizewin);
+  else if (term->buff == UP)
+    term->str = history_up(history, term, mysizewin);
+  else if (count == 0)
+    term->str = write_normally(term->str, term->buff, &term->x, &term->data);
+}
 
 char			*my_read(struct winsize *mysizewin,
 				 t_history **history, t_termcap *term,
@@ -80,28 +75,17 @@ char			*my_read(struct winsize *mysizewin,
     {
       count = 0;
       parcours_ptr_func(term, mysizewin, &count);
-      if (term->buff == CTRL_K)
-      	term->tmp = ctrl_k(term->str, &term->data, &term->x);
-      else if (term->buff == CTRL_Y)
-	{
-	  if (term->tmp != NULL)
-	    term->str = ctrl_y(term->str, term->tmp, &term->x, &term->data);
-	}
-      else if (term->buff == CTRL_L)
-	ctrl_l(term->str, &term->data);
-      else if (term->buff == DOWN)
-      	term->str = history_down(history, term, mysizewin);
-      else if (term->buff == UP)
-      	term->str = history_up(history, term, mysizewin);
+      if (term->buff == 4)
+	return (NULL);
+      else if (term->str == NULL)
+	return (NULL);
       else if (term->buff == BACKSLASH_N)
 	{
 	  term->str = backslash_n(term, history);
 	  return (term->str);
 	}
-      else if (term->buff == 4)
-	return (NULL);
-      else if (count == 0)
-	term->str = write_normally(term->str, term->buff, &term->x, &term->data);
+      else
+	edition(term, history, mysizewin, count);
       term->buff = 0;
     }
   return (NULL);

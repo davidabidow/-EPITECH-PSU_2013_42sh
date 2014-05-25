@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Wed May  7 19:16:48 2014 valentin wallet
-** Last update Sat May 24 03:20:42 2014 valentin wallet
+** Last update Sun May 25 18:14:37 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -29,7 +29,8 @@ char			*my_strcat_int(char *src, int dest)
   return (final);
 }
 
-char			*include_in_line(char *dest, int src, int *x, t_cmd *data)
+char			*include_in_line(char *dest, int src, int *x,
+					 t_cmd *data)
 {
   int			j;
   char			*end;

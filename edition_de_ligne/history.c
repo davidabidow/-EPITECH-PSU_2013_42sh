@@ -5,7 +5,7 @@
 ** Login   <lacour_a@epitech.net>
 **
 ** Started on  Wed May  7 11:55:17 2014 arthur lacour
-** Last update Sat May 24 02:59:37 2014 david tran
+** Last update Sun May 25 18:12:45 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -28,7 +28,7 @@ char		**read_history(int fd)
       str = realloc(str, my_strlen(str) + my_strlen(buff) + 1);
       str = strcat(str, buff);
     }
-  my_tab = my_str_to_wordtab(str, "\n");
+  my_tab = wordtab(str, "\n");
   free(str);
   return (my_tab);
 }

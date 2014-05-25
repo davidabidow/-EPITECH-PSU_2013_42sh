@@ -5,7 +5,7 @@
 ** Login   <wallet_v@epitech.net>
 ** 
 ** Started on  Sun May 18 12:25:11 2014 valentin wallet
-** Last update Sat May 24 00:02:28 2014 valentin wallet
+** Last update Sun May 25 18:34:23 2014 valentin wallet
 */
 
 #include "42sh.h"
@@ -22,3 +22,23 @@ t_data		tab[] =
     {2117294875, &my_suppr},
     {0, NULL}
   };
+
+int			parcours_ptr_func(t_termcap *term,
+					  struct winsize *mysizewin, int *count)
+{
+  int			i;
+
+  i = 0;
+  while (tab[i].ptr != NULL)
+    {
+      if (term->buff == tab[i].id)
+	{
+	  if ((term->str =
+	       tab[i].ptr(term->str, &term->data, &term->x, mysizewin)) == NULL)
+	    return (EXIT_FAILURE);
+	  (*count)++;
+	}
+      i++;
+    }
+  return (EXIT_SUCCESS);
+}
